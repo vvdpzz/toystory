@@ -2,8 +2,8 @@ class CreateEntries < ActiveRecord::Migration
   def change
     create_table :entries, :id => false do |t|
       t.integer :id, :limit => 8, :primary => true
-      t.references :user, :null => false
-      t.references :contest, :null => false
+      t.integer :user_id, :limit => 8, :null => false
+      t.integer :contest_id, :limit => 8, :null => false
       t.text :content, :default => ""
       
       t.boolean :is_correct, :default => false

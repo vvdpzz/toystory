@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20111025072804) do
 
   create_table "comments", :id => false, :force => true do |t|
     t.integer  "id",         :limit => 8
-    t.integer  "user_id"
-    t.integer  "pixar_id"
+    t.integer  "user_id",    :limit => 8, :null => false
+    t.integer  "pixar_id",   :limit => 8, :null => false
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20111025072804) do
 
   create_table "contests", :id => false, :force => true do |t|
     t.integer  "id",              :limit => 8
-    t.integer  "user_id",                                                                       :null => false
+    t.integer  "user_id",         :limit => 8,                                                  :null => false
     t.string   "title",                                                      :default => ""
     t.text     "content"
     t.string   "rules_list",                                                 :default => ""
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20111025072804) do
 
   create_table "entries", :id => false, :force => true do |t|
     t.integer  "id",             :limit => 8
-    t.integer  "user_id",                                        :null => false
-    t.integer  "contest_id",                                     :null => false
+    t.integer  "user_id",        :limit => 8,                    :null => false
+    t.integer  "contest_id",     :limit => 8,                    :null => false
     t.text     "content"
     t.boolean  "is_correct",                  :default => false
     t.boolean  "is_eliminate",                :default => false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20111025072804) do
 
   create_table "profiles", :id => false, :force => true do |t|
     t.integer  "id",           :limit => 8
-    t.integer  "user_id"
+    t.integer  "user_id",      :limit => 8, :null => false
     t.string   "description"
     t.string   "location"
     t.text     "introduction"

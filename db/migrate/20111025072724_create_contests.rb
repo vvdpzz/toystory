@@ -2,7 +2,7 @@ class CreateContests < ActiveRecord::Migration
   def change
     create_table :contests, :id => false do |t|
       t.integer :id, :limit => 8, :primary => true
-      t.references :user, :null => false
+      t.integer :user_id, :limit => 8, :null => false
       t.string :title, :default => ""
       t.text :content, :default => ""
       

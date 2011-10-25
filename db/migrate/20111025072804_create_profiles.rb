@@ -2,7 +2,7 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles, :id => false do |t|
       t.integer :id, :limit => 8, :primary => true
-      t.references :user
+      t.integer :user_id, :limit => 8, :null => false
       t.string :description
       t.string :location
       t.text :introduction
