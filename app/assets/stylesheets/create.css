@@ -1,0 +1,423 @@
+/*
+####################################################################
+CREATE PAGE
+#################################################################### */
+.page-create{
+	margin: 0 auto;
+	width: 767px;
+	min-height:500px;
+}
+.create-header{
+	font-size: 14px;
+	border-bottom: 1px solid #B1B1B1;
+	height:33px;
+	-webkit-box-sizing: border-box;
+}
+#create-header-left{
+	width: 500px;
+	height: 33px;
+}
+.create-tabs {
+	height: 33px;
+	line-height: 31px;
+	display:block;
+	padding: 0 14px;
+}
+.create-content{
+	width: 745px;
+	min-height: 500px;
+	margin: 0 auto;
+	background: #FFFFFF;
+	padding: 10px 10px 5px;
+	border-left: 1px solid #B1B1B1;
+	border-right: 1px solid #B1B1B1;
+	border-bottom: 1px solid #B1B1B1;
+}
+.gray-desc{
+	font-size: 9pt;
+	color: #999;
+}
+.negative {
+	color: red;
+}
+#desc-limit-num {
+	padding-top: 7px;
+}
+.inputs-container{
+	float: left;
+	margin: 5px 0 0 0; 
+	width: 745px;
+}
+.inputs-container .checkbox-list {
+	display: block;
+	list-style: none;
+	margin-left: 0;
+}
+.inputs-container .checkbox-list li{
+	padding-bottom: 5px;
+}
+.inputs-container .checkbox-list li input{
+	width: 15px;
+	float: left;
+	margin-top: 4px;
+}
+.inputs-container .checkbox-list li label{ 
+	margin-left: 5px;
+}
+.inputs-container .checkbox-list textarea{
+	width: 610px;
+	height: 60px;
+	border: 1px solid #b2b2b2;
+	padding: 3px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.assist-container{
+	width: 620px;
+}
+#title-limit-num{
+	height: 20px;
+}
+.inputs-subject{
+	line-height: 30px;
+	width: 110px;
+	font-weight: bold;
+}
+	.inputs-subject .sub{
+		font-size: 13px;
+		font-weight: normal;
+		line-height: 10px;
+	}
+.contest-inputs{
+	padding-left:10px;
+	width: 620px;
+}
+.input-title{
+	height: 30px;
+	width: 610px;
+	font-weight: bold;
+}
+.create-contest-gray{
+	color: #909090;
+}
+.create-contest{
+	color: black;
+}
+.desc-container{
+	height: 250px;
+} 
+.rules-container{
+	width: 750px;
+}
+.textarea-desc{
+	height: 215px;
+}
+.textarea-desc{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #b2b2b2;
+	padding: 5px 5px 0;
+	width: 618px;
+	display:none;
+	overflow-x: auto;
+}
+.tinymce-preloader{
+	margin-top: 15px;
+	padding-bottom: 12px;
+	text-align: center;
+}
+#createconfirm .ui-dialog .ui-dialog-content {
+	position: relative;
+	padding: none;
+}
+
+#create-confirm {
+	padding: 0.5em 0;
+}
+.create-subject {
+	text-align: left;
+	margin: 8px auto 5px;
+}
+.html-state {
+	color: #a7a7a7;
+	display: block;
+	float: right;
+	text-align: right;	
+}
+.ie7 .html-state {
+	margin-top: -16px;
+}
+.bottom-left {
+	display: block;
+	float: left;
+}
+.prize-content {
+	display: block;
+}
+#contest-credits {
+	font-size: 15px;
+	height: 25px;
+	width: 60px;
+}
+.credit {
+	vertical-align: bottom;
+	line-height: 30px;
+	margin: 6px 10px 0px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+}
+.prize-options, .prize-other-option{
+	float:left;
+	width:75px;
+	height:30px;
+	line-height:30px;
+}
+.prize-other-option{
+	width:155px;
+}
+
+#enddate-picker {
+	cursor: pointer;
+	height: 25px;
+	width: 152px;
+	font-size: 15px;
+	background: url("/ce6/images/calendar-icon.png") no-repeat 135px 6px white;
+}
+.bottom-right {
+	display: block;
+	float: right;
+	text-align: left;
+}
+.date-container {
+	border: 1px solid #bebebe;
+	height: 30px;
+	width: 100px;
+}
+.create-buttons{
+	float: left;
+	border-top: 1px solid #B1B1B1;
+	padding-top: 15px;
+	margin-top:15px;
+	margin-bottom:15px;
+	text-align: center;
+	width: 740px;
+}
+
+#btn-preview-publish {
+	display: inline-block;
+	padding: 10px 45px;
+}
+
+.page-tips{
+	height: 600px;
+	position: relative;
+	width: 305px;
+	float: left;
+}
+.contest-tip{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	position: absolute;
+	background:#ccdff5;
+	width:290px; 
+	left:20px;
+	line-height: 18px;
+	font-size: 14px;
+	padding: 8px 10px;
+	display:none;
+}
+#contest-title-tip{
+	top:40px;
+}
+#contest-desc-tip, #contest-desc-sample{
+	top:102px; 
+}
+#back-from-sample, #see-sample {
+	float: right;
+	text-decoration: underline;
+}
+.contest-tip-arrow{
+	border: 9px solid transparent;
+	border-right-color:#ccdff5;
+	width: 0px; height: 0px;
+	position: absolute;
+	left:-18px;
+}
+#contest-title-tip-arrow, #contest-desc-tip-arrow{
+	top:8px;
+}
+#createconfirm{
+	margin-top: 8px;
+	font-size: 14px;
+	text-align:center;
+}
+#createconfirm-bottom-line{
+	font-size: 11px;
+	padding:0;
+	color: #909090;
+	height: 16px; 
+	text-align:center;
+}
+.contest-detail-container {
+	max-height: 600px;
+	overflow :auto;
+}
+/* override the css of detail page for preview */
+.contest-detail {
+	margin:10px auto ;
+}
+.preview-follow{
+	color:#005DCE;
+	font-size:14px;
+	white-space: nowrap;
+}
+.mock-fb-share, .mock-twitter-share{
+	float: left;
+	margin:6px 6px 0;
+	background: url("/ce6/images/share-button.png") no-repeat scroll 0 0 transparent;
+	height: 18px;
+	width: 55px;
+}
+.mock-twitter-share{
+	background: url("/ce6/images/share-button.png") no-repeat scroll 0 -36px transparent;
+}
+
+/* create coming soon page */
+.create-invite-header {
+	height: 138px;
+	width: 475px;
+	background: url('/ce6/images/envelop.png') no-repeat 0 0px transparent;
+	margin: 20px auto 0px auto;
+}
+
+.create-invite-content {
+	margin: 10px auto 0px auto;
+	width: 450px;
+	text-align: center;
+}
+
+#blind-contest-setting-right {
+	line-height: 30px;
+}
+#input-blind-setting {
+	position: relative;
+	top: -8px;
+}
+.ie7 #input-blind-setting {
+	top: 0;
+}
+#blind-contest-setting-right #blind-contest-tip {
+	position: relative;
+	top: -7px;
+}
+.ie7 #blind-contest-setting-right #blind-contest-tip {
+	top: 0;
+}
+
+.create-invite-content p.grey-text{
+	color: #8D8D8D;
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 5px;
+	text-shadow: 0 1px 0 #fff;
+}
+
+.create-invite-content p.black-text{
+	color: #444;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 22px;
+	text-shadow: 0 1px 0 #fff;
+	
+}
+
+.create-invite-content p.button-row{
+	margin:10px auto 10px auto;
+	width:125px;
+}
+
+.create-invite-content p.footer-text{
+	color: #B8B8B8;
+	font-size: 13px;
+	text-shadow: 0 1px 0 #fff;
+}
+#service-fee {
+	line-height: 30px;
+}
+.create-footer {
+	padding-bottom: 25px;
+}
+.create-bottom-shadow {
+	width: 767px;
+	height: 15px;
+	background: url('/ce6/images/create-contest-shadow.png') no-repeat top center transparent;
+}
+#additional-rule {
+	resize: none;
+}
+.show-tips {
+	font-size: 12px;
+	padding-top: 7px;
+}
+.dnd-tips {
+	display: none;
+}
+
+.editor-panel-cover{
+	width: 620px;
+	height: 26px;
+	background-color: white;
+	position: absolute;
+	z-index: 10;
+	filter:alpha(opacity=30);
+	opacity : 0.3;
+}
+
+.create-jff-top-tips{
+	display:none;
+	background-color: #CCDFF5;
+	border-radius: 4px 4px 4px 4px;
+	height: 15px;
+	margin: 0 15px 15px;
+	padding: 7px 0 9px; 
+	text-align: center;
+	width: 520px;
+}
+#verify-email-dlg {
+	padding: 10px;
+}
+#create-discard {
+	display: inline-block;
+}
+
+/*
+ * coupons
+ */
+.inputs-container .coupon-list {
+	display: block;
+	list-style: none;
+	margin-left: 0;
+	margin-top: 5px;
+}
+.inputs-container .coupon-list li{
+/*	padding-bottom: 5px;*/
+}
+.inputs-container .coupon-list li input{
+	width: 15px;
+	float: left;
+	margin-top: 4px;
+}
+.inputs-container .coupon-list li label{ 
+	margin-left: 5px;
+}
+.inputs-container .coupon-list textarea{
+	width: 610px;
+	height: 60px;
+	border: 1px solid #b2b2b2;
+	padding: 3px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}

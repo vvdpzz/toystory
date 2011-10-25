@@ -1,0 +1,203 @@
+ .text-center {
+	 text-align: center;
+ }
+ .credit-status-detail  {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-webkit-appearance: none;
+	-webkit-box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	background-color: white;
+}
+.credit-status-detail table{
+	width: 100%;
+	font-size:14px;
+}
+.credit-status-detail table tr{
+	height: 35px;
+	line-height: 30px;
+}
+.credit-status-detail table td{
+	padding-left:10px;
+}
+.credit-status-detail .last-td{
+	padding-right:10px;
+}
+.credit-status-detail .tb-head{
+	font-weight:bold;
+}
+.credit-status-detail .tb-head-date{
+	width: 80px;
+}
+.credit-status-detail .tb-head-summery{
+	width: 303px;
+}
+.credit-status-detail .tb-head-type{
+	width: 80px;
+}
+.credit-status-detail .tb-head-balance{
+	width: 65px;
+}
+.credit-status-detail .tb-head-amount{
+	width: 50px;
+}
+.contest-name-link {
+	margin-top: -5px;
+	margin-bottom: 5px;
+	width: 303px;
+	line-height: 16px;
+}
+.credit-status-detail .odd td{
+	background-color:#EDEDED
+}
+
+/*
+ * Credit summary part
+ */
+.credit-summary-header {
+	font-size: 18px;
+	height: 22px;
+	padding-bottom: 4px;
+	width: 100%;
+}
+#redeem-link {
+	font-size: 12px;
+}
+.credit-summary-box {
+	height: 55px;
+}
+.credit-summary-box .credit-type-text{
+	font-size: 12px;
+	height: 20px;
+	line-height: 20px;
+	padding-right: 4px;
+	margin-bottom: 5px;
+}
+.credit-summary-container {
+	border: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	padding: 5px 10px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin-bottom: 10px;
+}
+.credit-summary-divide {
+	border-right: 1px dotted #CCCCCC;
+}
+.credit-big-num {
+	font-size: 32px;
+	line-height: 25px;
+}
+.credit-big-num a{
+	color: #000000;
+}
+.credit-big-num a:hover {
+	color: #016df1;
+}
+.credit-redeem-link {
+	font-size: 12px;
+	margin-top: 6px;
+}
+.credit-summary-total-box {
+	padding: 0 10px 5px 15px;
+	width: 185px;
+	height: 50px;
+}
+.credit-summary-normal-box {
+	padding: 0 10px 5px 20px;
+	width: 180px;
+	height: 50px;
+}
+.credit-summary-bonus-box {
+	padding: 0 10px 5px 20px;
+	height: 50px;
+	width: 150px;
+}
+
+#bonus-credit-tips {
+	position: absolute;
+	display:none;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 8px solid #909090;
+	background:#fff;
+	line-height: 22px;
+	width:240px; 
+	padding: 5px 10px;
+	top:5px;
+	left:-76px;
+}
+#bonus-credit-tips p{
+	line-height: 18px;
+}
+#bonus-credit-tips .bonus-credit-tips-arrow1{
+	border: 5px solid transparent;
+	border-bottom-color:#909090;
+	border-right-color:#909090;
+	width: 0px; height: 0px;
+	position: absolute;
+	top:-18px;
+	left:130px;
+}
+#bonus-credit-tips .bonus-credit-tips-arrow2{
+	border: 5px solid transparent;
+	border-bottom-color:#909090;
+	border-left-color:#909090;
+	width: 0px; height: 0px;
+	position: absolute;
+	top:-18px;
+	left:140px;
+}
+/*
+ * Coupon css
+ */
+.coupon-container .feed-row {
+	min-height:20px;
+	line-height:20px;
+}
+.coupon-container .coupon-info {
+	float: right;
+	width: 127px;
+	line-height: 18px;
+}
+.coupon-badge{
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-box-shadow: 0 3px 3px -1px #aaa;
+	-webkit-box-shadow: 0 3px 3px -1px #aaa;
+	border-radius: 4px;
+	float: left;
+	text-align: center;
+	width: 130px;
+	display: block;
+}
+.coupon-bg{
+	background: url(/ce6/images/prizebage-gradient.png) left 0;
+	min-height: 75px;
+}
+.coupon-badge .prize{
+	height: 30px;
+	line-height: 30px;
+	margin: 5px 5px 3px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	background-color: white;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	color: black;
+}
+.coupon-badge .title{
+	color: #944918;
+	font-weight: bold;
+	font-size: 14px;
+	text-shadow: 0 1px 0 white;
+	padding-top: 7px;
+}

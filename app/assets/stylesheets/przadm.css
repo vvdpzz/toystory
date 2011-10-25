@@ -1,0 +1,497 @@
+/*
+ * admin home css
+ */
+.adm-global-info-box {
+	border: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	text-align:center;
+}
+.adm-global-bonus-box span{
+	color: #FF0000;
+}
+.payout-paypal-table {
+	margin: 5px 20px 10px;
+	text-align:center;
+}
+.payout-paypal-table {
+	border: 1px solid #CCCCCC;
+	width: 800px;
+}
+.payout-paypal-table td{
+	border: 1px solid #CCCCCC;
+}
+.payout-paypal-table .tb-count{
+	width: 10%;
+}
+.payout-paypal-table .tb-pp-email{
+	width: 50%;
+}
+.payout-paypal-table .tb-time-created{
+	width: 20%;
+}
+.payout-paypal-table .tb-action{
+	width: 20%;
+}
+
+/*
+ * contest contrl css
+ */
+
+/*
+ * contest select box
+ */
+.sel-contest-box {
+	border: 1px solid #CCCCCC;
+	line-height: 30px;
+	width: 500px;
+	margin: 0 auto;
+}
+.adm-welcome-title {
+	background-color: #EDEDED;
+	text-align: center;
+	line-height: 10px;
+}
+.adm-welcome-title-text {
+	font-weight: bold;
+	line-height: 30px;
+	font-size: 20px;
+	padding-top: 5px;
+}
+.adm-welcome-title .adm-welcome-link {
+	padding-bottom: 5px
+}
+.adm-welcome-title a {
+	font-size: 12px;
+	font-weight:normal;
+	line-height: 14px;
+}
+.sel-contest-box .ui-button-text {
+	padding: 2px 12px;
+}
+.sel-single-contest {
+	background-color: #FFFFFF;
+	padding: 0 10px 5px;
+}
+.sel-multi-contest {
+	background-color: #FFFFFF;
+	padding: 0 10px 5px;
+}
+.multi-contest-options {
+	min-height: 25px;
+	line-height: 25px;
+}
+#contest-id-input {
+	width: 200px;
+}
+.sel-multi-options {
+	width: 300px;
+	margin: 0 auto;
+}
+.sel-multi-option-list {
+	list-style: none outside none;
+	line-height: 15px;
+	margin-left: 0px;
+}
+.sel-multi-row {
+	height: 20px;
+}
+/*
+ * contest action box
+ */
+.adm-contest-box {
+	border: 1px solid #CCCCCC;
+	line-height: 30px;
+}
+.adm-single-info {
+	font-weight: bold;
+	background-color: #EDEDED;
+	padding-left: 10px;
+}
+.adm-single-detail {
+	background-color: #FFFFFF;
+}
+.adm-single-detail-table {
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+.adm-single-detail-table div {
+	padding: 0 5px;
+}
+.adm-right-border {
+	border-right: 1px solid #CCCCCC;
+}
+.adm-bottom-border {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.adm-button-area {
+	padding: 5px 10px;
+	background-color: #FFFFFF;
+}
+.adm-button-area .ui-button-text {
+	padding: 2px 12px;
+}
+
+#adm-contest-reward-input {
+	width: 50px;
+}
+
+/*
+ * contest list
+ */
+.adm-contest-table {
+	border: 1px solid #CCCCCC;
+	width: 1024px;
+}
+#adm-contest-topcol {
+	font-weight: bold;
+	background-color: #FFFFFF;
+}
+.adm-contest-row {
+	height: 30px;
+	line-height: 30px;
+}
+.adm-contest-row.odd {
+	background-color: #EDEDED;
+}
+.adm-contest-row.even {
+	background-color: #FFFFFF;
+}
+.adm-contest-row .column {
+	padding: 0 5px;
+	height: 30px;
+	overflow: hidden;
+	border-right: 1px solid #CCCCCC;
+}
+.adm-contest-row .adm-contest-id {
+	width: 140px;
+}
+.adm-contest-row .adm-contest-title {
+	width: 200px;
+}
+.adm-contest-row .adm-contest-creator {
+	width: 140px;
+}
+.adm-contest-row .adm-last-operation {
+	width: 150px;
+}
+.adm-contest-row .adm-last-op-time {
+	width: 90px;
+}
+.adm-contest-row .adm-contest-time_created {
+	width: 90px;
+}
+.adm-contest-row .adm-contest-oid {
+	width: 140px;
+}
+.adm-contest-row .adm-contest-state {
+	width: 120px;
+	font-weight: bold;
+}
+.adm-contest-row .adm-contest-entries {
+	width: 50px;
+}
+.adm-contest-row .adm-contest-jff {
+	width: 50px;
+}
+.adm-contest-row .adm-contest-action {
+	width: 90px;
+}
+.adm-status-user {
+	color: #CCCC00;
+}
+.adm-status-action {
+	color: #FF00FF;
+}
+.adm-status-normal {
+	color: #000000;
+}
+.adm-status-end {
+	color: #777777;
+}
+.adm-status-err {
+	color: #FF0000;
+}
+
+.adm-contest-action a {
+	text-decoration: underline;
+}
+.adm-select-contest.blue {
+	font-weight: bold;
+	color: #0000FF;
+}
+.adm-select-contest.gray {
+	color: #909090;
+}
+
+/*
+ * user select box
+ */
+.sel-user-box {
+	border: 1px solid #CCCCCC;
+	line-height: 30px;
+	width: 500px;
+	margin: 0 auto;
+}
+.sel-user-box .ui-button-text {
+	padding: 2px 12px;
+}
+.sel-single-user {
+	background-color: #FFFFFF;
+	padding: 0 10px 5px;
+}
+.sel-multi-user {
+	background-color: #FFFFFF;
+	padding: 0 10px 5px;
+}
+#user-id-input {
+	width: 200px;
+}
+#adm-user-reward-coupon-input {
+	width: 50px;
+}
+/*
+ * user transaction box
+ */
+.adm-user-transaction-container {
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	padding: 10px;
+}
+.adm-user-transaction-table {
+	border: 1px solid #CCCCCC;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.adm-user-transaction-table tr{
+	line-height: 30px;
+	height: 30px;
+}
+.adm-user-transaction-table td{
+	padding: 0 5px;
+	border-left: 1px solid #CCCCCC;
+	overflow:hidden;
+}
+.adm-user-transaction-table .odd{
+	background-color: #EDEDED;
+}
+.adm-user-transaction-table .tb-head{
+	font-weight:bold;
+	text-align:center;
+}
+
+.adm-user-transaction-table .tb-head-count{
+	width: 40px;
+}
+.adm-user-transaction-table .tb-head-date{
+	width: 80px;
+}
+.adm-user-transaction-table .tb-head-summery{
+	width: 230px;
+}
+.adm-user-transaction-table .tb-head-amount{
+	width: 70px;
+}
+.adm-user-transaction-table .tb-head-balance{
+	width: 70px;
+}
+.adm-user-transaction-table .tb-head-currency{
+	width: 70px;
+}
+.adm-user-transaction-table .tb-head-contest{
+}
+.adm-user-transaction-table .tb-head-order{
+	width: 80px;
+}
+#num-history-limit {
+	width: 50px;
+}
+.adm-user-transaction-table .tb-order a{
+	text-decoration: underline;
+	text-align: center;
+	color: #909090;
+}
+
+.adm-transaction-btn-area {
+	padding: 5px 10px;
+	background-color: #FFFFFF;
+}
+.adm-transaction-btn-area .ui-button-text {
+	padding: 2px 12px;
+}
+
+/*
+ * user action box
+ */
+.adm-user-box {
+	border: 1px solid #CCCCCC;
+	line-height: 30px;
+}
+
+/*
+ * user list
+ */
+.adm-user-table {
+	border: 1px solid #CCCCCC;
+	width: 100%;
+}
+#adm-user-topcol {
+	font-weight: bold;
+	background-color: #FFFFFF;
+}
+.adm-user-row {
+	height: 30px;
+	line-height: 30px;
+}
+.adm-user-row.odd {
+	background-color: #EDEDED;
+}
+.adm-user-row.even {
+	background-color: #FFFFFF;
+}
+.adm-user-row .column {
+	padding: 0 5px;
+	height: 30px;
+	overflow: hidden;
+	border-right: 1px solid #CCCCCC;
+}
+.adm-user-row .adm-user-count {
+	width: 40px;
+}
+.adm-user-row .adm-user-id {
+	width: 140px;
+}
+.adm-user-row .adm-user-fullname {
+	width: 250px;
+}
+.adm-user-row .adm-user-time_created {
+	width: 90px;
+}
+.adm-user-row .adm-user-action {
+	width: 90px;
+}
+.adm-user-action a {
+	text-decoration: underline;
+}
+.adm-select-user.blue {
+	font-weight: bold;
+	color: #0000FF;
+}
+.adm-select-user.gray {
+	color: #909090;
+}
+
+/*
+ * order select box
+ */
+.sel-order-box {
+	border: 1px solid #CCCCCC;
+	line-height: 30px;
+	width: 500px;
+	margin: 0 auto;
+}
+.sel-order-box .ui-button-text {
+	padding: 2px 12px;
+}
+.sel-single-order {
+	background-color: #FFFFFF;
+	padding: 0 10px 5px;
+}
+
+.adm-order-box {
+	line-height: 30px;
+	border: 1px solid #CCCCCC;
+}
+.adm-order-his-table {
+	border-top: 1px solid #CCCCCC;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.adm-order-his-table tr{
+	line-height: 30px;
+	height: 30px;
+}
+.adm-order-his-table td{
+	padding: 0 5px;
+	border-left: 1px solid #CCCCCC;
+	overflow:hidden;
+}
+.adm-order-his-table .odd{
+	background-color: #EDEDED;
+}
+.adm-order-his-table .tb-head{
+	font-weight:bold;
+	text-align:center;
+}
+
+.adm-order-his-table .tb-head-count{
+	width: 30px;
+}
+.adm-order-his-table .tb-head-date{
+	width: 80px;
+}
+.adm-order-his-table .tb-head-operation{
+	width: 120px;
+}
+.adm-order-his-table .tb-head-key{
+	width: 105px;
+}
+.adm-order-his-table .tb-head-value{
+	width: 150px;
+}
+.adm-order-his-table .tb-head-state{
+	width: 150px;
+}
+.adm-order-his-table .tb-head-comments{
+}
+
+/*
+ * tag control
+ */
+.adm-tag-box {
+	line-height: 30px;
+}
+.adm-tag-table {
+	border: 1px solid #CCCCCC;
+	width: 400px;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: auto;
+	background-color: #FFFFFF;
+}
+.adm-tag-table tr{
+	line-height: 30px;
+	height: 30px;
+}
+.adm-tag-table td{
+	padding: 0 5px;
+	border-left: 1px solid #CCCCCC;
+	overflow:hidden;
+}
+.adm-tag-table .odd{
+	background-color: #EDEDED;
+}
+.adm-tag-table .tb-head{
+	font-weight:bold;
+	text-align:center;
+}
+.adm-tag-table .tb-head-count{
+	width: 30px;
+}
+.adm-tag-table .tb-head-date{
+	width: 80px;
+}
+.adm-tag-table .tb-head-tag{
+}
+.adm-tag-table .tb-head-action{
+	width: 100px;
+}
+
+/*
+ * dlg
+ * */
+.adm-dlg-body {
+	padding: 12px 10px !important;
+}
