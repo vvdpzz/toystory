@@ -1,0 +1,113 @@
+<div class="page-create">
+  <div class='create-header'>
+    <div id='create-header-left' class="float-left">
+      <a id='tab-normal-contest' class="tab-active float-left create-tabs">
+        <span class="ui-icons ui-icons-create-position" id="create-contest-icon"></span>
+        <span class="ui-icons-title">Create Contest</span>
+      </a>
+      <a id='tab-jff-contest' class=" float-left create-tabs">
+        <span class="ui-icons ui-icons-create-position" id="jff-contest-icon"></span>
+        <span class="ui-icons-title">Create Just For Fun Contest</span>
+        <span id="jff-contest-tips-icon" class="ui-icons ui-icons-create-position"></span>
+      </a>
+    </div>  
+    <div id="auto-save-msg" style="display: none;" class="float-right">Drafts Saved at <span class="time"></span></div>
+  </div>
+  <div class='create-content clearfix'>
+    <form id="create-form"> 
+      <div class='inputs-container title-container'>
+        <div class="inputs-subject right float-left">Title</div>
+        <div class="contest-inputs float-left">
+          <input type='text' class="input-title create-contest-gray" name='title' id='contest-title' tabindex='0' sample-text='Example: 8 week work out plan to lose 20lbs' value='Example: 8 week work out plan to lose 20lbs'/>
+        </div>
+      </div>
+      <div id='title-limit-num' class='assist-container float-right right gray-desc'> 75 </div>
+
+      <div class='inputs-container desc-container'>
+        <div class="desc-btn-sel inputs-subject right float-left">Descriptions</div>
+        <div class="desc-sel contest-inputs float-left" >
+          <textarea cols='50' class="textarea-desc tinymce" name='content' id='contest-content' sample-text="Example: I'm a 5'9, 185lbs, medium built male. I'm looking for the best work out plan to lose 20lbs and reduce my body fat to 10% or less in 8 weeks. Since I have to work, I have about an hour in the morning to hit the gym or go for a jog. I do some cardio on weekends like running and cycling, but it's not a regular thing. The more specific and detailed your plan is, the more likely you'll win."><span style='color:#909090;' id='sample-desc'>Example: I'm a 5'9, 185lbs, medium built male. I'm looking for the best work out plan to lose 20lbs and reduce my body fat to 10% or less in 8 weeks. Since I have to work, I have about an hour in the morning to hit the gym or go for a jog. I do some cardio on weekends like running and cycling, but it's not a regular thing. The more specific and detailed your plan is, the more likely you'll win.</span></textarea>
+          <div class="tinymce-preloader"><span class="preloader-icon">Loading...</span></div>
+        </div>
+      </div>
+      <div class='assist-container float-right'>
+        <span class='show-tips float-left'>Tip: <span class='dnd-tip'>Drag your image files onto the box to add image.</span> To add youtube video, just input the video url.</span>
+        <span id='desc-limit-num' class='float-right gray-desc'> 4000</span>
+      </div>
+      <div class='inputs-container rules-container'>
+        <div class="inputs-subject right float-left">
+          <div>Official Rules</div>
+          <div class='sub'>(Optional)</div>
+        </div>
+        <ul class="contest-inputs float-left checkbox-list">
+          <li class="clearfix"><input type='checkbox' id='rules_0' name='rules_0' class='selector-emailsetting'/>
+          <label for='rules_0'>In the case of duplicated entries, the first entry submitted will win</label>
+          <li class="clearfix"><input type='checkbox' id='rules_1' name='rules_1' class='selector-emailsetting'/>
+          <label for='rules_1'>Entries should include reference images</label>
+          <li class="clearfix"><input type='checkbox' id='rules_2' name='rules_2' class='selector-emailsetting'/>
+          <label for='rules_2'>Entries should be no less than 200 words</label>
+          <li class="clearfix"><input type='checkbox' id='rules_3' name='rules_3' class='selector-emailsetting'/>
+          <label for='rules_3'>Only allow verified users to participate.</label>
+          <li class="clearfix"><input type='checkbox' id='rules_100' name='rules_100' class='selector-emailsetting'/>
+          <label for='rules_100'>Additional rules</label>
+          <textarea id='additional-rule' style='display:none;' placeholder='Add your own contest rules.'></textarea>
+        </ul>
+      </div>
+      <input name='rules_list' id='rules-list' style='display:none;'/>
+      <input name='customized_rule' id='customized-rule' style='display:none;'/>
+      <div class='float-left prize-area' style="">
+        <div class='inputs-container prize-container'>
+          <div class="inputs-subject right float-left">Prize(USD)</div>
+          <div class="contest-inputs float-left">
+            <div class='prize-options'>
+              <input type="radio" name='credits' value='50' id='radio-prize-default' checked='checked'/>  <label for="radio-prize-default">$50 &nbsp;&nbsp;&nbsp;</label>
+            </div>
+      
+            <div class='prize-options'>
+              <input type="radio" name='credits' value='200' id="credits-200"/> <label for="credits-200">$200 &nbsp;&nbsp;&nbsp;</label>
+            </div>
+      
+            <div class='prize-options'>
+              <input type="radio" name='credits' value='500' id="credits-500"/> <label for="credits-500">$500 &nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+      
+            <div class='prize-options'>
+              <input type="radio" name='credits' value='1000' id="credits-1000"/> <label for="credits-1000">$1000 &nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+      
+            <div class='prize-other-option right'>
+              <input type="radio" name='credits' value=''/> Other: $ <input type='text' class="prize" name='user-credits' autocomplete="off" id='contest-credits'/>
+            </div>
+          </div>
+        </div>
+        <div id='credit-limit-num' class='assist-container float-left right gray-desc negative'> </div>
+      
+        <div class='inputs-container'>
+          <div class="inputs-subject right float-left">Contest Privacy</div>
+          <div class="contest-inputs float-left" id="blind-contest-setting-right">
+            <input type="checkbox" id="input-blind-setting" autocomplete="off" disabled="disabled" />
+            <label for="input-blind-setting"><b>Blind Contest</b> <span class="ui-icons ui-icons-position" id="blind-contest-tip"></span> for contests over $50</label>
+            <span id="service-fee" style="display:none;"><span id="service-fee-amount">9.98%</span> service fee will be charged.</span>
+          </div>
+        </div>
+      </div>
+      <div class='inputs-container enddate-container'>
+        <div class="inputs-subject right float-left">End Date</div>
+        <div class="contest-inputs float-left">
+          <input type="text" name="end" id="enddate-picker" readonly="readonly">
+          <input type="hidden" name="end_date" value="" id='contest-end' />
+        </div>
+      </div>
+      <div id='enddate-limit' class='assist-container float-right gray-desc'> mm/dd/yyyy </div>
+    </form>
+    <div class="create-buttons">
+      <button id="create-discard" class="lightgray">Discard</button>
+      <button id="btn-preview-publish" class="blue">Preview & Create</button>
+    </div>
+  </div>
+  <div class='create-footer create-bottom-shadow'></div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  ce6.create.init();
+</script>

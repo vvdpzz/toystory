@@ -1,0 +1,101 @@
+.jquery-notify-bar{
+  position:fixed;
+  width:100%;
+  font-size:14px;
+  z-index:32768;
+  color:#000;
+  text-align:left;
+  height:42px;
+  text-align:center;
+  filter:alpha(opacity=90);
+  opacity:.9;
+}
+.jquery-notify-bar .bar-content{
+  width:970px;
+  color:#000;
+  margin:0 auto;
+}
+.jquery-notify-bar .bar-content .bar-message{
+  float:left;
+  margin:0 5px;
+  line-height:42px;
+}
+.jquery-notify-bar .bar-content .bar-title{
+  float:left;
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing:1px;
+  line-height:42px;
+}
+.jquery-notify-bar .bar-content .bar-divider{
+  float:left;
+  border-left:1px solid #202020;
+  height:30px;
+  margin:5px 15px;
+  filter:alpha(opacity=30);
+  opacity:.3;
+}
+.jquery-notify-bar.error .bar-content .bar-divider{
+  border-left:1px solid #fff;
+  filter:alpha(opacity=80);
+  opacity:.8;
+}
+.jquery-notify-bar .bar-content .btns-area{
+  float:right;
+  width:15px;
+  margin:13px 20px 5px 0;
+}
+.jquery-notify-bar .bar-content .btns-area .close-notify-bar{
+  display:block;
+  float:right;
+  height:15px;
+  width:15px;
+  background:url(/assets/closebutton.png) repeat-x scroll 0 0 transparent;
+}
+.jquery-notify-bar .bar-content .btns-area .close-notify-bar:hover{
+  background:url(/assets/closebutton.png) repeat-x scroll 0 -30px transparent;
+}
+.jquery-notify-bar.error{
+  background:#b90002;
+}
+.jquery-notify-bar.error a{
+  color:white;
+  font-weight:bold;
+  font-style:italic;
+}
+.jquery-notify-bar.welcome,.jquery-notify-bar.success{
+  background:#a8d415;
+}
+.jquery-notify-bar.warn{
+  background:#FFF498;
+}
+.jquery-notify-bar.get-start{
+  background:#CCDFF5;
+}
+.jquery-notify-bar.welcome .bar-content,.jquery-notify-bar.success .bar-content{
+  color:#000;
+}
+.jquery-notify-bar.error .bar-content{
+  color:#fff;
+}
+.jquery-notify-bar.warn .btn-close{
+  float:right;
+}
+.notify-bar-button{
+  position:absolute;
+  left:95%;
+}
+.notify-bar-close{
+  height:15px;
+  width:15px;
+  margin-top:15px;
+  background:url(/assets/closebutton.png) no-repeat left top;
+  display:block;
+  float:right;
+}
+.notify-bar-close:hover{
+  background:url(/assets/closebutton.png) no-repeat left -30px;
+}
+
+
+

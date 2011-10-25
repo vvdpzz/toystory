@@ -5,5 +5,12 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
+//= require placeholder
+//= require notifybar
+//= require effect
+//= require niceditor
+//= require app
+
 //= require_tree .
