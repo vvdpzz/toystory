@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require utils
 //= require placeholder
 //= require notifybar
 //= require effect

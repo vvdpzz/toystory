@@ -675,7 +675,7 @@ ce6.create.autoSave = {
 		this.save(title, content);
 	},
 	save: function(title, content) {
-		ce6.ajaxJson('/auto_save/save_creation', {key: this.key, title: title, content: content}, function(data) {
+		ce6.ajaxJson('/autosave/save_creation', {key: this.key, title: title, content: content}, function(data) {
 			if (data.rc) {
 				ce6.notifyBar(data.msg, 'error');
 			} else {
@@ -689,7 +689,7 @@ ce6.create.autoSave = {
 	},
 	discard: function() {
 		if (!this.key) return;
-		ce6.ajaxJson('/auto_save/discard_creation', {key: this.key}, function(data) {
+		ce6.ajaxJson('/autosave/discard_creation', {key: this.key}, function(data) {
 			if (data.rc) {
 				ce6.notifyBar(data.msg, 'error');
 			} else {
