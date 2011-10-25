@@ -1,0 +1,248 @@
+.landing-logo-a {
+	background: url("/ce6/images/logo-lg.png");
+	height: 100px;
+	margin: 0 auto;
+	width: 400px;
+	margin-top: 50px
+}
+.landing-a-btn {
+	position: relative;
+	height:35px;
+	margin: 0 auto;
+	width: 600px;
+}
+.prizes-landing-subtitle{
+	color: #9C9C9C;
+	font-weight: lighter;
+	font-size: 22px;
+	letter-spacing: 3px;
+	margin: 5px auto 0;
+	width: 385px;
+	text-align: center;
+	padding-bottom: 15px;
+	margin-bottom: 25px;
+}
+.bottom-border{
+	border-bottom: 1px solid #dcdcdc;
+}
+.prizes-landing-ads{
+	color: #2d2d2d;
+	font-size: 16px;
+	font-weight: lighter;
+	margin: 15px auto;
+	width: 500px;
+	text-align: center;
+}
+#landing-box {
+	width: 500px;
+	margin: 0 auto;
+	padding:20px 0 50px;
+}
+
+.prizes-landing-b{
+	position: relative;
+	width: 1060px;
+	min-height: 500px;
+	margin: 0px auto;
+}
+.landing-logo-b {
+	background: url("/ce6/images/logo-lg.png"); 
+	height: 100px;
+	margin: 40px auto;
+	width: 400px;
+	margin-top: 80px;
+}
+.prizes-landing-left{
+	width: 440px;
+	float: left;
+}
+.prizes-landing-right{
+	background: url("/ce6/images/landing_right_bg.png") repeat-y 0 0 transparent;
+	width: 608px;
+	float: right;
+}
+.prizes-landing-b .horizontal-divider span{
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.prizes-landing-b .horizontal-divider {
+	width: 380px;
+	margin: 0 auto;
+}
+.prizes-landing-b .lading-footer-line .horizontal-divider{
+	width: 155px;
+	height: 35px;
+	padding: 0;
+}
+.prizes-landing-b .prizes-landing-ads{
+	width: 440px;
+	font-size: 18px;
+	line-height: 25px;
+}
+.prizes-landing-b .home-feed {
+	border-left: none;
+	border-right: none;
+}
+.prizes-landing-b #landing-box {
+	width: 440px;
+	margin: 20px auto 30px;
+	padding: 10px 0 50px;
+}
+
+.prizes-landing-b .lading-footer-line{
+	height:35px;
+	width: 380px;
+	margin: 0 30px;
+}
+.prizes-landing-b .lading-footer-icon{
+	background: url("/ce6/images/footer-icon.png") no-repeat scroll center center transparent;
+	height: 35px;
+	margin: 0 auto;
+	width: 70px;
+}
+.landing-contests-title{
+	position: relative;
+	height:35px;
+	line-height:35px;
+	color: #777;
+	margin: 5px 0 5px 15px; 
+	padding: 5px 10px 0;
+	font-size: 20px;
+	border-bottom: 1px solid #CCCCCC;
+	width: 550px;
+}
+.landing-title-text{
+	width: 200px;
+	float:left;
+}
+.landing-button{
+	float:right;
+}
+.landing-a-btn > button, .landing-button button{
+	cursor: pointer;
+	display: block;
+	font-weight: bold;
+	padding: 5px 10px;
+	text-shadow: 0 1px 0 white;
+	font-size:14px;
+}
+.landing-a-btn > button{
+	margin: 5px 10px 0;
+	float:right;
+}
+.landing-a-btn button.puregray, .landing-button button.puregray{
+	border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	background: none repeat scroll 0 0 #787878;
+	border: 1px solid #787878;
+	color: #FFFFFF;
+	text-shadow: 0 1px 0 black;
+}
+.landing-a-btn button.puregray{
+	margin: 5px 10px 0;
+}
+#landing-signin{
+	border-radius: 10px 0 10px 10px;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+	-moz-border-radius: 10px 0 10px 10px;
+	-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 10px 0 10px 10px;
+	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+	background-color: white;
+	border: 5px solid #787878;
+	color: #666666;
+	display: none;
+	font-size: 11px;
+	padding: 10px;
+	position: absolute;
+	right: 10px;
+	top: 33px;
+	width: 170px;
+	z-index: 20;
+}
+.signin-input{
+	line-height:20px;
+}
+.remember-forget{
+	margin-top:10px;
+	line-height:14px;
+	float:left;
+}
+.action-btn{
+	margin-top:10px;
+	float:right;
+}
+#signin-btn {
+	float: right;
+	padding: 5px 10px;
+}
+
+.home-feed{
+	margin-left:15px;
+	padding:10px 0 10px 15px; 
+	width: 555px;
+}
+.feed-body .contest-entries, .feed-body .contest-follow {
+    display:none;
+}
+/*
+####################################################################
+land page c - onboard version style 
+#################################################################### */
+.onboarding-header{
+	margin: 0 auto;
+	width: 940px; 
+	height: 162px;
+	background: url(/ce6/images/onboarding/onboarding-header.png) no-repeat center 20px;
+}
+.onboarding-content{
+	margin: 0 auto;
+	width: 940px; 
+	height: 300px;
+}
+.onboarding-bg{
+	float: left;
+	margin-left: 25px; 
+	width: 278px; 
+	height: 275px;
+}
+.onboarding-need-help{
+	background: url(/ce6/images/onboarding/1-gethelp.png) no-repeat 0 50px;
+}
+.onboarding-help{
+	background: url(/ce6/images/onboarding/2-receivehelp.png) no-repeat 0 50px;
+}
+.onboarding-win{
+	background: url(/ce6/images/onboarding/3-wins.png) no-repeat 0 50px;
+}
+.onboarding-content-title{
+	margin: 15px 0 5px;
+	padding: 0;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 0 1px 0 white;
+}
+.onboarding-content-detail{
+	line-height: 18px;
+	font-size: 14px;
+	color: #525252;
+	text-shadow: 0 1px 0 white;
+	margin-top: 215px;
+}
+/*
+####################################################################
+counter styles
+#################################################################### */
+#counter{
+	display:none;
+	width: 370px;
+	height:75px;
+	margin: 20px auto;
+	padding-left:50px;
+	background:url(/ce6/images/counter/dollar-sign.png) 0 7px no-repeat;
+}
+#counter ul.cd{float:left;list-style-type:none;margin:0;padding:0}
+#counter li.t{background:url(/ce6/images/counter/numbers-top.png) 0 0 no-repeat;width:57px;height:35px}
+#counter li.b{background:url(/ce6/images/counter/numbers-bottom.png) 0 0 no-repeat;width:57px;height:36px}
+#counter li.s{background:url(/ce6/images/counter/comma.png) 6px 50px no-repeat;width:24px;height:70px}
