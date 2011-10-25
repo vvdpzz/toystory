@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toystory</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="container">
+		<div id="page">
+			<div id="page-layout">
+				<div id="page-container" class="clearfix">
+					<div class="page-middle-home">
+						<div id="profile-user-feed">
+							<div id="activities-tab-container" class="feed-tab-container feed-tab-top-border" style="display:none">
+								<div class="left-preloader-bar"><span class="preloader-icon">Loading...</span></div>
+								<div id="activities-content-container"></div>
+							</div>
+							<div id="jff-contests-tab-container" class="feed-tab-container" style="display:none">
+								<div class="jff-bg-container">
+									<div class="jff-bg-cancel-container">
+										<button class="jff-bg-cancel-btn"></button>
+									</div>
+									<div class="jff-bg-btn-container">
+										<button class="jff-bg-btn"></button>
+									</div>
+								</div>
+							</div>
+							<div id="contests-tab-container" class="feed-tab-container feed-tab-top-border" style="display:none">
+								<div class="contests-sort-by">
+									<span class="sort-header">SORT BY:</span>
+									<a sortby="contest_created" default_desc="1" ajax="true">
+										TIME CREATED
+										<div class="contests-sort-indicator"></div>
+									</a>
+									<a sortby="end_date" ajax="true">
+										TIME LEFT
+										<div class="contests-sort-indicator"></div>
+									</a>
+									<a id="contests-sort-by-prize" sortby="prize" default_desc="1" ajax="true">
+										PRIZE
+										<div class="contests-sort-indicator"></div>
+									</a>
+									<a sortby="entries" default_desc="1" ajax="true">
+										ENTRIES
+										<div class="contests-sort-indicator"></div>
+									</a>
+								</div>
+								<div class="left-preloader-bar"><span class="preloader-icon">Loading...</span></div>
+								<div id="contests-content-container">
+									<%= yield %>
+								</div>
+							</div>
+						</div>
+						<div class="feed-bottom-shadow-sm"></div>
+					</div>
+					<div class="page-right-home">
+						<div id="order-action-needed"></div>
+						<div id="contest-top-prizes"></div>
+						<div id="contest-trending"></div>
+						<div id="latest-winners-box"></div>
+						<div id="top-users-box"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
