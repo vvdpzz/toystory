@@ -49,66 +49,88 @@
     </div>
     <div id="profile-user-detail">
       <div id="profile-user-detail-introduction-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
+        <textarea maxlength="550" class="profile-textarea-box selector-introduction" placeholder="Share something about yourself"></textarea>
+          <div class="gray float-left" id="profile-introduction-count">500</div>
+           <button id="profile-introduction-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "> <span class="ui-button-text">Save</span></button>
+           <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
+      </div>
       <div id="profile-user-detail-introduction">
-      <div class="profile-entry-line">
-      <div class="profile-entry-line">
-        <div class="profile-entry-title gray">Occupation</div>
-        <div class="profile-entry-value">
-          <div id="profile-user-detail-description">
-          <div id="profile-user-detail-description-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
-            <input maxlength="50" class="profile-text-box selector-desc" placeholder="Add Your Headline (ex: Web Designer, Programmer, Student...)"></input>
-            <div class="gray float-left" id="profile-description-count">25</div>
-            <button id="profile-description-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
-            <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
-          </div>
-        </div>
+        <span class="profile-introduction">oh! I&#39;m a web designer</span>
+        <a class="edit-tab" id="user-introduction-edit">edit</a>
       </div>
       <div class="profile-entry-line">
-        <div class="profile-entry-title gray">Location</div>
+        <div class="profile-entry-title gray">Area of Expertise</div>
         <div class="profile-entry-value">
-          <div id="profile-user-detail-location">
-            <span class="profile-location">Changsha</span>
-            <a class="edit-tab" id='user-location-edit'>edit</a>
-          </div>
-          <div id="profile-user-detail-location-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
-            <input maxlength="30" class="profile-text-box selector-location" placeholder="Add Your Location (ex: Los Angeles, New York...)"></input>
-            <div class="gray float-left" id="profile-location-count">25</div>
-            <button id="profile-location-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
-            <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
-          </div>
-        </div>
-      </div>
-      <div class="profile-entry-line">
-        <div class="profile-entry-title gray">Website</div>
-        <div class="profile-entry-value">
-          <div id="profile-user-detail-website">
-            <span class="profile-website">Add your website</span>
-            <a class="edit-tab" id="user-website-edit">edit</a>
+          <div id="profile-user-detail-categories">
+            <span class="profile-categories"></span>
+            <a class="edit-tab" id='user-categories-edit'>edit</a>
           </div>
 
-          <div id="profile-user-detail-website-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
-            <input class="profile-textarea-box selector-website" placeholder="Add your website to let others know you"></input>
-            <button id="profile-website-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
+          <div id="profile-user-detail-categories-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none" placeholder="Add Your Expertise">
+            <div id="profile-categories-container" title="Your Expertise"></div>
+            <button id="profile-categories-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
             <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
           </div>
         </div>
       </div>
-      <div class="profile-entry-line">
-        <div class="profile-entry-title gray">Profiles</div>
-        <div class="profile-entry-value">
-          <button class="fbprofile external-link" href="" rel="me nofollow" style="display:none;"></button>
-          <button class="fbprofile-conn" rel="me nofollow" style="display:none;" id='require-facebook-connect' require='1'></button>
-          <button class="twitter-profile external-link" href="" rel="me nofollow" style="display:none;"></button>
-          <button class="twitter-profile-conn" rel="me nofollow" style="display:none;" id='require-twitter-connect' require='1'></button>
+        <div class="profile-entry-line">
+          <div class="profile-entry-title gray">Occupation</div>
+          <div class="profile-entry-value">
+            <div id="profile-user-detail-description">
+            <div id="profile-user-detail-description-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
+              <input maxlength="50" class="profile-text-box selector-desc" placeholder="Add Your Headline (ex: Web Designer, Programmer, Student...)"></input>
+              <div class="gray float-left" id="profile-description-count">25</div>
+              <button id="profile-description-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
+              <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="profile-entry-line">
-        <div class="profile-entry-title gray">Member Since</div>
-        <div class="profile-entry-value">
-          2011-10-18
+        <div class="profile-entry-line">
+          <div class="profile-entry-title gray">Location</div>
+          <div class="profile-entry-value">
+            <div id="profile-user-detail-location">
+              <span class="profile-location">Changsha</span>
+              <a class="edit-tab" id='user-location-edit'>edit</a>
+            </div>
+            <div id="profile-user-detail-location-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
+              <input maxlength="30" class="profile-text-box selector-location" placeholder="Add Your Location (ex: Los Angeles, New York...)"></input>
+              <div class="gray float-left" id="profile-location-count">25</div>
+              <button id="profile-location-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
+              <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="profile-entry-line">
+        <div class="profile-entry-line">
+          <div class="profile-entry-title gray">Website</div>
+          <div class="profile-entry-value">
+            <div id="profile-user-detail-website">
+              <span class="profile-website">Add your website</span>
+              <a class="edit-tab" id="user-website-edit">edit</a>
+            </div>
+
+            <div id="profile-user-detail-website-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
+              <input class="profile-textarea-box selector-website" placeholder="Add your website to let others know you"></input>
+              <button id="profile-website-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
+              <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="profile-entry-line">
+          <div class="profile-entry-title gray">Profiles</div>
+          <div class="profile-entry-value">
+            <button class="fbprofile external-link" href="" rel="me nofollow" style="display:none;"></button>
+            <button class="fbprofile-conn" rel="me nofollow" style="display:none;" id='require-facebook-connect' require='1'></button>
+            <button class="twitter-profile external-link" href="" rel="me nofollow" style="display:none;"></button>
+            <button class="twitter-profile-conn" rel="me nofollow" style="display:none;" id='require-twitter-connect' require='1'></button>
+          </div>
+        </div>
+        <div class="profile-entry-line">
+          <div class="profile-entry-title gray">Member Since</div>
+          <div class="profile-entry-value">
+            2011-10-18
+          </div>
+        </div>
+        <div class="profile-entry-line">
         <div class="profile-entry-title gray"></div>
         <div class="profile-entry-value"><a href="#" id="btn-get-widget">Get Widget</a></div>
       </div>
@@ -309,6 +331,8 @@
 
  
 <script type="text/javascript">
+var FEED_ITEM_TYPE = {"FOLLOW_TAG": 213, "ENTRY_SUBMITTED": 202, "FOLLOW_CONTEST": 211, "FOLLOW_USER": 210, "TAGGED_AS": 212, "VOTE": 203, "CONTEST_CREATED": 201, "CONTEST_WON": 215, "PICK_WINNER": 204, "CONTEST_WON_JFF": 216, "HONORABLE_MENTION": 214};		var CONNECT_TYPE = {"FOLLOWING_USER": 1101, "FOLLOWER_USER": 1102, "FOLLOWING_CONTEST": 1103};		var UI_WIDGET_TYPE = {"FEED": 332, "HTML": 333};
+	var surface = 'user.profile'; 
 	var centralizeLargePic = function(obj){	
 		if ($(obj).attr('target-width')){		
 	  	offsetX = (parseInt($(obj).attr('target-width'), 10) - $(obj).width()) / 2;	
@@ -317,5 +341,7 @@
 	  	offsetY = (parseInt($(obj).attr('target-height'), 10) - $(obj).height()) / 2;	
 			$(obj).css('top', offsetY + 'px');		
 		}
-	};  
+	}; 
+	ce6.profile = ce6.profile || {};		ce6.profile.feeds = {"feeds": [{"has_more": false, "item_type": 201, "feeds": [], "empty_message": "You haven&#39;t created any contests.&lt;br&gt;&lt;a href=&quot;/create&quot;&gt;Create a contest now!&lt;/a&gt;"}, {"has_more": false, "item_type": 202, "feeds": [], "empty_message": "You haven&#39;t entered any contests.&lt;br&gt;&lt;a href=&quot;/home&quot;&gt;Check out live contests now!&lt;/a&gt;"}, {"has_more": false, "item_type": 215, "feeds": [], "empty_message": ""}, {"has_more": false, "item_type": 214, "feeds": [], "empty_message": ""}], "rc": 0};
 </script> 
+

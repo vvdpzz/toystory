@@ -5,10 +5,6 @@ $(function() {
   if (ce6.feed) {
 		ce6.feed.init();
 	}
-	if (surface != 'main') {
-		$('#dlg-user-auth').dialog(ce6.authDialog.params).restyleButtons();
-		ce6.authDialog.init();
-	}
 	if (surface == 'home') {
 		ce6.home.init();
 	} else if (surface == 'contest.detail') {
@@ -22,7 +18,12 @@ $(function() {
 	} else if (surface == 'contest.create_coming_soon') {
 		$('#get-invitation-btn').click(ce6.create.getInvitation);
 	} else if (surface == 'user.profile') {
-	  
+	  ce6.user.init();
+    ce6.profile.init();
+		// if(profileOwner.is_myself){
+		//      ce6.userPhoto.init();
+		//    }
+		ce6.verifier.init();
 	} else if (surface == 'message_box.conversation_view') {
 		ce6.message.initConversationView();
 	} else if (surface == 'message_box.message_view') {

@@ -35,15 +35,416 @@
 					</div>
 				</div>
 			</div>
+			<div id="top_sub"></div>
 			<div id="page-layout">
 				<div id="page-container" class="clearfix">
-          <%= yield%>
+          <%= yield %>
         </div>
       </div>
 		</div>
 	</div>
+  <div style="position: fixed; top: 0px; z-index: 1010;">
+    <div id="dlg-send-message" style="display:none;">
+      <div id='message-recipient' class="ui-dialog-box">
+        <span>To:</span>
+      </div>
+      <div id='message-body' class="ui-dialog-box">
+        <span>Message:</span>
+        <textarea></textarea>
+      </div>
+      <div id='send-message-countdown'></div>
+    </div>
+
+    <div class='forget-pwd dlg-plain-content' id="dlg-forget-pwd" style="display:none;">
+      <p>We will send you an email with instructions to reset your password.<p>
+        <br>
+        <p class='font-bold'>Enter your email:</p>
+        <input type='text' id='user-email'></input>
+      </div>
+
+      <div id="dlg-user-auth" style="display:none;">
+        <div id="user-login-tabs">
+          <ul>
+            <li><a href="#user-login-tabs-1">Sign Up</a></li>
+            <li><a href="#user-login-tabs-2">Sign In</a></li>
+          </ul>
+          <div id="user-login-tabs-1">
+            <div id='user-login-create-before'>
+              <div class="horizontal-divider">
+                <span>SIGN UP WITH FACEBOOK OR TWITTER</span>
+              </div>
+              <div class='sns-conn-container'>
+                <div class='facebook-conn-signup-outer'>
+                  <button class='facebook-conn-signup' id='signup-facebook-btn'> </button>
+                  <div class='facebook-conn-signup-shadow'></div>
+                </div>
+                <div class='twitter-conn-signup-outer'>
+                  <button class='twitter-conn-signup' id='signup-twitter-btn'> </button>
+                  <div class='twitter-conn-signup-shadow'></div>
+                </div>
+              </div>
+              <div class="text clear">
+                We'll help you follow all your friends on Prizes.<br>
+                Or, <a id='direct-signup-btn'>sign up with email</a>. 
+              </div>
+            </div>
+            <div id='user-login-create-sns'>
+              <div class="horizontal-divider">
+                <span>CREATE A PASSWORD</span>
+              </div>
+              <div class="sign-up-info">
+                <div class="fb_info">
+                  <img/> <br>
+                  <span id='fb_user_name'></span>
+                </div>
+                <div class='login_info'>
+                  <div class='login-input'>
+                    <input type='text' class="sign-email fill" placeholder="Email"/>
+                    <span class='sign-email-msg error-msg'></span>
+                  </div>
+                  <div class='login-input'>
+                    <input type='password' class="sign-password fill" placeholder="Password"/>
+                  </div>
+                  <div class='login-sns-settings'>
+                    <input type='checkbox' checked='true' id='share-via-sns'> <label for='share-via-sns'>Share with my friends</label>
+
+                    <input type='checkbox' checked='true' id='auto-follow'> <label for='auto-follow'>Follow @Prizes</label>
+                  </div>
+                  <button class="create-user-btn blue">Create Account</button>
+                  <div class='login-term'>
+                    By clicking "Create Account", you're agreeing to the <a href='/tos' target='_blank'>Term of Service</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='user-login-create-local'>
+              <div class="horizontal-divider">
+                <span>SIGN UP WITH EMAIL</span>
+              </div>
+              <div class="sign-up-info">
+                <div class='login_info'>
+                  <div class='login-input'>
+                    <input type='text' class="sign-fullname fill" placeholder="Full Name"/>
+                  </div>
+                  <div class='login-input'>
+                    <input type='text' class="sign-email fill" placeholder="Email"/>
+                    <span class='sign-email-msg error-msg'></span>
+                  </div>
+                  <div class='login-input'>
+                    <input type='password' class="sign-password fill" placeholder="Password"/>
+                  </div>
+                  <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+                  <div id="captchadiv" class="sign-up-recaptcha">
+                    <div id="recaptcha_image"></div>
+                    <div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect please try again</div>
+                    <div id="recaptcha_input_div" class="left">
+                      <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+                    </div>
+                    <div id="recaptcha_reload_div" class="left">
+                      <a id="recaptcha_reload_btn" href="javascript:Recaptcha.reload();" title="Get a new challenge">
+                        <img height="19" width="23" id="recaptcha_reload" src="https://platform.prizes.org/version/20111025025859/images/vep/recaptcha_refresh.png" alt="Get a new challenge">
+                      </a>
+                    </div>
+                    <div id="recaptcha_change_div" class="left">
+                      <a class="recaptcha_only_if_image" id="recaptcha_switch_audio_btn" href="javascript:Recaptcha.switch_type('audio');" title="Get an audio challenge">
+                        <img height="19" width="23" alt="Get an audio challenge" id="recaptcha_switch_audio" src="https://platform.prizes.org/version/20111025025859/images/vep/recaptcha_audio.png">
+                      </a>
+                      <a class="recaptcha_only_if_audio" id="recaptcha_switch_img_btn" href="javascript:Recaptcha.switch_type('image');" title="Get a visual challenge">
+                        <img height="19" width="23" alt="Get a visual challenge" id="recaptcha_switch_img" src="https://platform.prizes.org/version/20111025025859/images/vep/recaptcha_text.png">
+                      </a>
+                    </div>
+                    <div id="recaptcha_help_div" class="left">
+                      <a id="recaptcha_whatsthis_btn" href="javascript:Recaptcha.showhelp()" title="Help"><img height="19" width="23" id="recaptcha_whatsthis" src="https://platform.prizes.org/version/20111025025859/images/vep/recaptcha_help.png" alt="Help"></a>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+
+                  <button class="create-user-btn blue">Create Account</button>
+                  <div class='login-term'>
+                    By clicking "Create Account", you're agreeing to the <a href='/tos' target='_blank'>Term of Service</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="user-login-tabs-2">
+            <div id='user-login-signin-local'>
+              <div class="horizontal-divider">
+                <span>SIGN IN WITH EMAIL</span>
+              </div>
+              <div id="signbox">
+                <div class='user-login-input'>
+                  <input type='text' id='login_email' class="fill" placeholder="Enter Email"></input>
+                </div>
+                <div class='user-login-input'>
+                  <input id='login_passwd' type='password' class="fill" placeholder="Enter Password"></input>
+                </div>
+                <div class='user-login-btns'>
+                  <div id="signnote">
+                    <input type="checkbox" checked='true' name='keepLogin' id='keepLogin'></input>
+                    <label for="keepLogin">Remember me</label>
+                    <br/>
+                    <a id='forget-pwd-link' href="#">Forgot password?</a>
+                  </div>
+                  <button id='signin-btn' class="blue" href="#">Sign In</button>
+                </div>
+              </div>
+            </div>
+            <div id='user-login-signin-fb'>
+              <div class="horizontal-divider">
+                <span>CLICK ON PICTURE TO SIGN IN</span>
+              </div>
+              <fb:if-is-app-user>
+              <a id='fb-user-info-btn' href='#'>
+                <div class="fb_info">
+                  <fb:profile-pic uid='loggedinuser' linked="false" width="60" height="60"></fb:profile-pic>
+                  <br>
+                  <fb:name uid='loggedinuser' useyou='false' linked="false" firstnameonly='true'></fb:name>
+                </div>
+              </a>
+            </fb:if-is-app-user>
+            <button id='login-fb-session-btn' class="blue" href='#'>Sign In Now</button>
+            <div id='link-use-diff-account'>
+              Not you? <a href='#'>Sign in with a different account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id='dlg-ofac' style="display:none;" class="dlg-plain-content">
+      <div class='ofac-notice'>
+        For payment transactions, we're required by law to collect this information from you once.
+      </div>
+      <div class='ofac-row'>
+        <div class='ofac-field' >
+          <span>Full Name:</span>
+          <input type='text' style='width:338px;' id='ofac-name'></input>
+        </div>
+      </div>
+      <div class='ofac-row'>
+        <div class='ofac-field'>
+          <span>Address (number, street, and apt. or suite no.):</span>
+          <input type='text' style='width:507px;' id='ofac-address'></input>
+        </div>
+      </div>
+      <div class='ofac-row'>
+        <div class='ofac-field' >
+          <span>City:</span>
+          <input type='text' style='width:141px' id='ofac-city'></input>
+        </div>
+        <div class='ofac-field' >
+          <span>State/Province/Region:</span>
+          <input type='text' style='width:170px' id='ofac-state'></input>
+        </div>
+        <div class='ofac-field' >
+          <span>ZIP/Postal Code:</span>
+          <input type='text' style='width:141px' id='ofac-zip'></input>
+        </div>
+      </div>
+      <div class='ofac-row'>
+        <div class='ofac-field' >
+          <span>Country:</span>
+          <input type='text' style='width:338px' id='ofac-country' value='United States' readonly='readonly'></input>
+        </div>
+      </div>
+    </div>
+
+    <div id="create-confirm" style="display:none;">
+      <div class='contest-detail-container'> 
+        <div class="contest-detail clearfix">
+          <div class="contest-detail-header clearfix">
+            <div class="detail-prize-zone morethan24 radius-border-bottom">
+              <div class='detail-prize-title'> PRIZE</div>
+              <div class='detail-prize-num'> $<span id='create-prize-credit'></span></div>
+            </div>
+            <div class="detail-prize-jff-zone morethan24 radius-border-bottom"></div>
+            <div class='detail-info-zone'>
+              <div class="detail-title">
+                <span id="create-confirm-title"></span>
+              </div>
+
+              <div class='contest-extend-info'>
+                <span class='preview-follow'>Follow Contest</span>
+                <div class='left-time-area'>
+                  <span class='left-time-title'>Time Left :</span>
+                  <span class='left-time-details'>
+                    <span id='left-time-num'></span>
+                  </span>
+                </div>
+
+                <div class='share-button-area'>
+                  <div class="mock-fb-share"></div>
+                  <div class="mock-twitter-share"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-body detail-bottom-border contest-detail-padding">
+            <div id='create-confirm-content' class='contest-detail-content contest-detail-padding detail-top-border word-wrap'> </div>
+          </div>
+
+          <div class='contest-bottom-shadow'></div>
+        </div>
+      </div>
+      <div id="createconfirm"> </div>
+      <div id="createconfirm-bottom-line">
+        Don't worry! Once you've successfully created a contest, we'll keep the prize safe until you've picked a winner!
+      </div>
+    </div>
+    <iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" src="http://prizes.org/contest/img_upload_response" name="serverResponseIFrame"></iframe>
+    <div id="upload-attach" style="display:none;">
+      <div id="insert-img-tabs">
+        <ul>
+          <li><a href="#insert-img-tabs-1">From computer</a></li>
+          <li><a href="#insert-img-tabs-2">From web</a></li>
+        </ul>
+        <div id="insert-img-tabs-1">
+          <div id='user-photo-loader' class='hidden'>
+            <span class="preloader-icon">Uploading...</span>
+          </div>
+          <div id='editor-uploaded-img-pre' class='user-photo-pre'>
+            <img id='editor-uploaded-img' class='uploaded-img' placeholder-src="http://01.static.prizes.org/version/20111025025859/ce6/images/preview-placeholder.png" src="http://01.static.prizes.org/version/20111025025859/ce6/images/preview-placeholder.png" onload="javascript:if(typeof(ce6)!='undefined'&&typeof(ce6.editor)!='undefined') ce6.editor.enableInsertBtn(); return false"/>
+          </div>
+          <div id="uploadForm" class='user-photo-form' >
+            <form enctype="multipart/form-data" action="http://upload.prizes.org/r/3/x/save_files2?next=http%3A%2F%2Fprizes.org%2Fcontest%2Fimg_upload_response" accept-charset="utf-8" method="POST" target='serverResponseIFrame'>
+              <div class='upload-desc-title'>Upload from your computer</div>
+              <div class='upload-desc-limit'>
+                You can upload a JPG, GIF, PNG or TIFF file (4MB max)
+              </div>
+              <div>
+                <input size="16" type="file" id="binaryData" name="binary_data" size="20" onchange="return ce6.editor.doUploadImg(this);"/>
+              </div>
+              <div>
+                <span id="upload_msg" class="error-msg"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="insert-img-tabs-2">
+          <div id='editor-web-img-pre' class='user-photo-pre'>
+            <img id='editor-web-img' class='uploaded-img' placeholder-src="http://01.static.prizes.org/version/20111025025859/ce6/images/preview-placeholder.png" src="http://01.static.prizes.org/version/20111025025859/ce6/images/preview-placeholder.png" onload="javascript:if(typeof(ce6)!='undefined'&&typeof(ce6.editor)!='undefined') ce6.editor.enableInsertBtn(); return false"/>
+          </div>
+          <div class='user-photo-form' >
+            <div class='upload-desc-title'>Use an image from web</div>
+            <div>
+              <input type="text" id="web-img-url" class="img-url-input"/>
+            </div>
+            <div>
+              <span id="upload_msg" class="error-msg"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div id="verify-box" class="side-verify-items" style="display: none;">
+      <div class="verified-divider"></div>
+      <div class="verify-item email v">
+        <span class="verify-item-icon email v"></span>
+        <span class="verify-item-name">email</span>
+        <div class="verified-right">verified</div> 
+      </div>
+      <div class="verified-divider"></div>
+      <div class="verify-item photo v">
+        <span class="verify-item-icon photo v"></span>
+        <span class="verify-item-name">photo</span>
+        <div class="verified-right">verified</div> 
+      </div>
+      <div class="verified-divider"></div>
+      <div class="verify-item phone v">
+        <span class="verify-item-icon phone v"></span>
+        <span class="verify-item-name">phone</span>
+        <div class="verified-right">verified</div> 
+      </div>
+    </div>
+
+    <div id="verify-phone-dlg"  class="dlg-plain-content" style="display:none;">
+      <div class="verify-dlg-desc">
+        Please enter your mobile number including country code. For example, <br/>+1 555-555-5555 where +1 is the country code for the United States.
+      </div>
+      <table><tbody>
+        <tr>
+          <th class="label">Country Code</th>
+          <td>
+            <input type="text" id="verify-country-code"></input>
+          </td>
+        </tr>
+        <tr>
+          <th class="label">Phone Number</th>
+          <td>
+            <input type="text" id="verify-phone-number"></input>
+          </td>
+        </tr>
+        <tr>
+          <th class="label"></th>
+          <td>
+            <div id="send-sms">
+              <button class="blue" id="send-sms-btn">Enter</button>
+              <button class="lightgray" id="send-sms-cancel">Cancel</button>
+            </div>
+            <div id="send-voice" class="verify-dlg-desc" style="display: none;">
+              The verification code has been sent to you via SMS.  You should receive this SMS within 30 seconds.  If you have not received it within this time, then there is a chance that our SMS partner does not work with your carrier in your country.  But don't worry!  You can have the verification code sent to you via a phone call.  <a id="send-voice-btn">Please click here!</a>  Do be sure you have good mobile reception so you don't miss the call!
+            </div>
+            <div id="email-help" class="verify-dlg-desc" style="display: none;">
+              Still no luck? Please contact us at <a href="mailto:help@prizes.org">help@prizes.org</a>.
+            </div>
+            <div id="resend-sms" class="verify-dlg-desc" style="display: none;">
+              <p> We're sending the code to your mobile. Enter it below to verify your account!</p>
+              <p class="verify-desc-bold">Didn't receive it? Resend it in <span class="time-cnt-down">60</span> seconds</p>
+            </div>
+            <div id="send-voice-tip" class="verify-dlg-desc" style="display: none;">
+              We're trying to call your mobile and it may take a while. Please wait for <span class="time-cnt-down">60</span> seconds.
+            </div>
+          </td>
+        </tr>
+        <tr id="verify-phone-code-row">
+          <th class="label">Verification code</th>
+          <td>
+            <input type="text" id="verify-phone-code"></input>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <div id="upload-avatar" class="dlg-plain-content" style="display:none;">
+      <div id='user-photo-loader' class='hidden'>
+        <span class="preloader-icon">Uploading...</span>
+      </div>
+      <div class='user-photo-pre'>
+        <img id='uploaded-photo'/>
+      </div>
+      <div id="uploadForm" class='user-photo-form' >
+        <form enctype="multipart/form-data" action="http://upload.prizes.org/r/3/x/size_limited_save_files?next=http%3A%2F%2Fprizes.org%2Fprofile%2Fphoto_upload_response" accept-charset="utf-8" method="POST" target='serverResponseIFrame'>
+          <div class='upload-desc-title'>Upload new photo</div>
+          <div class='upload-desc-limit'>
+            You can upload a JPG, GIF, PNG or TIFF file (4MB max)
+          </div>
+          <div>
+            <input size="16" type="file" id="binaryData" name="binary_data" size="20" onchange="return ce6.userPhoto.doUpload(this);"/>
+          </div>
+          <div>
+            <span id="upload_msg" class="error-msg"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" name="serverResponseIFrame"></iframe>
+    <div id="verify-email-dlg" style="display:none;">
+      Enter email verification code: <input type="text" id="verify-email-code"></input>
+    </div>
+  </div>
 	<script type="text/javascript" charset="utf-8">
   		var IS_SUSPENDED = 0;
+  		var profileOwner = {
+  		  is_myself : true
+  		};
 	</script>
 </body>
 </html>
