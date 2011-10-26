@@ -568,7 +568,7 @@ ce6.create = {
 		}
 		ce6.create.need_credit = need_credit;
 
-		ce6.payCreateContest(need_credit);
+//		ce6.payCreateContest(need_credit);  
 	},
 	submitNewContest : function() {
 		if (!ce6.create.submitContestCheck()) {
