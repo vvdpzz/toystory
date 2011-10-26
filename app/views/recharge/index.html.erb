@@ -1,0 +1,14 @@
+<h1><%= current_user.credits %></h1>
+<%= link_to 'Recharge', new_recharge_url %>
+<table>
+	<tbody>
+		<% @orders.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= order.credits %></td>
+				<td><%= link_to 'pay', recharge_url(order) if order.trade_status == 0 %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+			

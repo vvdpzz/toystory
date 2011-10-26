@@ -8,6 +8,13 @@ Toystory::Application.routes.draw do
     end
   end
   
+  resources :recharge do
+    collection do
+      post :notify
+      get :done
+    end
+  end
+  
   resources :autosave, :only => [] do
     collection do
       post "save_creation"

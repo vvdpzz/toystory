@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111025072804) do
+ActiveRecord::Schema.define(:version => 20111026032809) do
 
   create_table "comments", :id => false, :force => true do |t|
     t.integer  "id",         :limit => 8
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(:version => 20111025072804) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "recharge_records", :id => false, :force => true do |t|
+    t.integer  "id",           :limit => 8
+    t.integer  "user_id",      :limit => 8,                                                :null => false
+    t.decimal  "credits",                   :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "trade_type",                                              :default => 0
+    t.integer  "trade_status",                                            :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recharge_records", ["user_id"], :name => "index_recharge_records_on_user_id"
 
   create_table "users", :primary_key => "email", :force => true do |t|
     t.integer  "id",                     :limit => 8

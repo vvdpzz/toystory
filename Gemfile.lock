@@ -15,6 +15,19 @@ GEM
       rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.0.2)
+    active_utils (1.0.1)
+      activesupport (>= 2.3.11)
+      i18n
+    activemerchant (1.18.1)
+      active_utils (>= 1.0.1)
+      activesupport (>= 2.3.11)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
+      i18n
+      json (>= 1.5.1)
+      money
+    activemerchant_patch_for_china (0.1.6)
+      activemerchant (>= 1.4.2)
     activemodel (3.1.1)
       activesupport (= 3.1.1)
       builder (~> 3.0.0)
@@ -32,6 +45,8 @@ GEM
     ansi (1.3.0)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
+    braintree (2.12.0)
+      builder (>= 2.0.0)
     builder (3.0.0)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
@@ -60,6 +75,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.1)
+    money (3.7.1)
+      i18n (~> 0.4)
     multi_json (1.0.3)
     mysql2 (0.3.7)
     orm_adapter (0.0.5)
@@ -124,6 +141,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemerchant
+  activemerchant_patch_for_china
   coffee-rails (~> 3.1.1)
   devise
   execjs
