@@ -9,13 +9,6 @@ Toystory::Application.routes.draw do
     end
   end
   
-  resources :recharge do
-    collection do
-      post :notify
-      get :done
-    end
-  end
-  
   resources :messages do
     collection do
       get "load_conversations"
@@ -24,6 +17,13 @@ Toystory::Application.routes.draw do
       get "load_messages"
       post "remove_conversation"
       post "send_message"
+    end
+  end
+
+  resources :recharge do
+    collection do
+      post :notify
+      get :done
     end
   end
   
