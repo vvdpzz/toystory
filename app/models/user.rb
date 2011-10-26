@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :comments
   
+  def self.basic(id)
+    User.select("id,username,picture").find_by_id(id)
+  end
+  
   private
     def create_profile
       Profile.create(:user_id => self.id)

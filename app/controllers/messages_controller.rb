@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+  def index
+    
+  end
   def conversations
     
   end
@@ -8,24 +11,24 @@ class MessagesController < ApplicationController
     last_conver_msg_list = []
     conversation_list.each do |conver_id|
       key = "messages:#{current_user.id}:#{conver_id}"
-      last_message = MultiJson.decode($redis.lrange(key, -1, -1))
+      last_message = MultiJson.decode($redis.lrange(key, -1, -1)[0])
       hash = {}
-      unread_count = $redis.key(key + ":unreadcount")
+      unread_count = $redis.get(key + ":unreadcount")
       hash[:unread_message_count] = unread_count
-      if unread_count > 0
+      if unread_count.to_i > 0
         hash[:last_message_is_outgoing] = false
       else
         hash[:last_message_is_outgoing] = true
       end
-      hash[:last_message]   = last_message[:text]
-      if conver_id == last_message[:sender_id]
-        hash[:friend_name]    = last_message[:sender_name]
+      hash[:last_message]   = last_message["text"]
+      if conver_id == last_message["sender_id"].to_s
+        hash[:friend_name]    = last_message["sender_name"]
       else
-        hash[:friend_name]    = last_message[:receiver_name]
+        hash[:friend_name]    = last_message["receiver_name"]
       end
       hash[:friend_token]   = conver_id
       hash[:friend_picture] = ""
-      hash[:last_update]    = time_ago_in_words(last_message[:created_at])
+      hash[:last_update]    = last_message["created_at"]
       last_conver_msg_list  << hash
     end
     render :json => { :conversations => last_conver_msg_list, :rc => 0 }
@@ -40,21 +43,26 @@ class MessagesController < ApplicationController
   end
   
   def messages
+    
+  end
+  
+  def load_messages
     friend_id = params[:friend_token]
     message_list = []
-    message_list_redis = $redis.key("messages:#{current_user.id}:#{friend_id}")
+    message_list_redis = $redis.lrange("messages:#{current_user.id}:#{friend_id}", 0, -1)
     message_list_redis.each do |message_redis|
       message_redis_hash = MultiJson.decode(message_redis)
       message = {}
       message[:owner_picture]     = ""
-      message[:text]              = message_redis_hash[:text]
+      message[:text]              = message_redis_hash["text"]
       message[:owner_profile_url] = ""
-      message[:time_created]      = time_ago_in_words(message_redis_hash[:created_at])
-      message[:owner_name]        = message_redis_hash[:sender_name]
+      message[:time_created]      = message_redis_hash["created_at"]
+      message[:owner_name]        = message_redis_hash["sender_name"]
       message_list << message
     end
     $redis.set("messages:#{current_user.id}:#{friend_id}:unreadcount", 0)
-    render :json => { :message => message_list, :rc => 0 }
+    render :json => { :messages => message_list, :rc => 0 }
+    
   end
   
   def send_message
@@ -65,9 +73,9 @@ class MessagesController < ApplicationController
     hash[:created_at]     = Time.now
     hash[:text]           = params[:text]
     hash[:sender_id]      = sender.id
-    hash[:sender_name]    = sender.name
-    hash[:receiver_id]    = receiver.id
-    hash[:receiver_name]  = receiver.name
+    hash[:sender_name]    = sender.username
+    hash[:receiver_id]    = receiver.id.to_s
+    hash[:receiver_name]  = receiver.username
     
     sender_conver_timecount    = $redis.incr("messages:#{sender.id}:count")
     receiver_conver_timecount  = $redis.incr("messages:#{receiver.id}:count")
@@ -92,7 +100,8 @@ class MessagesController < ApplicationController
   end
   
   def load_contact_list
-    contact_list = $redis.key("users:#{current_user.id}.follow_users")
+    contact_list = $redis.hvals("users:#{current_user.id}.follow_users.info")
+    contact_list.collect! { |user| MultiJson.decode(user) }
     render :json => { :contact_list => contact_list }
   end
 end

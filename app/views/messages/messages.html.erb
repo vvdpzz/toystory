@@ -1,0 +1,37 @@
+<div id="page-layout">
+	<div id="page-container">
+		<div id="messages-container">
+			<div id="message-entry-proto" class="message-entry clearfix" style="display: none">
+				<div class="friend-picture">
+					<a href=""><img src=""></a>
+				</div>
+				<div class="message-container">
+					<div class="message-info">
+						<a href="#" class="owner-name"></a>
+						<span class="remove-button"></span>
+						<span class="message-date"></span>
+					</div>
+					<div class="message-body"></div>
+				</div>
+			</div>
+
+			</div>
+			<div class="message-header-fixed">
+				<span class="message-page-title">陈政宇</span>
+				<a href="http://prizes.org/message/conversations" id="btn-back-to-conversations">Back to Messages</a>
+			</div>
+			<div class="message-border-shadow"></div>
+			<div class="message-reply-box clearfix" style="display: block; ">
+				<textarea placeholder="Type your message here ..." class="placeholder"></textarea>
+				<div class="clear"></div>
+				<button id="btn-reply-message" class="blue-small btn-disabled">Send</button>
+				<div id="reply-message-countdown">1000</div>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript" charset="utf-8">
+	var messageFriendToken = "<%= params[:friend_token]%>"
+
+	ce6.message.initMessageView();
+</script>

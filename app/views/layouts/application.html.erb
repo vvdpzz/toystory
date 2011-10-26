@@ -16,5 +16,122 @@
       </div>
 		</div>
 	</div>
+	<div style="position: fixed; top: 0px; z-index: 1010;">
+					<div id="dlg-send-message" style="display:none;">
+			<div id="message-recipient" class="ui-dialog-box">
+				<span>To:</span>
+			</div>
+			<div id="message-body" class="ui-dialog-box">
+				<span>Message:</span>
+				<textarea></textarea>
+			</div>
+			<div id="send-message-countdown"></div>
+		</div>
+
+
+
+
+
+
+					<div id="verify-box" class="side-verify-items" style="display: none;">
+				<div class="verified-divider"></div>
+				<div class="verify-item email v">
+					<span class="verify-item-icon email v"></span>
+					<span class="verify-item-name">email</span>
+						<div class="verified-right">verified</div> 
+				</div>
+				<div class="verified-divider"></div>
+				<div class="verify-item photo v">
+					<span class="verify-item-icon photo v"></span>
+					<span class="verify-item-name">photo</span>
+						<div class="verified-right">verified</div> 
+				</div>
+				<div class="verified-divider"></div>
+				<div class="verify-item phone v">
+					<span class="verify-item-icon phone v"></span>
+					<span class="verify-item-name">phone</span>
+						<div class="verified-right">verified</div> 
+				</div>
+		</div>
+
+				<div id="verify-phone-dlg" class="dlg-plain-content" style="display:none;">
+			<div class="verify-dlg-desc">
+				Please enter your mobile number including country code. For example, <br>+1 555-555-5555 where +1 is the country code for the United States.
+			</div>
+			<table><tbody>
+				<tr>
+					<th class="label">Country Code</th>
+					<td>
+						<input type="text" id="verify-country-code">
+					</td>
+				</tr>
+				<tr>
+					<th class="label">Phone Number</th>
+					<td>
+						<input type="text" id="verify-phone-number">
+					</td>
+				</tr>
+				<tr>
+					<th class="label"></th>
+					<td>
+						<div id="send-sms">
+							<button class="blue" id="send-sms-btn">Enter</button>
+							<button class="lightgray" id="send-sms-cancel">Cancel</button>
+						</div>
+						<div id="send-voice" class="verify-dlg-desc" style="display: none;">
+							The verification code has been sent to you via SMS.  You should receive this SMS within 30 seconds.  If you have not received it within this time, then there is a chance that our SMS partner does not work with your carrier in your country.  But don't worry!  You can have the verification code sent to you via a phone call.  <a id="send-voice-btn">Please click here!</a>  Do be sure you have good mobile reception so you don't miss the call!
+						</div>
+						<div id="email-help" class="verify-dlg-desc" style="display: none;">
+							Still no luck? Please contact us at <a href="mailto:help@prizes.org">help@prizes.org</a>.
+						</div>
+						<div id="resend-sms" class="verify-dlg-desc" style="display: none;">
+							<p> We're sending the code to your mobile. Enter it below to verify your account!</p>
+							<p class="verify-desc-bold">Didn't receive it? Resend it in <span class="time-cnt-down">60</span> seconds</p>
+						</div>
+						<div id="send-voice-tip" class="verify-dlg-desc" style="display: none;">
+							We're trying to call your mobile and it may take a while. Please wait for <span class="time-cnt-down">60</span> seconds.
+						</div>
+					</td>
+				</tr>
+				<tr id="verify-phone-code-row">
+					<th class="label">Verification code</th>
+					<td>
+						<input type="text" id="verify-phone-code">
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+
+				<div id="upload-avatar" class="dlg-plain-content" style="display:none;">
+			<div id="user-photo-loader" class="hidden">
+				<span class="preloader-icon">Uploading...</span>
+			</div>
+			<div class="user-photo-pre">
+				<img id="uploaded-photo">
+			</div>
+			<div id="uploadForm" class="user-photo-form">
+				<form enctype="multipart/form-data" action="http://upload.prizes.org/r/3/x/size_limited_save_files?next=http%3A%2F%2Fprizes.org%2Fprofile%2Fphoto_upload_response" accept-charset="utf-8" method="POST" target="serverResponseIFrame">
+					<div class="upload-desc-title">Upload new photo</div>
+					<div class="upload-desc-limit">
+						You can upload a JPG, GIF, PNG or TIFF file (4MB max)
+					</div>
+					<div>
+						<input size="16" type="file" id="binaryData" name="binary_data" onchange="return ce6.userPhoto.doUpload(this);">
+					</div>
+					<div>
+						<span id="upload_msg" class="error-msg"></span>
+					</div>
+				</form>
+			</div>
+		</div>
+
+			<iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" name="serverResponseIFrame"></iframe>
+				<div id="verify-email-dlg" style="display:none;">
+			Enter email verification code: <input type="text" id="verify-email-code">
+		</div>
+
+
+
+			</div>
 </body>
 </html>
