@@ -1,7 +1,8 @@
 Toystory::Application.routes.draw do
+
   root :to => 'contests#index'
   devise_for :users
-  
+  resources :users
   resources :contests do
     collection do
       post "check_credits"
