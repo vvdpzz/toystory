@@ -28,7 +28,8 @@
 <script type="text/javascript" charset="utf-8">
 	ce6.message.initConversationView();
 	var viewer = {
-		name: "WindStill",
-		token: "y6PYcYGuTohSebQj2xEMdg",
-		picture: "http://deco-00.prizes.org/r/3/0000/dl/oBcqZixXzz-d85lrLlqbuVejUMU1JB3N/ce6_profile_img",
+		name: "<%= current_user.username%>",
+		token: "<%= current_user.id%>",
+		picture: "<%= current_user.picture %>"
+	}
 </script>

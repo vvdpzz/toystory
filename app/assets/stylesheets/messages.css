@@ -1,0 +1,367 @@
+/*#################################################################### 
+Private Message
+#################################################################### */
+button.blue.ui-state-disabled {
+	-moz-box-shadow: 0 28px 20px -18px #fff inset;
+	-webkit-box-shadow: 0 28px 20px -18px #fff inset;
+	color: #c2c2c2;
+	background: url(/assets/gradient.png) repeat-x scroll 0 -508px #e4e4e4;
+	border: 1px solid #c2c2c2;
+	text-shadow: 0 1px 0 #fff;
+	cursor: default;
+	opacity:.75;
+}
+
+button.blue-small {
+	-moz-box-shadow: 0 28px 20px -18px #5c8fff inset;
+	-webkit-box-shadow: 0 28px 20px -18px #5c8fff inset;
+	color: #fff;
+	background: url(/assets/gradient.png) repeat-x scroll 0 -200px #0076ed;
+	border: 1px solid #456fa6;
+	line-height: 15px;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 5px 12px;
+	margin-left: 8px;
+	text-shadow: 0 1px 0 #344F72;
+}		
+
+button.blue-small:hover {
+	background-position: 0 -220px;
+	border: 1px solid #250044;
+}
+button.blue-small.btn-disabled {
+	-moz-box-shadow: 0 28px 20px -18px #fff inset;
+	-webkit-box-shadow: 0 28px 20px -18px #fff inset;
+	color: #c2c2c2;
+	background: url(/assets/gradient.png) repeat-x scroll 0 -508px #e4e4e4;
+	border: 1px solid #c2c2c2;
+	text-shadow: 0 1px 0 #fff;
+	cursor: default;
+}
+
+#dlg-send-message {
+	border-bottom: 1px solid #B1B1B1;
+	position: relative;
+	padding: 0 1em;
+}
+#dlg-send-message span {
+	display: inline-block;
+	font-weight: bold;
+	padding: 5px 10px 0 0;
+	text-align: right;
+	width: 70px;
+}
+#message-recipient{
+	height: 30px;
+	margin: 5px 0 10px; 
+}
+
+#message-recipient span {
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+#message-recipient input {
+	width: 368px;
+	height: 24px;
+}
+
+#message-recipient .recipient-name {
+	height: 24px;
+	font-weight: normal;
+	text-align: left;
+	width: auto;
+	max-width: 340px;
+}
+
+#message-recipient .remove-button {
+	background:url("/assets/closebutton-small.png") no-repeat scroll 0px 0px transparent;
+	height: 14px;
+	width: 14px;
+	cursor: pointer;
+	padding-top: 0px;
+	margin-top: 8px;
+}
+#message-recipient .remove-button:hover {
+	background-position: 0px -14px;
+}
+#message-body span {
+	vertical-align: top;
+}
+#message-body textarea {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #b2b2b2;
+	border-radius: 4px;
+	padding: 5px 5px;
+	width: 368px;
+	height: 110px;
+	resize: none;
+}
+#send-message-countdown {
+	float: right;
+	clear: both;
+	padding-top: 5px;
+	padding-right: 10px;
+	color: #666;
+}
+
+#send-message-countdown.negative {
+	color: #a91700;
+}
+
+/*#################################################################### 
+Message Box - conversation View
+#################################################################### */
+
+.message-header{
+	border-bottom: 1px solid #999;
+	width: 630px;
+	height: 30px;
+}
+
+.message-page-title {
+	font-size: 18px;
+	margin-left: 10px;
+	float: left;
+}
+
+#btn-send-message {
+	float: right;
+}
+
+.conversation-box {
+	background: #fff;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+	height: 70px;
+	width: 628px;
+}
+.conversation-box:hover {
+	background-color:#d9ebff;
+}
+.conversation-box-highlight {
+	background-color: #f2f6fb;
+}
+
+.conversation-friend-picture {
+	float: left;
+	margin: 10px 0 0 10px;
+}
+.conversation-friend-picture img {
+	height: 50px;
+	width: 50px;
+}
+.conversation-info {
+	margin-top: 15px;
+	margin-left: 10px;
+	float: left;
+	width: 400px;	
+}
+.conversation-info .friend-name {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+}
+.conversation-info .message-preview {
+	display: block;
+	color: #909090;
+	font-size: 12px;
+	font-weight: normal;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+}
+.conversation-info .outgoing-icon {
+	padding-left: 15px;
+	background: url("/assets/outgoing_message_icon.png") no-repeat scroll left center transparent;
+}
+
+.conversation-box-highlight .message-preview{
+	color: #000;
+}
+.conversation-last-update {
+	color: #909090;
+	float: right;
+	font-size: 12px;
+	margin-top: 25px;
+}
+.conversation-box-highlight .conversation-last-update {
+	color: #000;
+}
+.conversation-last-update span {
+	vertical-align: middle;
+}
+.conversation-last-update .remove-button {
+	margin-left: 10px;
+	margin-right: 10px;
+	background:url("/assets/closebutton-small.png") no-repeat scroll 0px 0px transparent;
+	height: 14px;
+	width: 14px;
+	cursor: pointer;
+	display: inline-block;
+}
+.conversation-last-update .remove-button:hover {
+	background-position: 0 -14px;
+}
+#conversations-empty {
+	padding: 20px 0;
+	text-align: center;
+	width: 630px;
+	display: none;
+	color: #666;
+}
+
+/*#################################################################### 
+Message Box - Message View
+#################################################################### */
+.message-header-fixed {
+	border-bottom: 1px solid #b1b1b1;
+	background-color:#F0F0F0;
+	position: fixed;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	top: 40px;
+	width: 630px;
+	z-index: 9;
+}
+
+#btn-reply-message {
+	float: right;
+	margin-top: 8px;
+	margin-right: 10px;
+}
+
+#reply-message-countdown {
+	float: right;
+	margin-top: 8px;
+	margin-right: 10px;
+	color: #666;
+	line-height: 25px;
+}
+
+#reply-message-countdown.negative {
+	color: #a91700;
+}
+
+#btn-back-to-conversations {
+	float: right;
+	margin-right: 10px;
+}
+#btn-back-to-conversations span {
+	background: url(/assets/message-arrow-icon.png) no-repeat 0 3px transparent;
+	height: 8px;
+	width: 5px;
+	padding-left: 12px;
+}
+
+.message-border-shadow {
+	position: fixed;
+	top: 85px;
+	height: 4px;
+	background-color: rgba(238, 238, 238, .75);
+	width: 630px;
+	display: none;
+	z-index: -1;
+}
+
+#messages-container {
+	width: 630px;
+	margin-top: 30px;
+}
+
+.message-reply-box {
+	width: 630px;
+	height: 163px;
+	background-color: #f2f6fb;
+	border-top: 1px solid #999;
+	display: none;
+}
+
+.message-reply-box textarea {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #cdd9e9;
+	border-radius: 4px;
+	padding: 5px 5px;
+	width: 600px;
+	height: 100px;
+	resize: none;
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.message-entry, .message-first-entry {
+	width: 628px;
+	background: #fff;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+}
+
+.message-first-entry {
+	border-top: 0px;
+}
+
+.message-entry .message-info {
+	margin-bottom: 5px;
+}
+
+.message-entry .friend-picture {
+	float: left;
+	margin: 0 10px;;
+}
+
+.message-entry .friend-picture img {
+	height: 50px;
+	width: 50px;
+}
+
+.message-entry .message-container {
+	width: 558px;
+	float: left;
+}
+
+.message-entry .owner-name{
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: #000;
+}
+
+.message-entry .owner-name:hover {
+	color: #016DF1;
+}
+
+.message-entry .message-date{
+	float: right;
+	font-size: 12px;
+	color: #909090;
+}
+
+.message-entry .remove-button {
+	cursor: pointer;
+	display: inline-block;
+	background:url("/assets/closebutton-small.png") no-repeat scroll 0px 0px transparent;
+	float: right;
+	height: 14px;
+	margin: 3px 10px 0;
+	width: 14px;
+}
+.message-entry .remove-button:hover {
+	background-position: 0 -14px;
+}
+.message-entry .message-body {
+	color: #000;
+	font-size: 14px;
+	margin-right: 10px;
+	overflow-x: hidden;
+}
