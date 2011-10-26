@@ -2,7 +2,11 @@ Toystory::Application.routes.draw do
   root :to => 'contests#index'
   devise_for :users
   
-  resources :contests
+  resources :contests do
+    collection do
+      post "check_credits"
+    end
+  end
   
   resources :autosave, :only => [] do
     collection do

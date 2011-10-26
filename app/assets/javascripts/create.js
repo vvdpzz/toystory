@@ -412,7 +412,7 @@ ce6.create = {
 			$('.detail-prize-zone').show();
 			$('#createconfirm-bottom-line').show();
 			$('#create-prize-credit').html(prize_num);
-			ce6.ajaxJson('/create/check_credits',
+			ce6.ajaxJson('/contests/check_credits',
 				{
 					prize: prize_num
 				},
