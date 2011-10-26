@@ -2,7 +2,11 @@ ce6.site = {
 	url : function(method, params) {
 		params = params || {};
 		url_args = $.param(params);
+<<<<<<< HEAD
 		return '/' + method + (url_args?'?'+url_args:'');
+=======
+		return 'http://' + BASE_DOMAIN + '/' + method + (url_args?'?'+url_args:'');
+>>>>>>> 01ff8bc1bc176072636aea437bb1854ead2cd0c9
     },
 	redirect : function(method, params) {
 		if (method.indexOf('http://')==0)

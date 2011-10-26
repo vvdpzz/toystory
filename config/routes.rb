@@ -1,8 +1,20 @@
 Toystory::Application.routes.draw do
+
   root :to => 'contests#index'
   devise_for :users
+  resources :users
+  resources :contests do
+    collection do
+      post "check_credits"
+    end
+  end
   
-  resources :contests
+  resources :recharge do
+    collection do
+      post :notify
+      get :done
+    end
+  end
   
   resources :messages do
     collection do

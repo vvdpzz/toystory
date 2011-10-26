@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :contests
   has_many :entries
   has_many :comments
+  has_many :recharge_records
   
   def self.basic(id)
     User.select("id,username,picture").find_by_id(id)

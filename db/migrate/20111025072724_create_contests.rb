@@ -15,7 +15,6 @@ class CreateContests < ActiveRecord::Migration
       t.boolean :is_blind, :default => false
       t.boolean :is_community, :default => false
       
-      t.date :end
       t.integer :end_date, :default => 0
       
       t.integer :votes_count, :default => 0

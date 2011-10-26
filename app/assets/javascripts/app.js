@@ -2,6 +2,57 @@
  * document ready logics
  */
 $(function() {
+  if (ce6.feed) {
+		ce6.feed.init();
+	}
+	if (surface == 'home') {
+		ce6.home.init();
+	} else if (surface == 'contest.detail') {
+		ce6.show.init();
+	} else if (surface == 'history.contest') {
+		ce6.workflow.init();
+	} else if (surface == 'history.credit') {
+		ce6.creditHistory.init();
+	} else if (surface == 'contest.create') {
+		ce6.create.init();
+	} else if (surface == 'contest.create_coming_soon') {
+		$('#get-invitation-btn').click(ce6.create.getInvitation);
+	} else if (surface == 'user.profile') {
+	  ce6.user.init();
+    ce6.profile.init();
+		// if(profileOwner.is_myself){
+		//      ce6.userPhoto.init();
+		//    }
+		ce6.verifier.init();
+	} else if (surface == 'message_box.conversation_view') {
+		ce6.message.initConversationView();
+	} else if (surface == 'message_box.message_view') {
+		ce6.message.initMessageView();
+	} else if (surface == 'w9form') {
+		ce6.w9form.init();
+	} else if (surface == 'setting') {
+		ce6.setting.init();
+	} else if (surface == 'main') {
+		if (ce6.login) {
+			ce6.login.init();
+		}
+	} else if (surface == 'score') {
+		ce6.score.init();
+	} else if (surface == 'notification') {
+		ce6.renderCustomizedStyle();
+	} else if (surface == 'contest_ctrl') {
+		ce6.przadm.contest_ctrl.init();
+	} else if (surface == 'user_ctrl') {
+		ce6.przadm.user_ctrl.init();
+	} else if (surface == 'invite') {
+		ce6.invite.init();
+	} else if (surface == 'order_ctrl') {
+		ce6.przadm.order_ctrl.init();
+	} else if (surface == 'tag_ctrl') {
+		ce6.przadm.tag_ctrl.init();
+	} else if (surface == 'adm_home') {
+		ce6.przadm.adm_home.init();
+	}
 	//setup tooltips
 	setToolTip('[tip-text]', {
 		containerStyleClass: 'slide-tooltip',

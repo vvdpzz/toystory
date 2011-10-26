@@ -412,7 +412,7 @@ ce6.create = {
 			$('.detail-prize-zone').show();
 			$('#createconfirm-bottom-line').show();
 			$('#create-prize-credit').html(prize_num);
-			ce6.ajaxJson('/create/check_credits',
+			ce6.ajaxJson('/contests/check_credits',
 				{
 					prize: prize_num
 				},
@@ -509,8 +509,8 @@ ce6.create = {
 			ce6.create.calling = true;
 		}
 		var submitData = $('#create-form').serialize();
-		submitData += '&just_for_fun=' + (ce6.create.just_for_fun ? 1 : 0);
-		ce6.ajaxJsonPost('/contests/create', submitData,
+		submitData += '&is_community=' + (ce6.create.just_for_fun ? 1 : 0);
+		ce6.ajaxJsonPost('/contests', submitData,
 			function(data) {
 				if (data.rc == 0) {
 					window.onbeforeunload = null; 
@@ -568,27 +568,13 @@ ce6.create = {
 		}
 		ce6.create.need_credit = need_credit;
 
-		if(viewer_logged_in){
-			ce6.payCreateContest(need_credit);
-		}else{
-			$('#create-confirm').dialog('close');
-			ce6.authDialog.open(ce6.create.submitBuyAction, function(){
-				ce6.create.disableCreateBtn(false);
-			}, 'auto', ce6.authDialog.onDemandTitle);
-		}
+		ce6.payCreateContest(need_credit);
 	},
 	submitNewContest : function() {
 		if (!ce6.create.submitContestCheck()) {
 			return
 		}
-		if(viewer_logged_in){
-			ce6.create.submitAction();
-		}else{
-			$('#create-confirm').dialog('close');
-			ce6.authDialog.open(ce6.create.submitAction, function(){
-				ce6.create.disableCreateBtn(false);
-			}, 'auto', ce6.authDialog.onDemandTitle);
-		}
+		ce6.create.submitAction();
 	},
 	datepickerOptions : {
 		minDate: 5, 
