@@ -45,6 +45,6 @@ class ContestsController < ApplicationController
   end
   
   def check_credits
-    render :json => {:need_credit => params[:prize], :used_credit => current_user.credits}
+    render :json => {:need_credit => params[:prize].to_f - current_user.credits, :used_credit => current_user.credits}
   end
 end
