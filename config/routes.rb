@@ -9,6 +9,17 @@ Toystory::Application.routes.draw do
     end
   end
   
+  resources :messages do
+    collection do
+      get "load_conversations"
+      get "load_contact_list"
+      get "messages"
+      get "load_messages"
+      post "remove_conversation"
+      post "send_message"
+    end
+  end
+
   resources :recharge do
     collection do
       post :notify
