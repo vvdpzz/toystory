@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  include ActionView::Helpers::DateHelper
+  
   def index
     
   end
@@ -28,7 +30,7 @@ class MessagesController < ApplicationController
       end
       hash[:friend_token]   = conver_id
       hash[:friend_picture] = ""
-      hash[:last_update]    = last_message["created_at"]
+      hash[:last_update]    = time_ago_in_words(last_message["created_at"]) + " ago"
       last_conver_msg_list  << hash
     end
     render :json => { :conversations => last_conver_msg_list, :rc => 0 }
@@ -56,7 +58,7 @@ class MessagesController < ApplicationController
       message[:owner_picture]     = ""
       message[:text]              = message_redis_hash["text"]
       message[:owner_profile_url] = ""
-      message[:time_created]      = message_redis_hash["created_at"]
+      message[:time_created]      = time_ago_in_words(message_redis_hash["created_at"]) + " ago"
       message[:owner_name]        = message_redis_hash["sender_name"]
       message_list << message
     end
