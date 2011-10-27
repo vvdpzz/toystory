@@ -544,6 +544,7 @@ ce6.create = {
 				'Buy credits': function() {
 					ce6.create.autoSave.discard();
 					ce6.create.submitBuyContest(need_credit);
+					// $("#dlg-ofac").dialog("open");
 				}
 			}).restyleButtons();
 		} else {
@@ -568,7 +569,7 @@ ce6.create = {
 		}
 		ce6.create.need_credit = need_credit;
 
-//		ce6.payCreateContest(need_credit);  
+		ce6.payCreateContest(need_credit); 
 	},
 	submitNewContest : function() {
 		if (!ce6.create.submitContestCheck()) {
@@ -686,5 +687,319 @@ ce6.create.autoSave = {
 				$('#auto-save-msg').hide();
 			}
 		});
+	}
+};
+
+
+// ********************************
+$(function () {
+    if (surface == "contest.create" || surface == "history.credit") {
+        $("#dlg-ofac").dialog(ce6.ofacDialog.params).restyleButtons();
+        ce6.ofacDialog.init()
+    }
+});
+ce6.ofacDialog = function () {
+    var a = {
+        countryListContainer: null,
+        successCb: null,
+        errorCb: null,
+        params: {
+            autoOpen: false,
+            modal: true,
+            width: 575,
+            height: 435,
+            resizable: false,
+            title: "Address Confirmation",
+            open: function () {
+                $("#ofac-name").val(viewer.name)
+            },
+            buttons: {
+                Cancel: function () {
+                    $(this).dialog("close");
+                    a.errorCb && a.errorCb()
+                },
+                Continue: function () {
+                    a.verify()
+                }
+            }
+        },
+        init: function () {
+            $("#ofac-country").click(function (b) {
+                b.stopPropagation();
+                a.showCountryList()
+            });
+            a.citySelector = new ce6.simpleSelector({
+                inputElem: "#ofac-city",
+                all: ce6.constants.usaCities
+            });
+            a.stateSelector = new ce6.simpleSelector({
+                inputElem: "#ofac-state",
+                all: ce6.constants.usaStates
+            })
+        },
+        open: function (b, e, h) {
+            a.successCb = b;
+            a.errorCb = e;
+            // ce6.ajaxJson("/payment/payment_precheck", {
+            //     is_payout: h ? 1 : 0
+            // }, function (f) {
+            //     if (f.rc == 0) a.successCb();
+            //     else if (f.rc == 1) ce6.ofacDialog.openFailedDialog();
+            //     else if (f.rc == 2) $("#dlg-ofac").dialog("open");
+            //     else f.rc == 100 ? ce6.notifyBar(f.msg, "warn") : ce6.notifyBar(ce6.constants.texts.errors.serverError, "error")
+            // });
+			
+			$("#dlg-ofac").dialog("open");
+        },
+        verify: function () {
+            for (var b = ["#ofac-name", "#ofac-address", "#ofac-city", "#ofac-state", "#ofac-zip"], e = 0; e < b.length; e++) if (!$.trim($(b[e]).val())) {
+                ce6.notifyBar("Please fill in all the fields.", "error");
+                $(b[e]).focus();
+                return
+            }
+            ce6.secureCall("ofac/verify", {
+                name: $.trim($("#ofac-name").val()),
+                address: $.trim($("#ofac-address").val()),
+                city: $.trim($("#ofac-city").val()),
+                state: $.trim($("#ofac-state").val()),
+                zip: $.trim($("#ofac-zip").val()),
+                country: $.trim($("#ofac-country").val())
+            }, function (h) {
+                if (h.rc == 0) {
+                    $("#dlg-ofac").dialog("close");
+                    a.successCb && a.successCb()
+                } else if (h.rc == 1) {
+                    $("#dlg-ofac").dialog("close");
+                    a.openFailedDialog()
+                } else ce6.notifyBar(ce6.constants.texts.errors.serverError, "error")
+            })
+        },
+        openFailedDialog: function () {
+            ce6.showMessage(ce6.constants.texts.errors.ofacFailed, "Address Confirm Failed", a.errorCb)
+        },
+        showCountryList: function () {
+            if (!a.countryListContainer) {
+                var b = $("#ofac-country").val();
+                a.countryListContainer = $("<div class='ofac-country-list'><ul></ul></div>");
+                a.countryListContainer.appendTo("body");
+                var e = $(".ofac-country-list ul");
+                $.each(ce6.constants.countries, function (g, m) {
+                    m == b ? e.append("<li class='selected-country'>" + m + "</li>") : e.append("<li>" + m + "</li>")
+                });
+                e.find("li").click(a.onSelectCountry)
+            }
+            var h = a.countryListContainer,
+                f = $("#ofac-country").offset();
+            h.css({
+                left: f.left
+            });
+            h.show();
+            $(document).one("click", function () {
+                h.hide()
+            })
+        },
+        onSelectCountry: function (b) {
+            b.stopPropagation();
+            b = $(this).text();
+            $("#ofac-country").val(b);
+            a.countryListContainer.hide();
+            a.countryListContainer.find("li").removeClass("selected-country");
+            $(this).addClass("selected-country");
+            if (b == "United States") {
+                a.citySelector.updateAllList(ce6.constants.usaCities);
+                a.stateSelector.updateAllList(ce6.constants.usaStates)
+            } else {
+                a.citySelector.updateAllList([]);
+                a.stateSelector.updateAllList([])
+            }
+        }
+    };
+    return a
+}();
+
+ce6.openPayments = function(gold, callback, cancelback, shop_descriptor){
+	ce6.ofacDialog.open(function() {
+		var params = {
+			callback: callback,
+			cancelback: cancelback,
+			shop_descriptor: shop_descriptor
+		};
+		ce6.payments.open(gold, params);
+	}, cancelback, false);
+};
+
+ce6.payCreateContest = function(gold) {
+	ce6.openPayments(gold, ce6.payCreateContestCb, ce6.payCreateContestCancel, "Almost there! Add $"+gold+" to publish!");
+};
+
+ce6.payCreateContestCb = function(gold) {
+	ce6.updateCredit(gold); 
+	ce6.create.submitAction();
+};
+
+ce6.payCreateContestCancel = function() {
+	//close the auth dialog if it opened
+	ce6.authDialog.close();
+};
+
+ce6.payments = new function () {
+	this.init = function () {
+		if(viewer_logged_in){
+			if (!payments_initialized) {
+				payments_initialized = true;
+				$('.payments-popup').css({'visibility':'hidden'});
+				
+				this.options = {
+					'buckets': [],
+					//get this from a data file
+					'conversion_rate': 100,
+					'shop_descriptor': 'Add Credits'
+	//				'buy_phrase': 'Select the amount of Credits you want to buy'
+
+				};
+
+				ce6.ajaxJson(
+					'/payment/authorize_payments',
+					{},
+					this.authorize
+				);
+			}
+		}
+	}
+
+	this.authorize = function(response) {
+		if (response.rc != 0) {
+			return;
+		}
+		ce6.payments.user_auth = response.user_auth; 
+		ce6.payments.callback_url = response.callback_url; 
+		Slide.Payments.initialize(
+			'payment-frame',
+			ce6.payments.user_auth,
+			ce6.payments.callback_url, 
+			null,
+			ce6.payments.options
+		);
+	}
+
+	this.pageSize = function() {
+		var scrW, scrH;
+		if (window.innerHeight && window.scrollMaxY) {
+			// Mozilla
+			scrW = window.innerWidth + window.scrollMaxX;
+			scrH = window.innerHeight + window.scrollMaxY;
+		} 
+		else if (document.body.scrollHeight > document.body.offsetHeight){
+			// all but IE Mac
+			scrW = document.body.scrollWidth;
+			scrH = document.body.scrollHeight;
+		}
+		else if (document.body) { 
+			// IE Mac
+			scrW = document.body.offsetWidth;
+			scrH = document.body.offsetHeight;
+		}
+
+		var winW, winH;
+		if(window.innerHeight) { // all except IE
+			winW = window.innerWidth;
+			winH = window.innerHeight;
+		}
+		else if (document.body) { // other
+			winW = document.body.clientWidth;
+			winH = document.body.clientHeight;
+		}
+		var w = (scrW<winW) ? winW : scrW;
+		var h = (scrH<winH) ? winH : scrH;
+
+		return {width: w, height: h};
+	}
+
+	this.show_overlay = function() {
+		sz = this.pageSize();
+		var w = sz.width;
+		var h = sz.height;
+		if (window.screen.width > sz.width) {
+			w = window.screen.width;
+		}
+		$('#payments-overlay').css({'width': w});
+		$('#payments-overlay').css({'height': h});
+		$('#payments-overlay').css({'visibility':'visible'});
+	}
+	
+	this.show_dlg = function() {
+		sz = this.pageSize();
+		var w = sz.width;
+		// diff to overlay, should use the min size 
+		var l = (w - 520)/2;
+		if (l<0) {
+			l = 0;
+		}
+		$('#payments-popup').css({'margin-left': l});
+		$('#payments-popup').css({'visibility':'visible'});
+		$('.payment-dlg-preloader').css({'margin-left': l+160});
+		$('.payment-dlg-preloader').css({'visibility':'visible'});
+	}
+
+	this.hide_overlay = function() {
+		$('#payments-overlay').css({'visibility':'hidden'});
+	}
+
+	this.open = function(gold, params) {
+		this.init();
+		ce6.payments.show_overlay();
+		this.show_dlg();
+		var gold = gold || 50;
+		var dollars = gold;
+		param = {
+			shop_descriptor: params.shop_descriptor
+		};
+		Slide.Payments.open(dollars, undefined, null, param);
+		this.callback = params.callback;
+		this.cancelback = params.cancelback;
+	}
+
+	this.goldToCashConversion = function(gold){
+		gold = String(gold);
+		return gold;
+//		var dollars = gold.substr(0, gold.length-1)+'.'+gold.substr(gold.length-1, 1)+'0';
+//		return dollars;
+	}
+
+	this.close = function () {
+		$('#other-amount').val('');
+		$('.payments-popup').css({'visibility':'hidden'});
+		this.hide_overlay();
+		Slide.Payments.close();
+	}
+
+	this.handleSuccess = function (amount) {
+		ce6.payments.close();
+		ce6.ajaxJson(
+			'/payment/balance_change_notify',
+			{credits: parseInt(amount)},
+			null
+		);
+		if(this.callback){
+			var gold = parseInt(amount); // * this.options.conversion_rate;
+			this.callback(gold);
+		}
+	}
+
+	this.handleCancel = function () {
+		ce6.payments.close();
+		if(this.cancelback){
+			this.cancelback();
+		}
+	}
+	
+	this.pay = function(gold) {
+		ce6.openPayments(gold, ce6.payments.paySuccess, ce6.payments.payCancel);
+	}
+
+	this.paySuccess = function() {
+	}
+
+	this.payCancel = function() {
 	}
 };
