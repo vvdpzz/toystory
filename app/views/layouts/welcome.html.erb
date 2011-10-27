@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toystory</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="container">
+		<div id="page">
+			<div id="top">
+				<div id="header">
+					<div id="header-bg"></div>
+					<div id="header-shadow"></div>
+					<div id="header-content">
+						<div class="header-left">
+							<div id="top-nav">
+								<ul>
+									<li class="active">
+										<a id="nav-home" href="">首页</a>
+									</li>
+									<li>
+										<a id="nav-profile" href="">个人主页</a>
+									</li>
+									<li>
+										<a id="nav-create-contest" href="/contests/new">创建竞赛</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="page-layout">
+				<div id="page-container" class="clearfix">
+          			<%= yield %>
+        		</div>
+			</div>
+		</div>
+	
+		<div class="page-footer">
+		<div class="horizontal-divider page-footer-line">
+			<div class="page-footer-icon"></div>
+		</div>
+		<div class="page-footer-links"> 
+			<a href="http://blog.prizes.org/">Blog</a> &nbsp;
+			<a href="/tos">Terms Of Service</a> &nbsp;
+			<a href="/privacy">Privacy Policy</a> &nbsp;
+			<a href="/faq">FAQ</a> &nbsp;
+			<a href="/faq#contact">Contact Us</a>
+		</div>
+	</div>
+</body>
+</html>

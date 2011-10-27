@@ -272,6 +272,12 @@
 			$('#nav-msg-menu .notification-item:last').addClass('non-bottom-line');
 			$('#nav-msg-empty').hide();
 		});
+		
+		var viewer = {
+			name: "<%= current_user.username %>",
+			token: "<%= current_user.id %>",
+			picture: "<%= current_user.picture %>"
+		};
 	</script>
 </body>
 </html>
