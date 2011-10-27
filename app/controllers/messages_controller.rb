@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
         hash[:friend_name]    = last_message["receiver_name"]
       end
       hash[:friend_token]   = conver_id
-      hash[:friend_picture] = ""
+      hash[:friend_picture] = "/assets/default-profile-photo.png"
       hash[:last_update]    = time_ago_in_words(Time.parse last_message["created_at"]) + " ago"
       last_conver_msg_list  << hash
     end
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
     message_list_redis.each do |message_redis|
       message_redis_hash = MultiJson.decode(message_redis)
       message = {}
-      message[:owner_picture]     = ""
+      message[:owner_picture]     = "/assets/default-profile-photo.png"
       message[:text]              = message_redis_hash["text"]
       message[:owner_profile_url] = ""
       message[:time_created]      = time_ago_in_words(Time.parse message_redis_hash["created_at"]) + " ago"
