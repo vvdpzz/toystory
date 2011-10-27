@@ -24,6 +24,7 @@ Toystory::Application.routes.draw do
     collection do
       post :notify
       get :done
+      post :generate_order
     end
   end
   resources :profile, :only => [] do
