@@ -91,7 +91,7 @@
 											<p class="message-preview"></p>
 											<span class="timeago"></span>
 										</div>
-										<div id="nav-msg-empty" class="notification-item empty" style="display: none">
+										<div id="nav-msg-empty" class="notification-item empty">
 											You have no new messages.
 										</div>
 									</div>
@@ -270,6 +270,7 @@
 			$('#nav-msg-new-num').text(count).show();
 			$('.nav-msg-icon').addClass('nav-msg-icon-active');
 			$('#nav-msg-menu .notification-item:last').addClass('non-bottom-line');
+			$('#nav-msg-empty').hide();
 		});
 	</script>
 </body>

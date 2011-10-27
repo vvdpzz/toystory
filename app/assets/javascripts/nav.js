@@ -114,7 +114,7 @@ ce6.nav = (function() {
 		if ($('#nav-msg-new-num').length) {
 			ce6.ajaxJsonPost('/messages/update_last_viewed');
 			$('.nav-msg-icon').removeClass('nav-msg-icon-active');
-			$('#nav-msg-new-num').remove();
+			$('#nav-msg-new-num').text('').hide();
 		}
 	};
 
