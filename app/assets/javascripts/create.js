@@ -404,7 +404,7 @@ ce6.create = {
 			$('.detail-prize-jff-zone').show();
 			$('.detail-prize-zone').hide();
 			$('#createconfirm-bottom-line').hide();
-
+			
 			ce6.create.openCreateConfirmDlg(0);
 		} else {
 			var prize_num = parseInt($('.prize-container input:radio:checked').val(), 10); 
@@ -439,6 +439,23 @@ ce6.create = {
 				}
 			);
 		}
+	},
+	buySuccess : function(){
+		var prize_num = parseInt($('.prize-container input:radio:checked').val(), 10); 
+		ce6.ajaxJson('/contests/check_credits',{prize:prize_num},
+			function(data) {
+				$("#dlg-ofac").dialog("close");
+				ce6.create.previewAndConfirmContest()
+				if (data.need_credit == 0){
+					$("#createconfirm").text("充值成功，请创建答案");
+//	                    $('#payment-form').remove();
+				}
+			},function(){}
+		);
+		// ce6.ajaxJson('/contests/check_credits',
+		// 		{
+		// 			prize: prize_num
+		// 		},
 	},
 	disableCreateBtn : function(isOff){
 		if(isOff){
@@ -544,7 +561,7 @@ ce6.create = {
 				'Buy credits': function() {
 					ce6.create.autoSave.discard();
 					ce6.create.submitBuyContest(need_credit);
-					// $("#dlg-ofac").dialog("open");
+					$("#dlg-ofac").dialog("open");
 				}
 			}).restyleButtons();
 		} else {
@@ -564,15 +581,12 @@ ce6.create = {
 		ce6.payCreateContest(ce6.create.need_credit);
 	},
 	submitBuyContest : function(need_credit) {
-		if (!ce6.create.submitContestCheck()) {
-			return
-		}
 		ce6.create.need_credit = need_credit;
 
 		ce6.payCreateContest(need_credit); 
 	},
 	submitNewContest : function() {
-		if (!ce6.create.submitContestCheck()) {
+		if (!ce6.create.submitContestCheck()) {	
 			return
 		}
 		ce6.create.submitAction();
@@ -711,7 +725,7 @@ ce6.ofacDialog = function () {
             resizable: false,
             title: "Address Confirmation",
             open: function () {
-                $("#ofac-name").val(viewer.name)
+//                $("#ofac-name").val(viewer.name)
             },
             buttons: {
                 Cancel: function () {
@@ -721,6 +735,11 @@ ce6.ofacDialog = function () {
                 Alipay: function () {
                     $($('#payment-form').get(0).utf8).remove();
 					var url = "https://www.alipay.com/cooperate/gateway.do?" + $('#payment-form').serialize();
+					if($("#buySuccessButton").length==0){
+						var success = $("<input type='button' id='buySuccessButton' value='确定充值'/>").bind("click",ce6.create.buySuccess);
+						var again   = $("<input type='button' value='重试'/>").bind("click",function(){window.open(url,"_blank");});
+						$("#alipay-form").append(success).append(again)
+					}
 					window.open(url,"_blank");
 					
 					
