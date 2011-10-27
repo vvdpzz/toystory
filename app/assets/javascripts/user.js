@@ -73,8 +73,7 @@ ce6.user = {
 				elem.data('disabled', false);
 			});
 		} else {
-			if (viewer_logged_in)
-				elem.removeClass('follow').addClass('unfollow').text('Unfollow').attr('followed', '1');
+			elem.removeClass('follow').addClass('unfollow').text('Unfollow').attr('followed', '1');
 			ce6.user.followUser($(this).attr('uid'), function(data){
 					if (data.rc) elem.removeClass('unfollow').addClass('follow').text('Follow').attr('followed', '0');
 					elem.data('disabled', false);
@@ -85,8 +84,6 @@ ce6.user = {
 		}
 	},
 	followUser: function(uid, callback, authCancel) {
-		ce6.ajaxLog(event_types.follow_button_clicked, {time_passed:0});
-		if (viewer_logged_in) {
 			ce6.ajaxJson('/profile/follow_user', 
 				{
 					'uid': uid 
@@ -96,21 +93,6 @@ ce6.user = {
 					if (data.rc) ce6.notifyBar(data.msg, 'error');
 				}
 			)
-		} else {
-			ce6.authDialog.open(
-				function() { 
-					ce6.ajaxJson('/profile/follow_user', 
-						{ 
-							'uid': uid
-						},
-						function(){ window.location.reload(); }
-					)
-				},
-				function() {
-					if (authCancel != undefined) authCancel();
-				}, 'auto', ce6.authDialog.onDemandTitle
-			);
-		}
     },
 	unfollowUser: function(uid, callback) {
 		ce6.ajaxJson('/profile/unfollow_user', { 'uid': uid },
@@ -120,25 +102,12 @@ ce6.user = {
 		)
     },
 	followContest: function(cid, callback, authCancel) {
-		if (viewer_logged_in) {
 			ce6.ajaxJson('/profile/follow_contest', { 'cid': cid },
 				function(data){ 
 					if (data.rc) ce6.notifyBar(data.msg, 'error');
 					if (callback != undefined) callback(data); 
 				}
 			)
-		} else {
-			ce6.authDialog.open(
-				function() { 
-					ce6.ajaxJson('/profile/follow_contest', { 'cid': cid },
-						function(){ window.location.reload(); }
-					)
-				},
-				function() {
-					if (authCancel != undefined) authCancel();
-				}, 'auto', ce6.authDialog.onDemandTitle
-			);
-		}
     },
 	unfollowContest: function(cid, callback) {
 		ce6.ajaxJson('/profile/unfollow_contest', { 'cid': cid },

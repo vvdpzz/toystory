@@ -1,0 +1,42 @@
+<div class="following-contest-feed clearfix">
+  <div class="clearfix">
+    <div class="profile-feed-title profile-feed-badge-title gray">
+      <span>Contest</span>
+    </div>
+    <div class="profile-feed-body">
+      <a class='contest-prize-badge' href='/contests/<%= contest.id %>'>
+        <div class='credits-box-container-sm'>
+          <div class='contest-prize'> <%= contest.credits %> </div>
+        </div>
+      </a>
+      <a href="/contests/<%= contest.id %>" class="contest-title">
+        <span class='profile-feed-badge-title'><%= contest.title %></span>
+      </a>
+    </div>
+  </div>
+  <div class="clearfix">
+    <div class="profile-feed-title gray">
+        <span>Description</span>
+    </div>
+    <div class="profile-feed-body">
+      <div class="contest-preview">
+        <div class="contest-description ellipsis multiline truncate" href='/contests/<%= contest.id %>'>
+          <%= contest.content %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix">
+     <div class="profile-feed-title gray">
+        <span>Extra info</span>
+    </div>
+    <div class="profile-feed-body">
+      <span><b><%= contest.entries_count %></b>
+          entries
+      </span> &middot;
+      <span><b><%= contest.votes_count %></b>
+          vote
+      </span>
+    </div>
+  </div>
+</div>

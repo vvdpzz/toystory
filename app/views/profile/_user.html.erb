@@ -3,13 +3,15 @@
         <img width="50px" height="50px" src="http://deco-00.prizes.org/r/3/0002/dl/1_ouDnJR6T8j7TM_rPpc8xjxBJ9JHYCI/ce6_profile_img" alt="<%= user.username %>">
     </div>
     <div class="follower-feed-name">
-        <a href="/profile?uid=<%= user.id%>"><%= user.username %></a>
+        <a href="/users/<%= user.id%>"><%= user.username %></a>
         <span class="verified"></span>
         <br>
         <span class="follower-description"><%= user.profile.description %></span>
     </div>
     <div class="follow-button">
-        <% if is_followed?(user.id) %>
+        <% if user.id == current_user.id %>
+          It's you
+        <% elsif is_followed?(user.id) %>
           <button class="unfollow" followed="1" uid="<%= user.id %>">Unfollow</button>
         <% else %>
           <button class="follow" followed="0" uid="<%= user.id %>">follow</button>
