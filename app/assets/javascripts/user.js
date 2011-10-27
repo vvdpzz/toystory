@@ -1,3 +1,4 @@
+var ce6 = ce6 || {};
 ce6.user = {
 	charLimit: {
 		username: 40,
@@ -39,11 +40,13 @@ ce6.user = {
 		$('#profile-user-detail-location .edit-tab').live('click', ce6.user.setLocation);
 		$('#profile-user-detail-introduction .edit-tab').live('click', ce6.user.setIntroduction);
 		$('#profile-user-detail-website .edit-tab').live('click', ce6.user.setWebsite);
-		$('#profile-user-detail-categories .edit-tab').live('click', ce6.user.setCategories);
+	//	$('#profile-user-detail-categories .edit-tab').live('click', ce6.user.setCategories);
 		$('#profile-send-message').click(ce6.user.sendPrivateMessage);
 		$('button.external-link').click(ce6.user.redirect);
 		ce6.user.hookTextareaMaxlength();
+		
 		ce6.user.showAddOrEditWebsite();
+			
     /* ce6.user.showCategories();
 		if (profileOwner.is_myself) {
 			ce6.user.initConnections();
@@ -211,7 +214,7 @@ ce6.user = {
 		});
 	},
 
-	setCategories: function(e) {
+/*	setCategories: function(e) {
 		ce6.user.initCategoriesSelection();
 		ce6.user.inlineEdit({
 			editor: 'categories',
@@ -257,7 +260,7 @@ ce6.user = {
 		$('#profile-categories-container').append(dom);
 	},
 
-/*	showCategories: function() {
+	showCategories: function() {
 		var render_html = '';
 		if (profileOwner.categories.length > 0) {
 			var length = profileOwner.categories.length;
@@ -286,6 +289,7 @@ ce6.user = {
 			$('.profile-edit-website').show();
 			$('.profile-add-website').hide();
 		} else {
+		  alert("out");
 			$('.profile-website').attr('href', '');
 			$('.profile-edit-website').hide();
 			$('.profile-add-website').show();

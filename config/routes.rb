@@ -27,7 +27,20 @@ Toystory::Application.routes.draw do
       post :generate_order
     end
   end
-  
+  resources :profile, :only => [] do
+    collection do
+      post "follow_user"
+      post "unfollow_user"
+      post "follow_contest"
+      post "unfollow_contest"
+      post "update_username"
+      post "update_description"
+      post "update_location"
+      post "update_introduction"
+      post "update_website"
+      get "load_users"
+    end
+  end
   resources :autosave, :only => [] do
     collection do
       post "save_creation"
