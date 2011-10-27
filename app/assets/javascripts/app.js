@@ -62,6 +62,11 @@ $(function() {
 	//setup placeholder
 	$('.unselectable').unselectable();
 
+	// nav bar event binding
+	if ('main' != surface ) {
+		ce6.nav.init();
+	}
+
 	setToolTip('.feed-blind-badge, .blind-badge', {
 		text: 'Blind contest is a contest where only the contest creator can see all entries. Individual participants can only see their own entries. All entries will be public when the contest ends.', 
 		position: 'bottom', 

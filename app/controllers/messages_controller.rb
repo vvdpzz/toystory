@@ -17,13 +17,13 @@ class MessagesController < ApplicationController
       hash = {}
       unread_count = $redis.get(key + ":unreadcount")
       hash[:unread_message_count] = unread_count
-      if unread_count.to_i > 0
-        hash[:last_message_is_outgoing] = false
-      else
+      if current_user.id == last_message["sender_id"]
         hash[:last_message_is_outgoing] = true
+      else
+        hash[:last_message_is_outgoing] = false
       end
       hash[:last_message]   = last_message["text"]
-      if conver_id == last_message["sender_id"].to_s
+      if conver_id == last_message["sender_id"]
         hash[:friend_name]    = last_message["sender_name"]
       else
         hash[:friend_name]    = last_message["receiver_name"]
@@ -74,8 +74,12 @@ class MessagesController < ApplicationController
     hash = {}
     hash[:created_at]     = Time.now
     hash[:text]           = params[:text]
-    hash[:sender_id]      = sender.id
+    hash[:sender_id]      = sender.id.to_s
     hash[:sender_name]    = sender.username
+    
+    $redis.rpush("messages:#{receiver.id}:unread_messages", MultiJson.encode(hash))
+    Pusher["presence-channel_#{receiver.id}"].trigger('message_created', MultiJson.encode(hash))
+    
     hash[:receiver_id]    = receiver.id.to_s
     hash[:receiver_name]  = receiver.username
     
@@ -85,7 +89,10 @@ class MessagesController < ApplicationController
     $redis.zadd("messages:#{receiver.id}", receiver_conver_timecount, "#{sender.id}")
     $redis.rpush("messages:#{sender.id}:#{receiver.id}", MultiJson.encode(hash))
     $redis.rpush("messages:#{receiver.id}:#{sender.id}", MultiJson.encode(hash))
+    
     $redis.incr("messages:#{receiver.id}:#{sender.id}:unreadcount")
+    $redis.incr("messages:#{receiver.id}:unreadcount")
+    
     render :json => { :outgoing => "", :rc => 0 }    
   end
   
@@ -94,11 +101,18 @@ class MessagesController < ApplicationController
   end
   
   def update_last_viewed
-    
+    $redis.del("messages:#{current_user.id}:unread_messages")
+    $redis.del("messages:#{current_user.id}:unreadcount")
+    render :json => { :rc => 0 }
   end
   
   def load_messages_on_navbar
-    
+    unread_message_list = $redis.lrange("messages:#{current_user.id}:unread_messages", 0, -1)
+    unread_message_list.collect! do |message|
+      MultiJson.decode(message)
+    end
+    unread_count = $redis.get("messages:#{current_user.id}:unreadcount")
+    render :json => { :count => unread_count, :messages => unread_message_list, :rc => 0 }
   end
   
   def load_contact_list
