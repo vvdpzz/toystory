@@ -12,9 +12,9 @@ class ProfileController < ApplicationController
   end
   
   def unfollow_user
-    if User.select("id").find_by_id(params[:uid]) && $redis.sismember("users:#{user_id}.following_users", params[:uid])
-      $redis.serm("users:#{current_user.id}.following_users", params[:uid])
-      $redis.serm("users:#{params[:uid]}.follower_users", current_user.id)
+    if User.select("id").find_by_id(params[:uid]) && $redis.sismember("users:#{current_user.id}.following_users", params[:uid])
+      $redis.srem("users:#{current_user.id}.following_users", params[:uid])
+      $redis.srem("users:#{params[:uid]}.follower_users", current_user.id)
       $redis.hdel("users:#{current_user.id}.following_users.info", params[:udi])
       render json: {result: [1, 1], rc: 0}
     else
@@ -34,8 +34,8 @@ class ProfileController < ApplicationController
   
   def unfollow_contest
     if Contest.select("id").find_by_id(params[:cid]) && $redis.sismember("users:#{current_user.id}.following_contests", params[:cid])
-      $redis.serm("users:#{current_user.id}.following_contests", params[:cid])
-      $redis.serm("contests:#{params[:cid]}.follower_users", current_user.id)
+      $redis.srem("users:#{current_user.id}.following_contests", params[:cid])
+      $redis.srem("contests:#{params[:cid]}.follower_users", current_user.id)
       render nothing: true
     else
       render json: {msg: "follow faild", rc: 1}
@@ -119,13 +119,11 @@ class ProfileController < ApplicationController
   end
   
   def load_users
-    if params[:direction] == "1"
+    if params[:direction] == "1" 
       uids = $redis.smembers("users:#{params[:uid]}.follower_users")
     else
       uids = $redis.smembers("users:#{params[:uid]}.following_users")
     end
-    puts ('*' * 100)
-    puts uids.to_s
     @users = User.find(uids, :include => :profile)
     if @users.present?
       render partial: "user", :collection => @users, layout: false
@@ -134,6 +132,15 @@ class ProfileController < ApplicationController
     end
   end
   
+  def load_contests
+    cids = $redis.smembers("users:#{params[:uid]}.following_contests")
+    @contests = Contest.find(cids)
+    if @contests.present?
+      render partial: "contest", :collection => @contests, layout: false
+    else
+      render nothing: true
+    end
+  end
   
   protected
     def get_current_user_profile

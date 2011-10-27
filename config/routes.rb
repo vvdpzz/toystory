@@ -44,6 +44,7 @@ Toystory::Application.routes.draw do
       post "update_introduction"
       post "update_website"
       get "load_users"
+      get "load_contests"
     end
   end
   resources :autosave, :only => [] do

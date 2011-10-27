@@ -3,24 +3,34 @@
     <div class='user-display-pic-outer'>
       <img target-width='156' id='user-mugshot' class="user-display-pic" src="/assets/profile.jpg" onload="javascript:centralizeLargePic(this);" />
     </div>
+    <% if @is_myself %>
     <div class="profile-image-tab">
       <a href="#" id='user-photo-edit' class="edit-tab">edit</a>&sdot;
       <a href="#" id='user-photo-del' class="delete-tab">delete</a>
     </div>
-    <div class="profile-relation-button clearfix">
-    </div>
-    <div id="profile-tab-container">
-      <a id='profile-widget-tab' class='feed-tab-selected'>
-        <span class="ui-icons ui-icons-position profile-contest-holder-icon"></span>
-        <span class="profile-contest-holder-text">About Me</span>
-        <div class='feed-tab-arrow' style="display:block;"></div>
-      </a>
-      <a id='profile-connect-tab' class='feed-tab'>
-        <span class="ui-icons ui-icons-position profile-connection-icon"></span>
-        <span class="profile-contest-holder-text">Follows</span>
-        <div class='feed-tab-arrow'></div>
-      </a>
-    </div>
+      <% else %>
+        <div class="profile-relation-button clearfix">
+          <% if is_followed?(@user.id) %>
+        	  <button class="unfollow" followed="1" uid="<%= @user.id %>">Unfollow</button>
+        	<% else %>
+        	  <button class="follow" followed="0" uid="<%= @user.id %>">Follow</button> 
+        	<% end %>
+        	<button id="profile-send-message" class="blue-small">Message</button>
+        </div>
+      <% end %>
+      <div id="profile-tab-container">
+        <a id='profile-widget-tab' class='feed-tab-selected'>
+          <span class="ui-icons ui-icons-position profile-contest-holder-icon"></span>
+          <span class="profile-contest-holder-text">About Me</span>
+          <div class='feed-tab-arrow' style="display:block;"></div>
+        </a>
+        <a id='profile-connect-tab' class='feed-tab'>
+          <span class="ui-icons ui-icons-position profile-connection-icon"></span>
+          <span class="profile-contest-holder-text">Follows</span>
+          <div class='feed-tab-arrow'></div>
+        </a>
+      </div>
+  
   </div>
    <div class="clearfix"></div>
 </div>
@@ -30,53 +40,55 @@
     <div id="profile-user-detail-username">
       <a class="profile-username" href="/users/<%= @user.id %>"><%= @user.username %></a>
       <span class="verified"></span>
+      <% if @is_myself %>
       <a class="edit-tab" id='user-name-edit'>edit</a>
+      <% end %>
     </div>
+    <% if @is_myself %>
     <div id="profile-user-detail-username-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
       <input type="text" class="profile-name-box"></input>
       <div class="gray float-left" id="profile-username-count">40</div>
       <button id="profile-username-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
       <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
     </div>
-    <div id="profile-view-mode">
-      <a class="profile-pseudo-button lightgray" href="http://prizes.org/<%= @user.username %>-3?public=1">View as Public</a>
-    </div>
+    <% end %>
   </div>
   <div id="profile-userinfo" class="profile-userinfo-box">
     <div class="nav-arrow-container">
         <div class="nav-arrow-border"></div>
         <div class="nav-arrow"></div>
     </div>
-     <div id="profile-user-detail">
+    <div id="profile-user-detail">
+      <% if @is_myself %>
        <div id="profile-user-detail-introduction-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
          <textarea maxlength="550" class="profile-textarea-box selector-introduction" placeholder="Share something about yourself"></textarea>
-          <div class="gray float-left" id="profile-introduction-count">500</div>
-          <button id="profile-introduction-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
-          <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
-       </div>
+                        <div class="gray float-left" id="profile-introduction-count">500</div>
+                        <button id="profile-introduction-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
+                        <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
+                    </div>
        <div id="profile-user-detail-introduction">
-            <span class="profile-introduction"><%= @profile.introduction %></span>
-        <a class="edit-tab" id="user-introduction-edit">edit</a>
+         <span class="profile-introduction">
+           <% if @profile.introduction.present? %>
+            <%= @profile.introduction %>
+          <% else %>
+            Share something about yourself
+          <% end %> 
+         </span>
+          <a class="edit-tab" id="user-introduction-edit">edit</a>
        </div>
-       <div class="profile-entry-line">
-          <div class="profile-entry-title gray">Area of Expertise</div>
-          <div class="profile-entry-value">
-           <div id="profile-user-detail-categories">
-            <span class="profile-categories"></span>
-            <a class="edit-tab" id='user-categories-edit'>edit</a>
-          </div>
-           <div id="profile-user-detail-categories-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none" placeholder="Add Your Expertise">
-             <div id="profile-categories-container" title="Your Expertise"></div>
-             <button id="profile-categories-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
-             <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
-           </div>
-         </div>
-        </div>
+     <% end %>
+    <% if @is_myself %>
        <div class="profile-entry-line">
          <div class="profile-entry-title gray">Occupation</div>
          <div class="profile-entry-value">
            <div id="profile-user-detail-description">
-             <span class="profile-description"><%= @profile.description %></span>
+             <span class="profile-description">
+              <% if @profile.description.present? %>
+                <%= @profile.description %>
+              <% else %>
+              Add Your Headline
+              <% end %>
+             </span>
              <a class="edit-tab" id='user-desc-edit'>edit</a>
            </div>
            <div id="profile-user-detail-description-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
@@ -84,14 +96,31 @@
             <div class="gray float-left" id="profile-description-count">25</div>
             <button id="profile-description-btn" type="button" class="ui-button ui-widget ui-corner-all ui-button-text-only blue ui-state-focus" style="display: inline; "><span class="ui-button-text">Save</span></button>
             <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
-          </div>
          </div>
-       </div>    
+
+         </div>
+       </div>
+     <% elsif @profile.description.present? %> 
+        <div class="profile-entry-line">
+           <div class="profile-entry-title gray">Occupation</div>
+          <div class="profile-entry-value">
+                <%= @profile.description %>
+          </div>
+       </div>
+    <% end %>
+   
+    <% if @is_myself %>
        <div class="profile-entry-line">
          <div class="profile-entry-title gray">Location</div>
          <div class="profile-entry-value">
            <div id="profile-user-detail-location">
-             <span class="profile-location"><%= @profile.location %></span>
+             <span class="profile-location">
+             <% if @profile.location.present? %>
+               <%= @profile.location %>
+            <% else %>
+              Add Your Location
+            <% end %>
+             </span>
              <a class="edit-tab" id='user-location-edit'>edit</a>
            </div>
            <div id="profile-user-detail-location-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
@@ -102,11 +131,28 @@
            </div>
          </div>
        </div>
+     
+     <% elsif @profile.location.present? %>
+        <div class="profile-entry-line">
+           <div class="profile-entry-title gray">Location</div>
+           <div class="profile-entry-value">
+              @profile.location
+          </div>
+         <div>
+     <% end %>
+     
+     <% if @is_myself %>
        <div class="profile-entry-line">
          <div class="profile-entry-title gray">Website</div>
          <div class="profile-entry-value">
            <div id="profile-user-detail-website">
-             <span class="profile-website"><%= @profile.website %></span>
+             <span class="profile-website">
+               <% if @profile.website.present? %>
+                <%= @profile.website %>
+               <% else %>
+                Add your website
+               <% end %>
+             </span>
              <a class="edit-tab" id="user-website-edit">edit</a>
            </div>
            <div id="profile-user-detail-website-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
@@ -116,6 +162,15 @@
            </div>
          </div>
        </div>
+       <% elsif @profile.website.present?%>
+        <div class="profile-entry-line">
+           <div class="profile-entry-title gray">Website</div>
+           <div class="profile-entry-value">
+             @profile.website
+           </div>
+        </div>
+       <% end %>
+       
        <div class="profile-entry-line">
            <div class="profile-entry-title gray">Member Since</div>
            <div class="profile-entry-value">
@@ -124,6 +179,7 @@
        </div>   
      </div>
   </div>
+  <% if @is_myself %>
   <div id="profile-widget-container" uid="<%= @user.id %>" style="display:block;">
     <div id="profile-feed-block-215" widget_type="332" widget_key="215" class="profile-widget-visible">
 
@@ -257,6 +313,7 @@
 
 
   </div>
+  <% end %>
   <div id="profile-connect-container" uid="<%= @user.id %>" style="display:none;">
     <div id="profile-connect-block-1102">
       <div class="profile-widget-title">
@@ -264,7 +321,13 @@
         <span class="ui-icons-title"><%= @user.username%>'s Followers</span>
       </div>
       <div class="profile-feed-container" type="9mvlPYrU8ZvBZTSODCSWrQ">
-        <p class="profile-noconnection-text gray">Has no followers yet.</p>
+        <% if @followers_users == 0 %>
+          <p class="profile-noconnection-text gray">Has no followers yet.</p>
+           <% else %>   
+              <div class="left-preloader-bar">
+                <span class="preloader-icon">Loading...</span>
+              </div>
+        <% end %>
         <div id="user-connect-container-1102" uid="<%= @user.id %>"></div>
       </div>
     </div>
@@ -275,9 +338,13 @@
         <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="IGJ8NWW2dL8guWnBUY1xxw">
-        <div class="left-preloader-bar">
-          <span class="preloader-icon">Loading...</span>
-        </div>
+        <% if @following_users == 0 %>
+          <p class="profile-noconnection-text gray">Has not followed any users yet.</p>
+        <% else %>   
+          <div class="left-preloader-bar">
+            <span class="preloader-icon">Loading...</span>
+          </div>
+        <% end %>
         <div id="user-connect-container-1101" uid="<%= @user.id %>"></div>
       </div>
     </div>
@@ -288,9 +355,13 @@
         <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="sQQ--3DnzwPCsKhheIB6IQ">
-        <div class="left-preloader-bar">
-          <span class="preloader-icon">Loading...</span>
-        </div>
+        <% if @following_contests == 0 %>
+          <p class="profile-noconnection-text gray">Has not followed any contests yet.</p>
+        <% else %>   
+          <div class="left-preloader-bar">
+            <span class="preloader-icon">Loading...</span>
+          </div>
+        <% end %>
         <div id="user-connect-container-1103" uid="<%= @user.id %>"></div>
       </div>
     </div>
@@ -349,19 +420,19 @@
       <div class="side-feed-row">
         <a rel="widget-hyperlink" anchor="profile-connect-block-1102">
           <p class="profile-score-title">FOLLOWERS</p>
-          <p class="profile-score-value">0</p>
+          <p class="profile-score-value"><%= @follower_users %></p>
         </a>
       </div>
       <div class="side-feed-row top-divider-line">
         <a rel="widget-hyperlink" anchor="profile-connect-block-1101">
           <p class="profile-score-title">FOLLOWINGS</p>
-          <p class="profile-score-value">5</p>
+          <p class="profile-score-value"><%= @following_users %></p>
         </a>
       </div>
       <div class="side-feed-row top-divider-line non-bottom-line"> 
         <a rel="widget-hyperlink" anchor="profile-connect-block-1103">
           <p class="profile-score-title">FOLLOWING CONTESTS</p>
-          <p class="profile-score-value">4</p>
+          <p class="profile-score-value"><%= @following_contests %></p>
         </a>
       </div>
     </div>
