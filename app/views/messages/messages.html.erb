@@ -8,7 +8,7 @@
 				<div class="message-container">
 					<div class="message-info">
 						<a href="#" class="owner-name"></a>
-						<span class="remove-button"></span>
+						<!-- <span class="remove-button"></span> -->
 						<span class="message-date"></span>
 					</div>
 					<div class="message-body"></div>
@@ -17,7 +17,7 @@
 
 			</div>
 			<div class="message-header-fixed">
-				<span class="message-page-title">陈政宇</span>
+				<span class="message-page-title"><%= @friend.username %></span>
 				<a href="/messages" id="btn-back-to-conversations">Back to Messages</a>
 			</div>
 			<div class="message-border-shadow"></div>
@@ -32,6 +32,10 @@
 	
 <script type="text/javascript" charset="utf-8">
 	var messageFriendToken = "<%= params[:friend_token]%>"
-
-	ce6.message.initMessageView();
+	var surface = "message_box.message_view";
+	var viewer = {
+		name: "<%= current_user.username%>",
+		token: "<%= current_user.id%>",
+		picture: "<%= current_user.picture %>"
+	}
 </script>

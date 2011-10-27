@@ -2,7 +2,7 @@ class ProfileController < ApplicationController
   def follow_user
     if user = User.select("id,username,picture").find_by_id params[:uid]
       $redis.sadd("users:#{current_user.id}.follow_users", params[:uid])
-      $redis.hset("users:#{current_user.id}.follow_users.info", params[:uid], MultiJson.encode(user))
+      $redis.hset("users:#{current_user.id}.follow_users.info", params[:uid], MultiJson.encode(user.attributes.slice("id","username","picture")))
       render :json => {:msg => "", :rc => 0}
     else
       render :json => {:msg => "关注失败", :rc => 1}

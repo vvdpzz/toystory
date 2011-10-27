@@ -291,9 +291,9 @@ ce6.message = (function() {
 		box.find('.message-info .message-date').html(data.time_created);
 		box.find('.message-body').html(data.text);
 
-		box.find('.message-info .remove-button').click(function(e){
-			removeMessage(data.message_token);
-		});
+		// box.find('.message-info .remove-button').click(function(e){
+		// 	removeMessage(data.message_token);
+		// });
 		return box;
 	}
 

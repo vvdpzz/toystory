@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
   end
   
   def messages
-    
+    @friend = User.select("username").find_by_id params[:friend_token]
   end
   
   def load_messages
