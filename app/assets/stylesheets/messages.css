@@ -117,7 +117,7 @@ Message Box - conversation View
 
 .message-header{
 	border-bottom: 1px solid #999;
-	width: 630px;
+	width: 640px;
 	height: 30px;
 }
 
@@ -138,7 +138,7 @@ Message Box - conversation View
 	border-bottom: 1px solid #ccc;
 	cursor: pointer;
 	height: 70px;
-	width: 628px;
+	width: 638px;
 }
 .conversation-box:hover {
 	background-color:#d9ebff;
@@ -211,7 +211,7 @@ Message Box - conversation View
 #conversations-empty {
 	padding: 20px 0;
 	text-align: center;
-	width: 630px;
+	width: 640px;
 	display: none;
 	color: #666;
 }
@@ -226,7 +226,7 @@ Message Box - Message View
 	padding-top: 15px;
 	padding-bottom: 5px;
 	top: 40px;
-	width: 630px;
+	width: 640px;
 	z-index: 9;
 }
 
@@ -264,18 +264,18 @@ Message Box - Message View
 	top: 85px;
 	height: 4px;
 	background-color: rgba(238, 238, 238, .75);
-	width: 630px;
+	width: 640px;
 	display: none;
 	z-index: -1;
 }
 
 #messages-container {
-	width: 630px;
+	width: 640px;
 	margin-top: 30px;
 }
 
 .message-reply-box {
-	width: 630px;
+	width: 640px;
 	height: 163px;
 	background-color: #f2f6fb;
 	border-top: 1px solid #999;
@@ -297,7 +297,7 @@ Message Box - Message View
 }
 
 .message-entry, .message-first-entry {
-	width: 628px;
+	width: 638px;
 	background: #fff;
 	border-right: 1px solid #ccc;
 	border-left: 1px solid #ccc;
@@ -364,4 +364,7 @@ Message Box - Message View
 	font-size: 14px;
 	margin-right: 10px;
 	overflow-x: hidden;
+}	
+#page-container {
+	min-height: 300px;
 }

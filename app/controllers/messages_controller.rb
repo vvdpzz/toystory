@@ -17,10 +17,10 @@ class MessagesController < ApplicationController
       hash = {}
       unread_count = $redis.get(key + ":unreadcount")
       hash[:unread_message_count] = unread_count
-      if unread_count.to_i > 0
-        hash[:last_message_is_outgoing] = false
-      else
+      if current_user.id == last_message["sender_id"]
         hash[:last_message_is_outgoing] = true
+      else
+        hash[:last_message_is_outgoing] = false
       end
       hash[:last_message]   = last_message["text"]
       if conver_id == last_message["sender_id"].to_s

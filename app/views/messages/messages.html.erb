@@ -1,5 +1,4 @@
-<div id="page-layout">
-	<div id="page-container">
+
 		<div id="messages-container">
 			<div id="message-entry-proto" class="message-entry clearfix" style="display: none">
 				<div class="friend-picture">
@@ -27,9 +26,6 @@
 				<button id="btn-reply-message" class="blue-small btn-disabled">Send</button>
 				<div id="reply-message-countdown">1000</div>
 			</div>
-		</div>
-	</div>
-	
 <script type="text/javascript" charset="utf-8">
 	var messageFriendToken = "<%= params[:friend_token]%>"
 	var surface = "message_box.message_view";
@@ -38,4 +34,8 @@
 		token: "<%= current_user.id%>",
 		picture: "<%= current_user.picture %>"
 	}
+	
+	$(document).ready(function() {
+	  $(".page-footer").remove();
+	});
 </script>
