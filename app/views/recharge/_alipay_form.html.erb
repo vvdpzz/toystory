@@ -1,0 +1,12 @@
+<%= payment_service_for order.id, ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT, :service => :alipay, :html => { :id => 'payment-form', :method => :get } do |service| %>
+  <% service.service ActiveMerchant::Billing::Integrations::Alipay::Helper::CREATE_DIRECT_PAY_BY_USER %>
+  <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+  <% service.total_fee order.credits %>
+  <% service.subject "帐户充值" %>
+  <% service.body "略晓帐户充值" %>
+  <% service.charset "utf-8" %>
+  <% service.payment_type 1 %>
+  <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
+  <% service.return_url url_for(:only_path => false, :action => 'done') %>
+  <% service.sign %>
+<% end %>

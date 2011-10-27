@@ -718,8 +718,12 @@ ce6.ofacDialog = function () {
                     $(this).dialog("close");
                     a.errorCb && a.errorCb()
                 },
-                Continue: function () {
-                    a.verify()
+                Alipay: function () {
+                    $($('#payment-form').get(0).utf8).remove();
+					var url = "https://www.alipay.com/cooperate/gateway.do?" + $('#payment-form').serialize();
+					window.open(url,"_blank");
+					
+					
                 }
             }
         },
@@ -818,14 +822,16 @@ ce6.ofacDialog = function () {
 }();
 
 ce6.openPayments = function(gold, callback, cancelback, shop_descriptor){
-	ce6.ofacDialog.open(function() {
-		var params = {
-			callback: callback,
-			cancelback: cancelback,
-			shop_descriptor: shop_descriptor
-		};
-		ce6.payments.open(gold, params);
-	}, cancelback, false);
+	ce6.ajaxJsonPost("/recharge/generate_order", {
+        credits: gold
+    }, function (data) {
+		if (data.rc == 0)
+		{
+			$("#order-number").html(data.orderId);
+			$("#alipay-form").html(data.html);
+			$("#dlg-ofac").dialog("open");
+		}
+    });
 };
 
 ce6.payCreateContest = function(gold) {
