@@ -28,7 +28,7 @@
 <div class="profile-3column-middle">
   <div class="clearfix profile-username-container">
     <div id="profile-user-detail-username">
-      <a class="profile-username" href="http://prizes.org/Feipinghuang-3">feipinghuang</a>
+      <a class="profile-username" href="/users/<%= @user.id %>"><%= @user.username %></a>
       <span class="verified"></span>
       <a class="edit-tab" id='user-name-edit'>edit</a>
     </div>
@@ -39,7 +39,7 @@
       <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
     </div>
     <div id="profile-view-mode">
-      <a class="profile-pseudo-button lightgray" href="http://prizes.org/Feipinghuang-3?public=1">View as Public</a>
+      <a class="profile-pseudo-button lightgray" href="http://prizes.org/<%= @user.username %>-3?public=1">View as Public</a>
     </div>
   </div>
   <div id="profile-userinfo" class="profile-userinfo-box">
@@ -55,7 +55,7 @@
           <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
        </div>
        <div id="profile-user-detail-introduction">
-            <span class="profile-introduction">oh! I&#39;m a web designer</span>
+            <span class="profile-introduction"><%= @profile.introduction %></span>
         <a class="edit-tab" id="user-introduction-edit">edit</a>
        </div>
        <div class="profile-entry-line">
@@ -76,7 +76,7 @@
          <div class="profile-entry-title gray">Occupation</div>
          <div class="profile-entry-value">
            <div id="profile-user-detail-description">
-             <span class="profile-description">Programmer webdesign</span>
+             <span class="profile-description"><%= @profile.description %></span>
              <a class="edit-tab" id='user-desc-edit'>edit</a>
            </div>
            <div id="profile-user-detail-description-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
@@ -91,7 +91,7 @@
          <div class="profile-entry-title gray">Location</div>
          <div class="profile-entry-value">
            <div id="profile-user-detail-location">
-             <span class="profile-location">Changsha</span>
+             <span class="profile-location"><%= @profile.location %></span>
              <a class="edit-tab" id='user-location-edit'>edit</a>
            </div>
            <div id="profile-user-detail-location-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
@@ -106,7 +106,7 @@
          <div class="profile-entry-title gray">Website</div>
          <div class="profile-entry-value">
            <div id="profile-user-detail-website">
-             <span class="profile-website">Add your website</span>
+             <span class="profile-website"><%= @profile.website %></span>
              <a class="edit-tab" id="user-website-edit">edit</a>
            </div>
            <div id="profile-user-detail-website-edit" class="profile-edit-bar profile-user-detail-input-area" style="display:none">
@@ -119,12 +119,12 @@
        <div class="profile-entry-line">
            <div class="profile-entry-title gray">Member Since</div>
            <div class="profile-entry-value">
-               2011-10-18
+               <%= @user.created_at %>
            </div>
        </div>   
      </div>
   </div>
-  <div id="profile-widget-container" uid="fggNrzLCA8ZtPrzKevtlcg" style="display:block;">
+  <div id="profile-widget-container" uid="<%= @user.id %>" style="display:block;">
     <div id="profile-feed-block-215" widget_type="332" widget_key="215" class="profile-widget-visible">
 
     </div>
@@ -133,7 +133,7 @@
       <div class="profile-widget-title clearfix">
         <div class="profile-widget-title-icon">
           <span class="ui-icons ui-icons-position" id="portfolio-icon"></span>
-          <span class="ui-icons-title">feipinghuang's Work</span>
+          <span class="ui-icons-title"><%= @user.username%>'s Work</span>
         </div>
         <div class="profile-widget-action-container" widget_type="333" widget_key="portfolio">
           <span class="profile-widget-action active">
@@ -257,41 +257,41 @@
 
 
   </div>
-  <div id="profile-connect-container" uid="fggNrzLCA8ZtPrzKevtlcg" style="display:none;">
+  <div id="profile-connect-container" uid="<%= @user.id %>" style="display:none;">
     <div id="profile-connect-block-1102">
       <div class="profile-widget-title">
         <span class="ui-icons ui-icons-position" id="follows-icon"></span>
-        <span class="ui-icons-title">feipinghuang's Followers</span>
+        <span class="ui-icons-title"><%= @user.username%>'s Followers</span>
       </div>
       <div class="profile-feed-container" type="9mvlPYrU8ZvBZTSODCSWrQ">
         <p class="profile-noconnection-text gray">Has no followers yet.</p>
-        <div id="user-connect-container-1102" uid="fggNrzLCA8ZtPrzKevtlcg"></div>
+        <div id="user-connect-container-1102" uid="<%= @user.id %>"></div>
       </div>
     </div>
 
     <div id="profile-connect-block-1101">
       <div class="profile-widget-title">
         <span class="ui-icons ui-icons-position" id="followings-icon"></span>
-        <span class="ui-icons-title">feipinghuang is Following</span>
+        <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="IGJ8NWW2dL8guWnBUY1xxw">
         <div class="left-preloader-bar">
           <span class="preloader-icon">Loading...</span>
         </div>
-        <div id="user-connect-container-1101" uid="fggNrzLCA8ZtPrzKevtlcg"></div>
+        <div id="user-connect-container-1101" uid="<%= @user.id %>"></div>
       </div>
     </div>
 
     <div id="profile-connect-block-1103">
       <div class="profile-widget-title">
         <span class="ui-icons ui-icons-position" id="following-contests-icon"></span>
-        <span class="ui-icons-title">feipinghuang is Following</span>
+        <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="sQQ--3DnzwPCsKhheIB6IQ">
         <div class="left-preloader-bar">
           <span class="preloader-icon">Loading...</span>
         </div>
-        <div id="user-connect-container-1103" uid="fggNrzLCA8ZtPrzKevtlcg"></div>
+        <div id="user-connect-container-1103" uid="<%= @user.id %>"></div>
       </div>
     </div>
 
@@ -302,7 +302,7 @@
   <div id="profile-widget-stats-container" style="display:block;">
     <div class="profile-widget-title">
       <span class="ui-icons ui-icons-position" id="contest-status-icon"></span>
-      <span class="ui-icons-title">feipinghuang's Stats</span>
+      <span class="ui-icons-title"><%= @user.username %>'s Stats</span>
     </div>
     <div class="side-feed">
       <div class="side-feed-row">
@@ -343,7 +343,7 @@
   <div id="profile-connect-stats-container" style="display:none;">
     <div class="profile-widget-title">
       <span class="ui-icons ui-icons-position" id="contest-status-icon"></span>
-      <span class="ui-icons-title">feipinghuang's Stats</span>
+      <span class="ui-icons-title"><%= @user.username %>'s Stats</span>
     </div>
     <div class="side-feed">
       <div class="side-feed-row">
@@ -369,9 +369,7 @@
   </div>
 </div>
 
- 
-<script type="text/javascript">
-var FEED_ITEM_TYPE = {"FOLLOW_TAG": 213, "ENTRY_SUBMITTED": 202, "FOLLOW_CONTEST": 211, "FOLLOW_USER": 210, "TAGGED_AS": 212, "VOTE": 203, "CONTEST_CREATED": 201, "CONTEST_WON": 215, "PICK_WINNER": 204, "CONTEST_WON_JFF": 216, "HONORABLE_MENTION": 214};		var CONNECT_TYPE = {"FOLLOWING_USER": 1101, "FOLLOWER_USER": 1102, "FOLLOWING_CONTEST": 1103};		var UI_WIDGET_TYPE = {"FEED": 332, "HTML": 333};
+<script type="text/javascript" charset="utf-8">
 	var surface = 'user.profile'; 
 	var centralizeLargePic = function(obj){	
 		if ($(obj).attr('target-width')){		
@@ -381,7 +379,22 @@ var FEED_ITEM_TYPE = {"FOLLOW_TAG": 213, "ENTRY_SUBMITTED": 202, "FOLLOW_CONTEST
 	  	offsetY = (parseInt($(obj).attr('target-height'), 10) - $(obj).height()) / 2;	
 			$(obj).css('top', offsetY + 'px');		
 		}
-	}; 
-	ce6.profile = ce6.profile || {};		ce6.profile.feeds = {"feeds": [{"has_more": false, "item_type": 201, "feeds": [], "empty_message": "You haven&#39;t created any contests.&lt;br&gt;&lt;a href=&quot;/create&quot;&gt;Create a contest now!&lt;/a&gt;"}, {"has_more": false, "item_type": 202, "feeds": [], "empty_message": "You haven&#39;t entered any contests.&lt;br&gt;&lt;a href=&quot;/home&quot;&gt;Check out live contests now!&lt;/a&gt;"}, {"has_more": false, "item_type": 215, "feeds": [], "empty_message": ""}, {"has_more": false, "item_type": 214, "feeds": [], "empty_message": ""}], "rc": 0};
+	};
+	var profileOwner = {
+		name : "<%= @user.username %>",
+		is_myself : "<%= @is_myself %>",
+		is_public: 0,
+		picture : "<%= @user.picture %>",
+		defaultPicture : "http://03.static.prizes.org/version/20111026045751/ce6/images/default-profile-photo.png",
+		token : "<%= @user.id %>",
+		description: "<%= @profile.description %>",
+		location: "<%= @profile.location %>",
+		introduction: "<%= @profile.introduction %>",
+		website: "hello.me",
+		contest_created_count: 0,
+		entry_created_count: 0,
+	}
+	ce6.profile = ce6.profile || {};
+	ce6.profile.feeds = {"feeds": [{"has_more": false, "item_type": 201, "feeds": [], "empty_message": "You haven&#39;t created any contests.&lt;br&gt;&lt;a href=&quot;/create&quot;&gt;Create a contest now!&lt;/a&gt;"}, {"has_more": false, "item_type": 202, "feeds": [], "empty_message": "You haven&#39;t entered any contests.&lt;br&gt;&lt;a href=&quot;/home&quot;&gt;Check out live contests now!&lt;/a&gt;"}, {"has_more": false, "item_type": 215, "feeds": [], "empty_message": ""}, {"has_more": false, "item_type": 214, "feeds": [], "empty_message": ""}], "rc": 0};
 </script> 
 

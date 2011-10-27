@@ -116,7 +116,7 @@ class MessagesController < ApplicationController
   end
   
   def load_contact_list
-    contact_list = $redis.hvals("users:#{current_user.id}.follow_users.info")
+    contact_list = $redis.hvals("users:#{current_user.id}.following_users.info")
     contact_list.collect! { |user| MultiJson.decode(user) }
     render :json => { :contact_list => contact_list }
   end

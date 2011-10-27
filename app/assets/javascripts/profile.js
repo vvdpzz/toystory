@@ -647,7 +647,7 @@ $(function () {
     ce6.followingContest.dom = $("#user-connect-container-" + CONNECT_TYPE.FOLLOWING_CONTEST);
     ce6.followingContest.ownerSid = ce6.followingContest.dom.attr("uid");
     ce6.followingContest.lastItem = null;
-    ce6.followingContest.loadContests()
+    ce6.followingContest.loadContests();
 });
 ce6.followingContest = {
     loadContests: function (a) {

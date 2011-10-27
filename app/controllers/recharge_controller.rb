@@ -14,6 +14,15 @@ class RechargeController < ApplicationController
     end
   end
   
+  def generate_order
+    order = current_user.recharge_records.build credits: params[:credits]
+    if order.save
+      render :json => {:rc => 0, :orderId => order.id, :orderCredits => order.credits, :html => render_to_string(:partial => 'alipay_form', :locals => {:order => order})}
+    else
+      render :json => {:rc => 1}
+    end
+  end
+  
   def show
     @order = current_user.recharge_records.find params[:id]
   end
