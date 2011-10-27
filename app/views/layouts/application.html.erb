@@ -29,9 +29,133 @@
 								</ul>
 							</div>
 						</div>
-						<div class="header-right">
-							
-						</div>
+						
+						
+						<div class="header-right logged-in">
+							<div id="user-info" class="drop-info-menu inactive-menu">
+								<div id="user-drop-links" class="hand-cursor user-drop-icon">
+									<img id="user-image" src="http://deco-00.prizes.org/r/3/0000/dl/oBcqZixXzz-d85lrLlqbuVejUMU1JB3N/ce6_profile_img">
+									<span id="user-name"><%= current_user.username %></span>
+								</div>
+								<div id="dropdown-links" class="dropdown-menu">
+									<div class="nav-arrow-border"></div>
+									<div class="nav-arrow"></div>
+									<a id="credit-history-btn" href="http://prizes.org/history/credit_history" logdata="button_type=4010&amp;event_type=button_clicked" class="dropdown-menu-item bottom-divider-line">
+										History
+									</a>
+									<a href="http://prizes.org/setting" logdata="button_type=4013&amp;event_type=button_clicked" class="dropdown-menu-item bottom-divider-line">
+										Settings
+									</a>
+									<a id="logout-btn" href="#" class="dropdown-menu-item non-bottom-line">
+										Logout
+									</a>
+								</div>
+							</div>
+							<span class="vertical-divider"></span>
+							<div id="notifications" class="notifications-menu inactive-menu">
+								<div class="icon-outer">
+									<div id="notification-icon" class="notifications-icon hand-cursor " tip-text="Notifications">
+									</div>
+								</div>
+								<div id="notification-menu" class="notification-content" style="display: none; ">
+									<div class="nav-arrow-border"></div>
+									<div class="nav-arrow"></div>
+									<div class="notification-title">
+										Notifications
+									</div>
+									<div id="notification-items">
+										
+									</div>
+									<a class="notification-seeall item-inverse display-block" href="/notification">
+										<span>See All Notifications</span>
+									</a>
+								</div>
+							</div>
+							<span class="vertical-divider"></span>
+							<div id="nav-messages" class="notifications-menu inactive-menu">
+								<div class="icon-outer">
+									<div class="nav-msg-icon hand-cursor" tip-text="Messages">
+										<span id="nav-msg-new-num" style="display: none; "></span>
+									</div>
+								</div>
+								<div id="nav-msg-menu" class="notification-content" style="display: none; ">
+									<div class="nav-arrow-border"></div>
+									<div class="nav-arrow"></div>
+									<div class="notification-title">
+										<span class="notification-title-left">Messages</span>
+										<a id="nav-msg-send" class="notification-right-button" href="#">Send a new message</a>
+									</div>
+									<div id="nav-msg-content">
+										<div id="nav-msg-item-proto" class="notification-item item-inverse" style="display: none">
+											<p class="user-name"></p>
+											<p class="message-preview"></p>
+											<span class="timeago"></span>
+										</div>
+										<div id="nav-msg-empty" class="notification-item empty" style="display: none">
+											You have no new messages.
+										</div>
+									</div>
+										<a class="notification-seeall item-inverse display-block" href="/messages">
+											<span>See All Messages</span>
+										</a>
+									</div>
+								</div>
+								<span class="vertical-divider"></span>
+								<div id="nav-contests" class="notifications-menu inactive-menu">
+									<div class="icon-outer">
+										<div class="nav-contest-icon hand-cursor" tip-text="Active Contests">
+											<!--<div class="nav-contest-icon hand-cursor " tip-text='Active Contests'>
+											<span id="nav-contest-new-num">0</span>-->
+										</div>
+									</div>
+									<div id="nav-contest-menu" class="notification-content" style="display: none; ">
+										<div class="nav-arrow-border"></div>
+										<div class="nav-arrow"></div>
+										<div class="notification-title">
+											<span class="notification-title-left">Active Contests(0)</span>
+										</div>
+										<div id="nav-contest-content">
+											<div id="nav-msg-empty" class="notification-item empty">
+												You have no active contests.
+											</div>
+											<a class="notification-seeall item-inverse display-block" href="/contest/active_contests">
+												<span>See All Active Contests</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<span class="vertical-divider"></span>
+								<div id="user-bonus-balance" class="balance-menu float-right">
+									<div class="icon-outer">
+										<div class="user-bonus-icon hand-cursor" tip-text="Coupons">
+											<span class="balance">
+												<a id="user-bonus-credit" class="orange" logdata="button_type=4004&amp;event_type=button_clicked" href="/history/credit_history">$110</a>
+											</span>
+										</div>
+									</div>
+									<div id="nav-bonus-menu" class="nav-bonus-content">
+										<div class="nav-arrow-border"></div>
+										<div class="nav-arrow"></div>
+										<div class="nav-bonus-container">
+											<span class="">You have $110 coupon credits.
+												Get <b>$110</b> worth of coupons by 
+												<a id="nav-bonus-verify">
+													verifying your account now!
+												</a>
+											</span>
+										</div>
+									</div>
+								</div>
+								<span class="vertical-divider"></span>
+								<div id="user-credit-balance" class="float-right nav-balance" tip-text="Credits">
+									<span class="balance">
+										<a id="user-normal-credit" href="http://prizes.org/history/credit_history" logdata="button_type=4004&amp;event_type=button_clicked">$0</a>
+									</span>
+								</div>
+							</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -462,6 +586,22 @@
   		  is_myself : true
   		};
 		var CONNECT_TYPE = {"FOLLOWING_USER": 1101, "FOLLOWER_USER": 1102, "FOLLOWING_CONTEST": 1103};
+		
+		//pusher
+		var pusher = new Pusher('2f20b4687fdaada149b2');
+		var c = pusher.subscribe("presence-channel_<%= current_user.id %>");
+		
+		c.bind('message_created', function(message) {
+			var elem = ce6.nav.constructMessageItem(message);
+			elem.appendTo('#nav-msg-content');
+			
+			count = 1;
+			if($('#nav-msg-new-num').text().trim() != '')
+				count = parseInt($('#nav-msg-new-num').text().trim()) + 1;
+			$('#nav-msg-new-num').text(count).show();
+			$('.nav-msg-icon').addClass('nav-msg-icon-active');
+			$('#nav-msg-menu .notification-item:last').addClass('non-bottom-line');
+		});
 	</script>
 </body>
 </html>

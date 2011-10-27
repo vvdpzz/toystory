@@ -1,6 +1,9 @@
 Toystory::Application.routes.draw do
 
   root :to => 'contests#index'
+  
+  match 'pusher/auth' => "pusher#auth"
+  
   devise_for :users
   resources :users
   resources :contests do
@@ -17,6 +20,8 @@ Toystory::Application.routes.draw do
       get "load_messages"
       post "remove_conversation"
       post "send_message"
+      get "load_messages_on_navbar"
+      post "update_last_viewed"
     end
   end
 

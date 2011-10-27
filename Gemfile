@@ -9,6 +9,8 @@ gem 'mysql2'
 
 gem 'devise'
 
+gem 'pusher'
+
 gem 'uuidtools'
 
 gem 'hiredis'
