@@ -39,7 +39,7 @@
       <button type="button" class="cancel-tab ui-button ui-widget ui-corner-all ui-button-text-only lightgray button-radius" role="button" aria-disabled="false" style="display: inline;"><span class="ui-button-text">Cancel</span></button>
     </div>
     <div id="profile-view-mode">
-      <a class="profile-pseudo-button lightgray" href="http://prizes.org/Feipinghuang-3?public=1">View as Public</a>
+      <a class="profile-pseudo-button lightgray" href="http://prizes.org/<%= @user.username %>-3?public=1">View as Public</a>
     </div>
   </div>
   <div id="profile-userinfo" class="profile-userinfo-box">
@@ -272,7 +272,7 @@
     <div id="profile-connect-block-1101">
       <div class="profile-widget-title">
         <span class="ui-icons ui-icons-position" id="followings-icon"></span>
-        <span class="ui-icons-title">feipinghuang is Following</span>
+        <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="IGJ8NWW2dL8guWnBUY1xxw">
         <div class="left-preloader-bar">
@@ -285,7 +285,7 @@
     <div id="profile-connect-block-1103">
       <div class="profile-widget-title">
         <span class="ui-icons ui-icons-position" id="following-contests-icon"></span>
-        <span class="ui-icons-title">feipinghuang is Following</span>
+        <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="sQQ--3DnzwPCsKhheIB6IQ">
         <div class="left-preloader-bar">
@@ -302,7 +302,7 @@
   <div id="profile-widget-stats-container" style="display:block;">
     <div class="profile-widget-title">
       <span class="ui-icons ui-icons-position" id="contest-status-icon"></span>
-      <span class="ui-icons-title">feipinghuang's Stats</span>
+      <span class="ui-icons-title"><%= @user.username %>'s Stats</span>
     </div>
     <div class="side-feed">
       <div class="side-feed-row">
@@ -343,7 +343,7 @@
   <div id="profile-connect-stats-container" style="display:none;">
     <div class="profile-widget-title">
       <span class="ui-icons ui-icons-position" id="contest-status-icon"></span>
-      <span class="ui-icons-title">feipinghuang's Stats</span>
+      <span class="ui-icons-title"><%= @user.username %>'s Stats</span>
     </div>
     <div class="side-feed">
       <div class="side-feed-row">
@@ -396,6 +396,5 @@
 	}
 	ce6.profile = ce6.profile || {};
 	ce6.profile.feeds = {"feeds": [{"has_more": false, "item_type": 201, "feeds": [], "empty_message": "You haven&#39;t created any contests.&lt;br&gt;&lt;a href=&quot;/create&quot;&gt;Create a contest now!&lt;/a&gt;"}, {"has_more": false, "item_type": 202, "feeds": [], "empty_message": "You haven&#39;t entered any contests.&lt;br&gt;&lt;a href=&quot;/home&quot;&gt;Check out live contests now!&lt;/a&gt;"}, {"has_more": false, "item_type": 215, "feeds": [], "empty_message": ""}, {"has_more": false, "item_type": 214, "feeds": [], "empty_message": ""}], "rc": 0};
-
 </script> 
 

@@ -119,11 +119,13 @@ class ProfileController < ApplicationController
   end
   
   def load_users
-    if params[:direction] == 1
+    if params[:direction] == "1"
       uids = $redis.smembers("users:#{params[:uid]}.follower_users")
     else
       uids = $redis.smembers("users:#{params[:uid]}.following_users")
     end
+    puts ('*' * 100)
+    puts uids.to_s
     @users = User.find(uids, :include => :profile)
     if @users.present?
       render partial: "user", :collection => @users, layout: false
