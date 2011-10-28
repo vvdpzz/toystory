@@ -258,7 +258,6 @@ ce6.user = {
 			$('.profile-edit-website').show();
 			$('.profile-add-website').hide();
 		} else {
-		  alert("out");
 			$('.profile-website').attr('href', '');
 			$('.profile-edit-website').hide();
 			$('.profile-add-website').show();

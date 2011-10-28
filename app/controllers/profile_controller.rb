@@ -75,8 +75,8 @@ class ProfileController < ApplicationController
   end
   
   def update_website
-    if @profile.update_attribute(:introduction, params[:introduction])
-      render json: {result: @profile.introduction, rc: 0}
+    if @profile.update_attribute(:website, params[:website])
+      render json: {result: @profile.website, rc: 0}
     else
       render json: {msg: "update error", rc: 1}
     end    
