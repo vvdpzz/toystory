@@ -52,6 +52,7 @@ Toystory::Application.routes.draw do
       post "update_location"
       post "update_introduction"
       post "update_website"
+      post "photo_upload_response"
       get "load_users"
       get "load_contests"
     end

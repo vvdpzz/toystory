@@ -46,9 +46,7 @@
 									<a href="/setting" logdata="button_type=4013&amp;event_type=button_clicked" class="dropdown-menu-item bottom-divider-line">
 										Settings
 									</a>
-									<a id="logout-btn" href="#" class="dropdown-menu-item non-bottom-line">
-										Logout
-									</a>
+									<%= link_to "Logout", "/users/sign_out", :id => "logout-btn", :class => "dropdown-menu-item non-bottom-line" %>
 								</div>
 							</div>
 							<span class="vertical-divider"></span>
@@ -203,23 +201,24 @@
 			</div>
 			<div id='send-message-countdown'></div>
 		</div>
+    <div id='dlg-ofac' style="display:none;" class="dlg-plain-content">
+  		<div class='ofac-notice'>
+  			For payment transactions, we're required by law to collect this information from you once.
+  		</div>
+  		<div class='ofac-row'>
+  			<div class='ofac-field' >
+  				<span>Order Number:</span>
+  				<span id="order-number"></span>
+  			</div>
+  		</div>
+  		<div class='ofac-row'>
+  			<div class='ofac-field' id="alipay-form">
+  			</div>
+  		</div>
+  	</div>
 	</div>
 
-	<div id='dlg-ofac' style="display:none;" class="dlg-plain-content">
-		<div class='ofac-notice'>
-			For payment transactions, we're required by law to collect this information from you once.
-		</div>
-		<div class='ofac-row'>
-			<div class='ofac-field' >
-				<span>Order Number:</span>
-				<span id="order-number"></span>
-			</div>
-		</div>
-		<div class='ofac-row'>
-			<div class='ofac-field' id="alipay-form">
-			</div>
-		</div>
-	</div>
+
 
 	<div id="create-confirm" style="display:none;">
 		<div class='contest-detail-container'> 
@@ -305,6 +304,36 @@
 			token: "<%= current_user.id %>",
 			picture: "<%= current_user.picture %>"
 		};
+		
+		$(function(){
+      <% key = Rails.application.config.session_options[:key] %>
+    	var uploadify_script_data = {};
+    	var csrf_param = $('meta[name=csrf-param]').attr('content');
+    	var csrf_token = $('meta[name=csrf-token]').attr('content');
+    	uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token));
+    	uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+
+    	$('#uploadify').uploadify({
+    		uploader  		: '/assets/uploadify.swf',
+    		script    		: '/profile/photo_upload_response',
+    		cancelImg		: '/assets/cancel.png',
+    		auto			: true,
+    		multi			: true,
+    		removeCompleted : true,
+    		fileExt			: '*.jpg;*.jpeg;*.gif;*.png',
+    		fileDesc		: 'Image Files (.JPG, .JPEG, .GIF, .PNG)',
+    		scriptData		: uploadify_script_data,
+    		wmode			: "transparent",
+    		hideButton		: true,
+    		height			: 13,
+    		width			: 34,
+    		queueID			: 'photoUploadQueue',
+    		onComplete		: function(event, ID, fileObj, response, data) {
+    			response = eval('(' + response + ')');
+    			$("#user-mugshot").attr("src", response.picture);
+    		}
+    	});
+    })
 	</script>
 </body>
 </html>
