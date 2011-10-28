@@ -5,6 +5,16 @@ class ProfileController < ApplicationController
       $redis.sadd("users:#{current_user.id}.following_users", params[:uid])
       $redis.sadd("users:#{params[:uid]}.follower_users", current_user.id)
       $redis.hset("users:#{current_user.id}.following_users.info", params[:uid], MultiJson.encode(user))
+      
+      hash = {}
+      hash[:created_at] = Time.now
+      hash[:type] = "follow"
+      hash[:user_id] = current_user.id
+      hash[:username] = current_user.username
+      $redis.incr("notifications:#{params[:uid]}:unreadcount");
+      $redis.lpush("notifications:#{params[:uid]}", MultiJson.encode(hash))
+      Pusher["presence-notifications_#{params[:uid]}"].trigger('notification_created', MultiJson.encode(hash))
+      
       render json: {msg: "", rc: 0}
     else
       render json: {msg: "follow faild", rc: 1}

@@ -55,7 +55,7 @@
 							<div id="notifications" class="notifications-menu inactive-menu">
 								<div class="icon-outer">
 									<div id="notification-icon" class="notifications-icon hand-cursor " tip-text="Notifications">
-										<span id="notification-new-num"></span>
+										<span id="notification-new-num" style="display:none; "></span>
 									</div>
 								</div>
 								<div id="notification-menu" class="notification-content" style="display: none; ">
@@ -64,10 +64,20 @@
 									<div class="notification-title">
 										Notifications
 									</div>
-									<div id="notification-items">
-										
+									<div id="notification-empty" class="notification-item empty non-bottom-line" style="display:none">
+										You have no new notifications.
 									</div>
-									<a class="notification-seeall item-inverse display-block" href="/notification">
+									<div id="notification-items">
+										<a id="follow" href="" class="notification-item item-inverse" style="display:none">
+											<span class="user-name"></span> is now following you.
+											<br><span class="notification-timeago"></span>
+										</a>
+										<a id="entry" href="" class="notification-item item-inverse" style="display:none">
+											<span class="user-name"></span> has submitted an entry for your contest <span id="contest-title"></span>.
+											<br><span class="notification-timeago"></span>
+										</a>
+									</div>
+									<a class="notification-seeall item-inverse display-block" href="/notifications">
 										<span>See All Notifications</span>
 									</a>
 								</div>
@@ -92,7 +102,7 @@
 											<p class="message-preview"></p>
 											<span class="timeago"></span>
 										</div>
-										<div id="nav-msg-empty" class="notification-item empty">
+										<div id="nav-msg-empty" class="notification-item empty" style="display:none">
 											You have no new messages.
 										</div>
 									</div>
@@ -116,14 +126,14 @@
 											<span id="notification-title" class="notification-title-left">Active Contests(0)</span>
 										</div>
 										<div id="nav-contest-content">
-											<div id="nav-ntf-empty" class="notification-item empty">
+											<div id="nav-cnt-empty" class="notification-item empty" style="display:none">
 												You have no active contests.
 											</div>
-												<a  id="nav-ntf-item-proto" href="" class="notification-item item-inverse" style="display:none"></a>
+											<a  id="nav-ntf-item-proto" href="" class="notification-item item-inverse" style="display:none"></a>
 										</div>
-											<a class="notification-seeall item-inverse display-block" href="/contests/active_contests">
-												<span>See All Active Contests</span>
-											</a>
+										<a class="notification-seeall item-inverse display-block" href="/contests/active_contests">
+											<span>See All Active Contests</span>
+										</a>
 									</div>
 								</div>
 								<span class="vertical-divider"></span>
@@ -258,11 +268,11 @@
 		var IS_SUSPENDED = 0;
 		var CONNECT_TYPE = {"FOLLOWING_USER": 1101, "FOLLOWER_USER": 1102, "FOLLOWING_CONTEST": 1103};
 		
-		//pusher
+		//Messages Pusher
 		var pusher = new Pusher('2f20b4687fdaada149b2');
-		var c = pusher.subscribe("presence-channel_<%= current_user.id %>");
+		var message_channel = pusher.subscribe("presence-messages_<%= current_user.id %>");
 		
-		c.bind('message_created', function(message) {
+		message_channel.bind('message_created', function(message) {
 			var elem = ce6.nav.constructMessageItem(message);
 			elem.appendTo('#nav-msg-content');
 			
@@ -273,6 +283,21 @@
 			$('.nav-msg-icon').addClass('nav-msg-icon-active');
 			$('#nav-msg-menu .notification-item:last').addClass('non-bottom-line');
 			$('#nav-msg-empty').hide();
+		});
+		
+		//Notifications Pusher
+		var notification_channel = pusher.subscribe("presence-notifications_<%= current_user.id %>");
+		notification_channel.bind('notification_created', function(notification) {
+			var elem = ce6.nav.contructNotificationItem(notification);
+			elem.appendTo('#notification-items');
+			
+			count = 1;
+			if($('#notification-new-num').text().trim() != '')
+				count = parseInt($('#notification-new-num').text().trim()) + 1;
+			$('#notification-new-num').text(count).show();
+			$('#notification-icon').addClass('notifications-icon-active');
+			$('#notification-menu .notification-item:last').addClass('non-bottom-line');
+			$('#notification-empty').hide();
 		});
 		
 		var viewer = {

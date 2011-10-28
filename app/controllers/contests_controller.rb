@@ -20,7 +20,7 @@ class ContestsController < ApplicationController
     )
     
     # add to Active Contests
-    $redis.lpush("active_contests:#{current_user.id}", MultiJson.encode(contest.attributes.slice("id","title")))
+    $redis.rpush("active_contests:#{current_user.id}", MultiJson.encode(contest.attributes.slice("id","title")))
     $redis.incr("active_contests:#{current_user.id}:count")
     
     # not a just for fun contest
