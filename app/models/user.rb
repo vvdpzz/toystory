@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :recharge_records
   
+  mount_uploader :picture, AvatarUploader
+  
   def self.basic(id)
     User.select("id,username,picture").find_by_id(id)
   end

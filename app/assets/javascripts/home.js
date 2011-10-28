@@ -22,8 +22,8 @@ ce6.home = (function() {
 	init : function() {
 		$.timeago.settings.allowFuture = true;
 		$('span.timeago').timeago();
-		ce6.ajaxLink.start(ce6.home.onUrlChange, ce6.home.urlDataMap);
-		ce6.home.checkCookieTask();	
+    // ce6.ajaxLink.start(ce6.home.onUrlChange, ce6.home.urlDataMap);
+    // ce6.home.checkCookieTask();  
 
 		if (!ce6.home.homeTutored)
 			ce6.headerTip("Get started",
@@ -37,17 +37,14 @@ ce6.home = (function() {
 		// invite friend button
 		if($('.side-invite-friends').length){
 			$('.side-invite-friends').click(ce6.home.onClickInviteFriend);
-			ce6.ajaxLog(event_types.invite_friend_module_impression);
 		}
 		// verify button
 		if($('.side-verify-account').length){
 			$('.side-verify-account').click(ce6.home.onClickVerifyAccount);
-			ce6.ajaxLog(event_types.invite_friend_module_impression);
 		}
 		// go to leaderboard 
 		if($('.side-leaderboard').length){
 			$('.side-leaderboard').click(function(){window.location = '/leaderboard/alltime';});
-			ce6.ajaxLog(event_types.top_talent_banner_impression);
 		}
 		
 		// jff button
@@ -128,14 +125,6 @@ ce6.home = (function() {
 			$('#' + self.tab + '-tab').find('.feed-tab-arrow').show();
 		}
 		self.reset();
-		// record tab last viewed
-		if (viewer_logged_in) {
-			if (self.category == 'just_for_fun') {
-				ce6.ajaxJson('/home/tab_last_viewed', {tab : 'just_for_fun'});
-			} else { 
-				ce6.ajaxJson('/home/tab_last_viewed', {tab : tab});
-			}
-		}
 		return false;
     },
 	selectCategory: function(name) {

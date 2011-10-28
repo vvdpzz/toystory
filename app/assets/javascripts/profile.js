@@ -7,10 +7,11 @@ ce6.userPhoto = {
         $("#user-photo-del").click(ce6.userPhoto.userPhotoDel)
     },
     userPhotoEdit: function () {
+      	
         $("#uploaded-photo").attr("src", $("#user-mugshot").attr("src"));
         $("#binaryData").val("");
         $("#upload_msg").hide();
-        $("#upload-avatar").dialog("open").removeData("pic_hash");
+        // $("#upload-avatar").dialog("open").removeData("pic_hash");
         return false
     },
     delDialog: {
@@ -51,25 +52,8 @@ ce6.userPhoto = {
                 $(this).dialog("close")
             },
             Save: function () {
-                if ($(this).data("pic_hash")) {
-                    $("#user-mugshot").attr("src", $("#uploaded-photo").attr("src"));
-                    ce6.ajaxJson("/profile/update_user_photo", {
-                        pic_hash: $(this).data("pic_hash")
-                    }, function (a) {
-                        if (!a.rc) if (a.verified) {
-                            $("#profile-user-detail-username .no-verified").removeClass("no-verified").addClass("verified");
-                            ce6.verifier.afterAllVerified(a.pay_verify)
-                        } else {
-                            if (surface == "user.profile") {
-                                $(".verify-item.photo").addClass("v");
-                                $("#photo-verify-btn").parent().append('<span class="verified-right"></span>');
-                                $("#photo-verify-btn").parent().append('<span class="verified-text">Verified</span>')
-                            } else $("#photo-verify-btn").parent().append('<div class="verified-right">verified</div>').addClass("v");
-                            $("#photo-verify-btn").remove()
-                        }
-                    });
-                    $(this).dialog("close")
-                } else $("#upload_msg").text("*Please choose the file you want to upload").show()
+                    $("#uploadForm form").submit();
+                    $(this).dialog("close");
             }
         }
     },
