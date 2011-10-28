@@ -1,0 +1,22 @@
+<div id="page-container" class="clearfix">
+	<div class="page-left">
+		<span class="page-left-header">
+			<span class="ui-icons ui-icons-position" id="all-active-contests-icon"></span>
+			<span class="ui-icons-title">Active Contests</span>
+		</span>
+
+
+		<div class="active-contest-container">
+			<% @active_contest_list.each do |active_contest| %>
+				<div class="active-contest-feed"> 
+					<a href="/contests/<%= active_contest["id"] %>"><%= active_contest["title"] %></a>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="page-right"></div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	var surface = "active_contests";
+</script>

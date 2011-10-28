@@ -15,6 +15,8 @@ ce6.nav = (function() {
 		self.initSearch();
 		self.initActiveContest();
 		self.initBonusBalance();
+		
+		self.loadActiveContests();
 
 		$('#nav-messages').toggleMenu($('#nav-msg-menu'), {
 			onMenuShow: self.messageMenuShow,
@@ -101,7 +103,7 @@ ce6.nav = (function() {
 	};
 
 	self.clickNotifications = function() {
-		ce6.logButtonClicked(logging_objs.btn_nav_notification);
+		// ce6.logButtonClicked(logging_objs.btn_nav_notification);
 		if($('#notification-new-num').length) {
 			ce6.ajaxJson('/notification/set_all_seen');
 			$('.notifications-icon').removeClass('notifications-icon-active');
@@ -119,13 +121,40 @@ ce6.nav = (function() {
 	};
 
 	self.clickActiveContest = function() {
-		ce6.logButtonClicked(logging_objs.btn_nav_activ_contest);
+		// ce6.logButtonClicked(logging_objs.btn_nav_activ_contest);
 		if($('#nav-contest-new-num:visible').length) {
-			ce6.ajaxJson('/contest/set_all_seen');
+			// ce6.ajaxJson('/contest/set_all_seen');
 			$('.nav-contest-icon').removeClass('nav-contest-icon-active');
 			$('#nav-contest-new-num').hide();
 		}
 	};
+	
+	//Custom function to load active_contests
+	self.loadActiveContests = function() {
+		ce6.ajaxJsonGet('/contests/load_active_contests', {},
+			function(data) {
+				if(data.active_contests.length == 0) {
+					$('#nav-ntf-empty').show();
+					return;
+				}
+				$.each(data.active_contests, function(idx, active_contest) {
+					var elem = self.constructActiveContestItem(active_contest);
+					elem.appendTo('#nav-contest-content');
+				});
+				$('#nav-ntf-empty').hide();
+				$('#notification-title').text('Active Contests('+ data.count +')');
+			}
+		);
+	}
+	
+	self.constructActiveContestItem = function(active_contest) {
+		// alert(JSON.stringify(active_contest));
+		var item = $('#nav-ntf-item-proto').clone().show().removeAttr('id');
+		item.attr('href', '/contests/' + active_contest.id);
+		item.html(active_contest.title);
+		return item;
+		
+	}
 	
 	self.clickSendMessage = function() {
 		if (surface == 'message_box.conversation_view')
@@ -215,7 +244,7 @@ ce6.nav = (function() {
 	}
 
 	self.logNavNtfImpression = function() {
-		ce6.log.sendImpressionLogReq('ntf-log-attr-nav', '/notification/logger_impression');
+		// ce6.log.sendImpressionLogReq('ntf-log-attr-nav', '/notification/logger_impression');
 	}
 	return self;
 })();
