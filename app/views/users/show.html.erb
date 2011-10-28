@@ -321,12 +321,12 @@
         <span class="ui-icons-title"><%= @user.username%>'s Followers</span>
       </div>
       <div class="profile-feed-container" type="9mvlPYrU8ZvBZTSODCSWrQ">
-        <% if @followers_users == 0 %>
+        <% if @follower_users.zero? %>
           <p class="profile-noconnection-text gray">Has no followers yet.</p>
-           <% else %>   
-              <div class="left-preloader-bar">
-                <span class="preloader-icon">Loading...</span>
-              </div>
+        <% else %>   
+          <div class="left-preloader-bar">
+            <span class="preloader-icon">Loading...</span>
+          </div>
         <% end %>
         <div id="user-connect-container-1102" uid="<%= @user.id %>"></div>
       </div>
@@ -338,7 +338,7 @@
         <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="IGJ8NWW2dL8guWnBUY1xxw">
-        <% if @following_users == 0 %>
+        <% if @following_users.zero? %>
           <p class="profile-noconnection-text gray">Has not followed any users yet.</p>
         <% else %>   
           <div class="left-preloader-bar">
@@ -355,7 +355,7 @@
         <span class="ui-icons-title"><%= @user.username %> is Following</span>
       </div>
       <div class="profile-feed-container" type="sQQ--3DnzwPCsKhheIB6IQ">
-        <% if @following_contests == 0 %>
+        <% if @following_contests.zero? %>
           <p class="profile-noconnection-text gray">Has not followed any contests yet.</p>
         <% else %>   
           <div class="left-preloader-bar">
@@ -461,7 +461,7 @@
 		description: "<%= @profile.description %>",
 		location: "<%= @profile.location %>",
 		introduction: "<%= @profile.introduction %>",
-		website: "hello.me",
+		website: "<%= @profile.website %>",
 		contest_created_count: 0,
 		entry_created_count: 0,
 	}
