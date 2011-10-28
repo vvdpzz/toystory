@@ -4,8 +4,8 @@ var serdes = serdes || {
 		if (filename.charAt(0) != '/') {
 			sep = '/';
 		}
-		var cmd = '/version/' + VER_ID + sep + filename;
-		return 'http://' + VER_DOMAIN + cmd;
+		var cmd = '/version/' + /*VER_ID +*/ sep + filename;
+		return 'http://' + /*VER_DOMAIN +*/ cmd;
 	}
 }
 

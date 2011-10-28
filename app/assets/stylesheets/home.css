@@ -1,0 +1,340 @@
+.page-left-home {
+	float: left;
+	width: 168px;
+	margin-right: 18px;
+}
+
+.page-middle-home {
+	float: left;
+	width: 600px;
+	padding-bottom: 15px;
+}
+
+.page-right-home {
+	float: right;
+	width: 168px;
+}
+
+.nav-menu-left {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #b1b1b1;
+	background-color: white;
+	padding: 5px 0px 15px;
+}
+
+.page-right-home .credits-box-container-sm {
+	-moz-border-radius: 0px 4px 4px 0;
+	-webkit-border-radius: 0px 4px 4px 0;
+	border-radius: 0px 4px 4px 0;
+	margin-left: -13px;
+}
+
+.credits-box-container-sm .triangle-shadow {
+	position:relative;
+	left: -3px;
+	bottom: 0px;
+	height: 0px;
+	width: 0px;
+	border-top: 0px solid white;
+	border-left: 3px solid white;
+	border-bottom: 3px solid white;
+	border-right: 3px solid #b58c2c;
+}
+
+.category-tab, .category-tab-selected {
+	position: relative;
+	line-height: 22px;
+	height: 22px;
+	display:block;
+	font-size: 12px;
+	padding-left: 30px;
+	margin: 4px 0px;
+}
+a.category-tab-selected {
+	color: #333;
+	background-color: #ccdff6;
+	font-weight: bold;
+}
+.category-tab-arrow {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: -8px;
+	height: 0px;
+	width: 0px;
+	border-top: 11px solid transparent;
+	border-left: 8px solid #ccdff6;
+	border-bottom: 11px solid transparent;
+	border-right: 8px solid #transparent;
+}
+.feed-tab, .feed-tab-selected {
+	position: relative;
+	line-height: 26px;
+	height: 26px;
+	display:block;
+	font-size: 14px;
+	padding-left: 8px;
+	margin: 4px 0px;
+}
+a.feed-tab-selected {
+	color: #333;
+	background-color: #ccdff6;
+	font-weight: bold;
+}
+.feed-tab-arrow {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: -8px;
+	height: 0px;
+	width: 0px;
+	border-top: 13px solid transparent;
+	border-left: 8px solid #ccdff6;
+	border-bottom: 13px solid transparent;
+	border-right: 8px solid #transparent;
+}
+.new-feeds-count {
+	background-color: #005DCE;
+	color: white;
+	display: inline-block;
+	text-align: center;
+	line-height: 16px;
+	min-width: 12px;
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: 2px;
+	border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+}
+.ie7 .new-feeds-count {
+	*display: inline;
+}
+.feed-tab-selected .new-feeds-count {
+	display: none;
+}
+
+.feed-tab-top-border {
+	border-top: 1px solid #B1B1B1;
+}
+
+.contests-sort-by {
+	height: 33px;
+	background: url(/assets/gradient.png) repeat-x scroll 0 -508px #DDD;
+	border: 1px solid #B1B1B1;
+	border-top: 0;
+	padding-top: 5px;
+	line-height: 22px;
+	font-size: 12px;
+}
+.contests-sort-by .sort-header{
+	color: #888;
+	float: left;
+	margin: 4px 0px auto 15px;
+	font-weight: bold;
+}
+.contests-sort-by a{
+	float: left;
+	height: 22px;
+	margin: 4px 23px auto 28px;
+	border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+}
+.contests-sort-by a.sort-key{
+	color: white;
+	font-weight: bold;
+	background: url(/assets/gradient.png) repeat-x scroll 0 -687px #DDD;
+	text-shadow: 0 1px 0 #333;
+	border-top: 1px solid black;
+	border-bottom: 1px solid white;
+	margin: 2px 0px auto 16px;
+	padding-left: 12px; 
+	padding-right: 7px; 
+}
+
+.contests-sort-indicator {
+	display: none;
+	height: 16px;
+	width: 16px;
+}
+
+.contests-sort-desc, .contests-sort-asce {
+	display: inline-block;
+	background: url(/assets/small-icon.png) repeat-x scroll 0 0;
+	position: relative;
+	*display: inline;
+	zoom: 1;
+}
+
+.contests-sort-desc {
+	background-position: 0 -239px;	
+	top: 2px;
+}
+
+.contests-sort-asce {
+	background-position: 0 -223px;	
+	top: 3px;
+}
+.side-invite-friends,
+.side-verify-account,
+.side-leaderboard{
+	height: 93px;
+	background: url(/assets/homepage-invitation-bg.jpg) no-repeat 0 0;
+	-moz-appearance: none;
+	background-color: white;
+	clear: both;
+	display: block;
+	font-size: 13px;
+	line-height: 16px;
+	margin: 15px 0 20px 0;
+	padding-top: 107px;
+	-moz-box-shadow: 0 2px 5px #C2C2C2;
+	-webkit-box-shadow: 0 2px 5px #C2C2C2;
+	box-shadow: 0 2px 5px #C2C2C0 2px;
+	cursor: pointer;
+}
+.side-verify-account{
+	background: url(/assets/homepage-verify-bg.jpg) no-repeat 0 0;
+	padding-top: 80px;
+	height: 56px;
+}
+.side-leaderboard{
+	background: url(/assets/homepage-leaderboard-bg.jpg) no-repeat 0 0;
+	padding-top: 57px;
+	height: 56px;
+}
+.side-invite-friends-content {
+	margin: 0 14px;
+	color: #4e3100;
+	text-align: center;
+}
+.side-invite-friends-content .highlight {
+	font-weight: bold;
+}
+.side-invite-friends-button {
+	margin-top: 10px;
+	text-align: center;
+}
+.invite-friends-btn {
+    background: url(/assets/invite-friends-button.png) no-repeat 0 0 transparent;
+    border: 0 none;
+    height: 25px;
+    width: 114px;
+}
+.side-invite-friends:hover .invite-friends-btn{
+    background: url(/assets/invite-friends-button.png) no-repeat 0 -25px transparent;
+    border: 0 none;
+    height: 25px;
+    width: 114px;
+}
+.verify-account-btn {
+    background: url(/assets/verify-now-button.png) no-repeat 0 0 transparent;
+    border: 0 none;
+    height: 25px;
+    width: 146px;
+}
+.side-verify-account:hover .verify-account-btn{
+    background: url(/assets/verify-now-button.png) no-repeat 0 -28px transparent;
+    border: 0 none;
+    height: 25px;
+    width: 146px;
+}
+.leaderboard-btn {
+    background: url(/assets/leaderboard-button.png) no-repeat 0 0 transparent;
+    border: 0 none;
+    height: 25px;
+    width: 132px;
+}
+.side-leaderboard:hover .leaderboard-btn{
+    background: url(/assets/leaderboard-button.png) no-repeat 0 -25px transparent;
+    border: 0 none;
+    height: 25px;
+    width: 132px;
+}
+.side-invite-friend-header {
+	display:block;
+	font-size:12px;
+	text-align:right;
+	width:100%;
+	padding: 5px 0 0;
+}
+
+.ended-contest-divider {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	background-color: white;
+}
+
+.jff-bg-container {
+    background: url(/assets/just-for-fun-bg.gif) no-repeat;
+	width: 100%;
+	height: 140px;
+	margin-bottom: 15px;
+	display: block;
+}
+.jff-bg-cancel-container {
+	padding-top: 3px;
+	height: 14px;
+}
+.jff-bg-btn-container {
+	text-align: center;
+	padding-top: 87px;
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+.jff-bg-btn {
+    background: url(/assets/jff-create-now-button.png) no-repeat 0 0 transparent;
+    border: 0 none;
+    height: 27px;
+    width: 146px;
+	padding: 0;
+}
+.jff-bg-btn-container:hover .jff-bg-btn{
+    background: url(/assets/jff-create-now-button.png) no-repeat 0 -28px transparent;
+    border: 0 none;
+}
+.jff-bg-cancel-btn {
+	background:url(/assets/closebutton-small.png) no-repeat scroll 0px 0px transparent;
+	height: 14px;
+	width: 14px;
+    border: 0 none;
+	padding: 0;
+	margin-left: 580px;
+}
+.jff-bg-cancel-btn:hover {
+	background-position: 0px -14px;
+}
+
+#home-android-link {
+	background: url(/assets/gradient.png) repeat-x scroll 0 -820px #7A0;
+	display: block;
+	height: 35px;
+	border-radius: 4px;
+	margin-top: 15px;
+	border: 1px solid #478400;
+	text-shadow: 0 1px 0 #478400;
+	color: white;
+}
+#home-android-link:hover {
+	border: 1px solid #254400;
+}
+.android-icon {
+	display: block;
+	float: left;
+	width: 50px;
+	height: 34px;
+	background: url(/assets/download-icons-home.png) no-repeat scroll 0 -2px transparent;
+}
+.android-desc {
+	display: block;
+	float: left;
+	width: 100px;
+	font-size: 13px;
+	line-height: 16px;
+	padding-top: 1px;
+}

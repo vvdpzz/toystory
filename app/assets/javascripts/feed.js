@@ -258,4 +258,4 @@ var self = {
 		this.hookFollowContest();
 	}
 };
-return self;})();   
+return self;})();

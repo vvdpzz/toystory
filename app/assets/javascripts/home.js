@@ -23,7 +23,7 @@ ce6.home = (function() {
 		$.timeago.settings.allowFuture = true;
 		$('span.timeago').timeago();
 		ce6.ajaxLink.start(ce6.home.onUrlChange, ce6.home.urlDataMap);
-		ce6.home.checkCookieTask();	
+//		ce6.home.checkCookieTask();	
 
 		if (!ce6.home.homeTutored)
 			ce6.headerTip("Get started",
@@ -41,8 +41,8 @@ ce6.home = (function() {
 		}
 		// verify button
 		if($('.side-verify-account').length){
-			$('.side-verify-account').click(ce6.home.onClickVerifyAccount);
-			ce6.ajaxLog(event_types.invite_friend_module_impression);
+				$('.side-verify-account').click(ce6.home.onClickVerifyAccount);
+//			ce6.ajaxLog(event_types.invite_friend_module_impression);
 		}
 		// go to leaderboard 
 		if($('.side-leaderboard').length){
@@ -90,7 +90,7 @@ ce6.home = (function() {
 		} else {
 			self.loadData(null, ce6.home.logPageView);
 		}
-		ce6.contest_widget.loadTopPrizes(self.category);
+//		ce6.contest_widget.loadTopPrizes(self.category);
 	},
 	reset: function(container, load_func){
 		$('.left-preloader-bar').show();
@@ -317,19 +317,19 @@ ce6.home = (function() {
 	signUp: function(){
 		ce6.authDialog.open(null, null, 0);
 	},
-	checkCookieTask:function() {
-		var cookieCtrl = ce6.cookieControl;
-		if($.cookie('showerror')){
-			var msg = $.cookie('showerror');
-			ce6.cookieControl.delCookie('showerror');
-			///$.cookie('showerror', '');
-			ce6.notifyBar(msg, 'error');
-		}else if($.cookie(cookieCtrl.name.SHOWCONGRATULATION)){
-			//delete control cookie
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWCONGRATULATION);
-			ce6.notifyBar('Congratulations! You\'re now a member of Prizes.org! Start voting, submitting or creating your own contests!', 'success');
-		}
-	},
+	// checkCookieTask:function() {
+	// 	var cookieCtrl = ce6.cookieControl;
+	// 	if($.cookie('showerror')){
+	// 		var msg = $.cookie('showerror');
+	// 		ce6.cookieControl.delCookie('showerror');
+	// 		///$.cookie('showerror', '');
+	// 		ce6.notifyBar(msg, 'error');
+	// 	}else if($.cookie(cookieCtrl.name.SHOWCONGRATULATION)){
+	// 		//delete control cookie
+	// 		cookieCtrl.delCookie(cookieCtrl.name.SHOWCONGRATULATION);
+	// 		ce6.notifyBar('Congratulations! You\'re now a member of Prizes.org! Start voting, submitting or creating your own contests!', 'success');
+	// 	}
+	// },
 	onClickInviteFriend: function() {
 		if(viewer_logged_in) {
 			window.location = '/invite';
@@ -354,8 +354,8 @@ ce6.home = (function() {
 			'category' : self.category
 		});
 	},
-	isPageReady: function() {
-		return self.pageLoaded && ce6.contest_widget.loadCompleted();
-	}
+		isPageReady: function() {
+				return self.pageLoaded;
+			}
 };
 return self;})();
