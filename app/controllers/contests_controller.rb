@@ -18,7 +18,11 @@ class ContestsController < ApplicationController
       :end_date        => params[:end_date],
       :is_community    => params[:is_community]
     )
-        
+    
+    # add to Active Contests
+    $redis.lpush("active_contests:#{current_user.id}", MultiJson.encode(contest.attributes.slice("id","title")))
+    $redis.incr("active_contests:#{current_user.id}:count")
+    
     # not a just for fun contest
     if contest.is_community == 0
       diff = contest.credits - current_user.credits
@@ -51,5 +55,21 @@ class ContestsController < ApplicationController
     prize = params[:prize].to_f
     used_credit = current_user.credits > prize ? prize : current_user.credits
     render :json => {:need_credit => need_credit, :used_credit => used_credit}
+  end
+  
+  def add_entry
+    # TODO: add contests to Active_contests
+  end
+  
+  def active_contests
+    @active_contest_list = $redis.lrange("active_contests:#{current_user.id}", 0, -1)
+    @active_contest_list.collect! { |active_contest| MultiJson.decode(active_contest) }
+  end
+  
+  def load_active_contests
+    active_contest_list = $redis.lrange("active_contests:#{current_user.id}", 0, -1)
+    active_contest_list.collect! { |active_contest| MultiJson.decode(active_contest) }
+    active_count = $redis.get("active_contests:#{current_user.id}:count")
+    render :json => { :count => active_count, :active_contests => active_contest_list, :rc => 0 }
   end
 end

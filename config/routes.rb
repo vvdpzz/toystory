@@ -9,6 +9,8 @@ Toystory::Application.routes.draw do
   resources :contests do
     collection do
       post "check_credits"
+      get "active_contests"
+      get "load_active_contests"
     end
   end
   
@@ -43,6 +45,7 @@ Toystory::Application.routes.draw do
       post "update_location"
       post "update_introduction"
       post "update_website"
+      post "photo_upload_response"
       get "load_users"
       get "load_contests"
     end

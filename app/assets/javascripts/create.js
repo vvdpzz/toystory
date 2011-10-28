@@ -58,7 +58,7 @@ ce6.create = {
 		this.enableTips();
 		
 		
-		ce6.editor.newEditorInstance('contest-content', {maxHeight: 223});
+    ce6.editor.newEditorInstance('contest-content', {maxHeight: 223});
 		$('.tinymce-preloader').hide();
 		$('.nicEdit-main').live('keyup', function(e){
 			ce6.create.descCountdown(ce6.editor.getPlainContentLength());

@@ -75,7 +75,11 @@ class ProfileController < ApplicationController
   end
   
   def update_website
-    if @profile.update_attribute(:website, params[:website])
+    website = params[:website].strip
+    if website.present? and not website.start_with?("http://")
+      website = "http://#{website}"
+    end
+    if @profile.update_attribute(:website, website)
       render json: {result: @profile.website, rc: 0}
     else
       render json: {msg: "update error", rc: 1}
@@ -139,6 +143,13 @@ class ProfileController < ApplicationController
       render partial: "contest", :collection => @contests, layout: false
     else
       render nothing: true
+    end
+  end
+  
+  def photo_upload_response
+    current_user.picture = params[:Filedata]
+    if current_user.save
+      render :json => {:picture => current_user.picture.url}
     end
   end
   
