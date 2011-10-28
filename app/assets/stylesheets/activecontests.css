@@ -1,0 +1,20 @@
+#all-active-contests-icon {
+	background-position: 0 -576px;
+}
+.empty-contest-container {
+	padding-top: 10px;
+	text-align: center;
+	color: #AAAAAA;
+	white-space: nowrap;
+}
+.active-contest-feed {
+	background-color: white;
+	border-top: 1px solid #CCCCCC;
+	min-height: 25px;
+	padding: 5px 12px;
+}
+.active-contest-feed {
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+}
