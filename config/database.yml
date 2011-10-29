@@ -35,8 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: toystory_production
+  database: toystory
   pool: 5
-  username: root
-  password:
+  username: admin
+  password: something
   socket: /tmp/mysql.sock
