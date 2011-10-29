@@ -648,25 +648,13 @@ ce6.show = {
 		$('#dlg-new-entry').disableDlgButtons();
 
 		var submitAction = function(){
-//			var ec = new pcookie();
-//			ec.set(PCOOKIE_NAME, $.cookie(VIS_COOKIE_NAME));
-			ce6.ajaxJson('/contest/add_entry', $('#add-entry-form').serialize(),
+			ce6.ajaxJson('/contests/add_entry', $('#add-entry-form').serialize(),
 				function(data) {
 					if (data.rc == 0){
-//						$.cookie(ce6.cookieControl.name.SHOWSUBMISSIONSHARE, data.eid, ce6.cookieControl.shortOption); 
 						$('#dlg-new-entry').dialog('close');
-						ce6.doubleClick.log(ce6.doubleClick.events.submitEntry);
-						ce6.mediaPlex.log(ce6.mediaPlex.events.submitEntry);
 						window.location.reload();
 					}else{
 						var msg = data.msg;
-
-						//referrer conflict err
-						if(data.referrer){
-							msg = ce6.constants.texts.translate(msg, data.referrer); 
-							$('.referrer-fullname').text(data.referrer.fullname);
-							$('.referrer-firstname').text(data.referrer.firstname);
-						}
 						ce6.notifyBar(msg, 'error');
 
 						//close the auth dialog if it opened
@@ -679,279 +667,11 @@ ce6.show = {
 				}
 			);
 		};
-
-		if (viewer_logged_in) {
-			submitAction();
-		}else{
-			ce6.authDialog.open(
-				submitAction, 
-				function(){
-					$('#dlg-new-entry').enableDlgButtons();
-				}, 
-				'auto', ce6.authDialog.onDemandTitle);
-		}
+		submitAction();
 	},
-
-	referContest: function() {
-		ce6.ajaxLog(event_types.refer_button_clicked, {contest_id:ce6.show.contestToken});
-		if(viewer_logged_in){
-			$('.referral-buttons').show('fast');
-		}else{
-			ce6.authDialog.open(
-				function(){
-//					$.cookie(ce6.cookieControl.name.SHOWREFERSHARE, '1', ce6.cookieControl.shortOption); 
-					window.location.reload();
-				},null, 
-				'auto', 'Sign in to start referring friends!');
-		}
-	},
-
-	shareFBRefer: function() {
-		fbFeed.method = 'feed';
-		fbFeed.link = referral_fb_link;
-		FB.ui(fbFeed, function(response) {})
-	},
-
-	openWidgetDialog: function() {
-		$('#dlg-get-widget').dialog('open');
-	},
-
-	jffPromoteShareDlg: function() {
-		var shareDialogOpts = {
-			type: 'jff_promote',
-			title:ce6.show.contestDetail.title,
-			prize:ce6.show.contestDetail.prize,
-			url:ce6.show.contestDetail.shortUrl,
-			tweetUrl:ce6.show.contestDetail.tweetUrl,
-			contestToken:ce6.show.contestToken
-		};
-		ce6.shareDialog.open(shareDialogOpts);
-	},
-
-	// checkNotifyCookieTask:function(ignore) {
-	// 		var cookieCtrl = ce6.cookieControl;
-	// 		if($.cookie(cookieCtrl.name.SHOWFLAGGED)){
-	// 			var eid = $.cookie(cookieCtrl.name.SHOWFLAGGED);
-	// 			$('.entry-flag[token=' + eid + ']').text('Flagged').addClass('entry-flagged').removeClass('entry-flag');
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWFLAGGED);
-	// 			ce6.notifyBar('Entry flagged.', 'success');
-	// 		}
-	// 		if($.cookie(cookieCtrl.name.SHOWCONGRATULATION)){
-	// 			//delete control cookie
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWCONGRATULATION);
-	// 			if(!ignore){ 
-	// 				ce6.notifyBar('Congratulations, You\'re now a member of Prizes.org! Start voting, submitting or creating your own contests!', 'success');
-	// 			}
-	// 		}else if($.cookie(cookieCtrl.name.SHOWEDITCONTESTERROR)) {
-	// 			var errorMsg = $.cookie(cookieCtrl.name.SHOWEDITCONTESTERROR)
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWEDITCONTESTERROR);
-	// 			ce6.notifyBar(errorMsg, 'error');
-	// 		}else if($.cookie(cookieCtrl.name.SHOWCONTESTEXTEND)) {
-	// 			var successMsg = "Contest extended for 7 days!";
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWCONTESTEXTEND);
-	// 			ce6.notifyBar(successMsg, 'success');
-	// 		}else if($.cookie(cookieCtrl.name.SHOWVOTESUCCESS)) {
-	// 			var msg = $.cookie(cookieCtrl.name.SHOWVOTESUCCESS);
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWVOTESUCCESS);
-	// 			ce6.notifyBar(msg, 'success');
-	// 		}else if($.cookie(cookieCtrl.name.SHOWVOTEFAILURE)) {
-	// 			var msg = $.cookie(cookieCtrl.name.SHOWVOTEFAILURE);
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWVOTEFAILURE);
-	// 			ce6.notifyBar(msg, 'error');
-	// 		}else if($.cookie(cookieCtrl.name.SHOWPICKWINNER)) {
-	// 		}
-	// 	},
-	
-	// checkPopupCookieTask:function() {
-	// 		var selected = $('#sns-connect-status [require="0"]').index();
-	// 		var shareDialogOpts = {
-	// 			contestToken: this.contestToken,
-	// 			title:this.contestDetail.title,
-	// 			prize:this.contestDetail.prize,
-	// 			url:this.contestDetail.shortUrl,
-	// 			tweetUrl:this.contestDetail.tweetUrl
-	// 		};
-	// 		var ignoreOthers = false;
-	// 		var cookieCtrl = ce6.cookieControl;
-	// 		if($.cookie(cookieCtrl.name.SHOWFBSHARE)){
-	// 			//delete control cookie
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWFBSHARE);
-	// 			shareDialogOpts.close = function (event, ui) {
-	// 				ce6.notifyBar("You can show off your contest on your own blog or website. Grab the contest widget code now!", 'success');
-	// 				ce6.callouts.displayCallout('get_contest_widget');
-	// 			};
-	// 			//open share dialog for entry
-	// 			if (ce6.show.is_jff) {
-	// 				shareDialogOpts.type = 'jff_contest';
-	// 				ce6.notifyBar("Your contest has been created! Now select a category to help others find your contest once it's upgraded!", 'success');
-	// 			} else {
-	// 				shareDialogOpts.type = 'contest';
-	// 				ce6.notifyBar("Your contest has been created! Now select a category to help others find your contest!", 'success');
-	// 			}
-	// 			ce6.show.category.initCategoryDlg(shareDialogOpts);
-	// 			
-	// 			ignoreOthers = true;
-	// 		}else if($.cookie(cookieCtrl.name.SHOWREFERSHARE)){
-	// 			//delete control cookie
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWREFERSHARE);
-	// 			$('.refer-now-box').click();
-	// 			ignoreOthers = true;
-	// 		}else if($.cookie(cookieCtrl.name.SHOWSUBMISSIONSHARE)){
-	// 			var entryToken = $.cookie(ce6.cookieControl.name.SHOWSUBMISSIONSHARE);
-	// 			//delete control cookie
-	// 			cookieCtrl.delCookie(cookieCtrl.name.SHOWSUBMISSIONSHARE);
-	// 
-	// 			//open share dialog for entry
-	// 			if (ce6.show.is_jff) {
-	// 				shareDialogOpts.type = 'jff_new_entry';
-	// 			} else {
-	// 				shareDialogOpts.type = 'new_entry';
-	// 			}
-	// 			shareDialogOpts.entryToken = entryToken;
-	// 			ce6.shareDialog.open(shareDialogOpts);
-	// 			if (is_farseer)
-	// 				ce6.notifyBar("Entry submitted! Your talent score has increased by <font style='color:white;font-weight:bold;text-shadow:0 1px 2px #333333;'>+5 </font>! Get votes on Facebook and Twitter now!", 'success');
-	// 			else
-	// 				ce6.notifyBar("Thanks for submitting! Get votes on Facebook or Twitter now!", 'success'); 
-	// 			ignoreOthers = true;
-	// 		}else if(!viewer_logged_in && $.cookie(cookieCtrl.name.SHOWTUTORIAL) != '1'){
-	// 			// disable onboarding for a while
-	// 			if ($('#enter-submission-button').length){
-	// 				ce6.show.tutorialTopBar();
-	// 			}
-	// 			return;
-	// 
-	// 			//no submit btn will skip the tutorial
-	// 			if ($('#enter-submission-button').length){
-	// 				$('#onboarding-dlg').dialog('open');
-	// 				ce6.ajaxLog(event_types.onboarding_dialog_impression, {has_start : 1});
-	// 			}else{
-	// 				$('#onboarding-dlg').dialog("option", 'buttons', 
-	// 					{Close:function(){ 
-	// 						ce6.logButtonClicked(logging_objs.btn_onboarding_close); 
-	// 						$(this).dialog('close');
-	// 					}}
-	// 				).dialog('open');
-	// 				ce6.ajaxLog(event_types.onboarding_dialog_impression, {has_start : 0});
-	// 			}
-	// 			//add control cookie
-	// 			$.cookie(cookieCtrl.name.SHOWTUTORIAL, '1', ce6.cookieControl.oneYearOption); 
-	// 
-	// 		}
-	// 		return ignoreOthers;
-	// 	 },
-	// 
-	// 	tutorialLayout: {margin: 20, arrowOffset: 50},
-	// showTutorialDlg: function(x, y, nextStep, dir, textContent){
-	// 	var left, top, scroll = 0;
-	// 	switch (dir){
-	// 		case 'L':
-	// 			left = x + ce6.show.tutorialLayout.margin;
-	// 			top = y - ce6.show.tutorialLayout.arrowOffset;
-	// 			$('#arrow-tutorial').attr('class', 'pointy-arrow pointy-arrow-left');
-	// 			break;
-	// 		case 'R':
-	// 			left = x - 320 - ce6.show.tutorialLayout.margin;
-	// 			top = y - ce6.show.tutorialLayout.arrowOffset;
-	// 			$('#arrow-tutorial').attr('class', 'pointy-arrow pointy-arrow-right');
-	// 			break;
-	// 		case 'U':
-	// 			left = x - ce6.show.tutorialLayout.arrowOffset;
-	// 			top = y + ce6.show.tutorialLayout.margin;
-	// 			$('#arrow-tutorial').attr('class', 'pointy-arrow pointy-arrow-top');
-	// 			break;
-	// 		default:
-	// 			left = x + ce6.show.tutorialLayout.margin;
-	// 			top = y - ce6.show.tutorialLayout.arrowOffset;
-	// 			break;
-	// 	}
-	// 	if (top + 200 > $(window).height() + $(window).scrollTop()){
-	// 		var scroll = (y - $(window).height() + 300) < ($(document).height()-$(window).height()) ?  (y - ($(window).height() - 300)) : ($(document).height()-$(window).height());
-	// 		$(window).scrollTop(scroll);
-	// 		top = top - scroll;
-	// 	}
-	// 	else if(top < 0) {
-	// 		var prominent_offset = $(window).height() / 3 < ($(window).scrollTop()+y) ? $(window).height() / 3 : ($(window).scrollTop()+y); 
-	// 		var scroll = y - prominent_offset;
-	// 		$(window).scrollTop(scroll);
-	// 		top = top - scroll;
-	// 	}
-	// 	$('#ctt-tutorial').html("<strong>"+textContent.title+"</strong>"+ 
-	// 				"<p>" + 
-	// 					textContent.content.replace('$X', '$'+ce6.show.contestDetail.prize) + 
-	// 				"</p>");
-	// 	$('#dlg-tutorial').dialog({position: [left, top]});
-	// 	var dialog_buttons = {};
-	// 	dialog_buttons[textContent.button] = function(){
-	// 			$(window).scrollTop(0);
-	// 			$(this).dialog("close");
-	// 			ce6.show.tutorialStep(nextStep);	
-	// 	};
-	// 	$('#dlg-tutorial').dialog(
-	// 			{buttons: dialog_buttons}
-	// 		).restyleButtons();
-	// 	$('#dlg-tutorial').dialog('open');
-	// },
-	// startTutorial : function(){
-	// 	/* init some contest and user data in js */
-	// 	ce6.show.promptSignUp = !viewer_logged_in;
-	// 	
-	// 	var stepsHtml = ce6.tutorial.generateStepsHtml(['Learn', 'Enter', 'Vote', 'Referral', 'Follow', 'More']);
-	// 	ce6.headerTip('How to win $$$', $('#page-container'), false, stepsHtml);
-	// 	if (!viewer_logged_in){
-	// 		$(".onboarding-info-panel").hide();
-	// 	}
-	// 	ce6.tutorial.setTutorialConfig(ce6.tutorial.detailTutorial);
-	// 	ce6.ajaxLog(event_types.tour_started);
-	// 	ce6.show.tutorialStep(0);
-	// 	$('#sample-entry-container').show();
-	// 	$('.callout-bg').hide();
-	// },
-// 	tutorialStep : function(step){
-// 		ce6.resetOpacity();
-// 		$('#dlg-tutorial').dialog('close');
-// 		
-// 		var tutorialConfig = ce6.tutorial.getDisplayConfig(step);
-// 		if (!tutorialConfig){
-// 			$('#sample-entry-container').hide();
-// 			ce6.closeHeaderTip();
-// 			ce6.ajaxLog(event_types.tour_finished,
-// 				{step_id_on_finish : ce6.show.tutorialStepId});
-// 			return;
-// 		}
-// 		if (tutorialConfig.finishedCb){
-// 			$('#sample-entry-container').hide();
-// 			ce6.closeHeaderTip();
-// 			tutorialConfig.finishedCb(null);
-// 			var index = (ce6.show.contestDetail.numEntries ? 0 : 2) + (ce6.show.promptSignUp ? 0 : 1);
-// 			var detailTutorialFinishedConfig = ce6.tutorial.detailTutorialFinished[index];
-// 			$('#ctt-tutorial-finished').html(
-// 				detailTutorialFinishedConfig.content.replace('$X', '$'+ce6.show.contestDetail.prize)
-// 			);
-// 			$('#dlg-tutorial-finished').dialog({title: detailTutorialFinishedConfig.title, buttons: detailTutorialFinishedConfig.buttons}).restyleButtons();
-// 			$('#dlg-tutorial-finished').dialog('open');
-// 			ce6.ajaxLog(event_types.tour_finished,
-// 				{step_id_on_finish : ce6.show.tutorialStepId});
-// 			return;
-// 		}
-// //		ce6.tutorial.goNextStep(step);
-// 		fakeDiv = {offset: function(){return {left:0, top:tutorialConfig.rootDiv.offset().top - 10}}};
-// 		ce6.setOpacityOutsideDiv(tutorialConfig.lightDivSet, fakeDiv, $(document).height(), $(document).width());
-// //		ce6.show.showTutorialDlg(tutorialConfig.pointX, tutorialConfig.pointY, step+1, tutorialConfig.dir, tutorialConfig.textContent);
-// //		ce6.show.tutorialStepId = step;
-// 		ce6.ajaxLog(event_types.tour_step_completed,
-// 			{step_id : step});
-// 		return;
-// 	},
-
-	// logShareDialogClick : function(isShare) {
-	// 	ce6.ajaxLog(event_types.fb_dialog_button_clicked, {
-	// 		confirm_share : (isShare ? 1 : 2),
-	// 		page_id : pageId
-	// 	});
-	// },
 
 	toggleFollowContest: function() {
+		alert("start");
 		var elem = $(this);
 		if (elem.data('disabled')) return;
 		elem.data('disabled', true);
@@ -961,7 +681,7 @@ ce6.show = {
 				elem.data('disabled', false);
 			});
 		} else {
-			if (viewer_logged_in)
+			alert(ce6.show.contestToken);
 				elem.text('Unfollow Contest').addClass('unfollow-contest').removeClass('follow-contest');
 			ce6.user.followContest(ce6.show.contestToken, 
 				function(data){
