@@ -4,11 +4,21 @@
              <div id="contests-content-container">
 				<% @contests.each do |contest| %>
 					<div class="home-feed clearfix feed-non-bottom-line" feed-cid="R58-dyR0hiNQ9agLKklMdw" feed-type="201">
-						<a class="feed-badge badge-overoneday" href="">
+						
+						<% if contest.is_community %>
+						  <a class="jff-feed-badge jff-badge-overoneday" href="/contests/<%= contest.id %>"> 
+						     <div class="time-left normal-font"><%= time_ago_in_words contest.created_at %></div>  
+						 </a>
+						 <% else %>
+						<a class="feed-badge badge-overoneday" href="/contests/<%= contest.id %>">
 							<div class="prize">$ <%= contest.credits %></div>
 							<div class="time-left-cap">TIME LEFT</div>
-							<div class="time-left ">4 DAYS</div>
+							<div class="time-left "><%= time_ago_in_words contest.created_at %></div>
 						</a>
+						
+						<% end %>
+						
+						
 						<div class="feed-body clearfix">
 							<%= link_to contest.title, contest, :class => "contest-title" %>
 							<a href="#" class="contest-follow blue" cid="<%= contest.id %>" followed="0">Follow</a>
