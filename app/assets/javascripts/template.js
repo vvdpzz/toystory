@@ -145,7 +145,7 @@ ce6.feedTranslate = {
             time: e,
             actor: a,
             actionWords: " created a new contest",
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     followContestFeed: function (a) {
@@ -157,7 +157,7 @@ ce6.feedTranslate = {
             time: e,
             actor: a,
             actionWords: (a.length > 1 ? " are" : " is") + " now following this contest",
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     entrySubmittedFeed: function (a, b) {
@@ -174,7 +174,7 @@ ce6.feedTranslate = {
             actor: f,
             submission: e.blind ? [] : g,
             actionWords: actionWords,
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     votedFeed: function (a, b) {
@@ -189,7 +189,7 @@ ce6.feedTranslate = {
             actor: f,
             submission: g,
             actionWords: " voted for this entry",
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     pickWinnerFeed: function (a) {
@@ -211,7 +211,7 @@ ce6.feedTranslate = {
             actor: f,
             submission: h,
             actionWords: g,
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     honorableMentionFeed: function (a) {
@@ -234,7 +234,7 @@ ce6.feedTranslate = {
             owner: e,
             friend: a,
             actionWords: " is now following:",
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     taggedAsFeed: function (a) {
@@ -248,7 +248,7 @@ ce6.feedTranslate = {
             actor: h,
             tags: a,
             actionWords: h.length ? " created a contest tagged as " : "Contest tagged as ",
-            userPic: serdes.makeStaticUrl("/assets/feed_user.gif")
+            userPic: "/assets/feed_user.gif"
         }
     },
     followTagFeed: function (a) {
