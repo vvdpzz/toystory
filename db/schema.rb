@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20111026032809) do
     t.integer  "reputation",                                                 :default => 0
     t.boolean  "is_blind",                                                   :default => false
     t.boolean  "is_community",                                               :default => false
-    t.date     "end"
     t.integer  "end_date",                                                   :default => 0
     t.integer  "votes_count",                                                :default => 0
     t.integer  "entries_count",                                              :default => 0
@@ -92,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20111026032809) do
     t.integer  "id",                     :limit => 8
     t.string   "username",                                                            :default => ""
     t.string   "picture",                                                             :default => ""
+    t.string   "salt"
     t.string   "encrypted_password",     :limit => 128,                               :default => "",  :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
