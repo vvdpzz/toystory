@@ -4,18 +4,21 @@
 			<span class="ui-icons ui-icons-position" id="all-notification-icon"></span>
 			<span class="ui-icons-title">All Notifications</span>
 		</span>
-
-
-		<div class="notification-feed"> 
-			<div class="notification-date">2011-10-27</div> 
-			<div ntf-log-attr-page="12" class="notification-detail"> <a user="1" href="http://prizes.org/Feipinghuang-1" logdata="event_type=notification_click&amp;notification_template_name=12" class="clickable-user">feipinghuang</a> is now following you. <span class="timeago">08:25:49 PM</span></div> 
-			<div ntf-log-attr-page="2" class="notification-detail"> <a user="1" href="http://prizes.org/Windstills" logdata="event_type=notification_click&amp;notification_template_name=2" class="clickable-user">WindStills</a> has submitted an entry for your contest <a contest="1" href="http://prizes.org/Which-telecom-operators-to-choose" logdata="event_type=notification_click&amp;notification_template_name=2" class="clickable-contest">"Which Telecom Operators to choose?"</a>. <span class="timeago">08:23:27 PM</span></div> 
-			<div ntf-log-attr-page="12" class="notification-detail"> <a user="1" href="http://prizes.org/Windstills" logdata="event_type=notification_click&amp;notification_template_name=12" class="clickable-user">WindStills</a> is now following you. <span class="timeago">08:14:04 PM</span></div> 
-			<div ntf-log-attr-page="12" class="notification-detail"> <a user="1" href="http://prizes.org/Windstills" logdata="event_type=notification_click&amp;notification_template_name=12" class="clickable-user">WindStills</a> is now following you. <span class="timeago">08:13:12 PM</span></div> 
-			<div ntf-log-attr-page="12" class="notification-detail"> <a user="1" href="http://prizes.org/Yangkit" logdata="event_type=notification_click&amp;notification_template_name=12" class="clickable-user">yangkit</a> is now following you. <span class="timeago">07:06:55 PM</span></div> 
-		</div>
 		
+		<div class="notification-feed">
+		<% if @first["date"] == Time.now.strftime("%Y-%m-%d") %>
+			<div class="notification-date">Today</div>
+		<% else%>
+			<div class="notification-date"><%= @first["date"] %></div>
+		<% end %>
 		<% @notification_list.each do |notification| %>
+			<% if notification["date"] != @first["date"] %>
+				</div>
+				<div class="notification-feed">
+				<div class="notification-date"><%= notification["date"] %></div>
+				<% @first = notification %>
+			<% end %>
+			
 			<% if notification["type"] == 'follow' %> 
 				<div class="notification-detail"> 
 					<a href="/users/<%= notification["user_id"] %>" class="clickable-user"><%= notification["username"] %></a> is now following you. <span class="timeago"><%= notification["created_at"] %></span></div>
@@ -24,6 +27,7 @@
 					<a href="/users/<%= notification["user_id"] %>" class="clickable-user"><%= notification["username"] %></a> has submitted an entry for your contest <a href="<%= notification["contest_id"] %>" class="clickable-contest">"<%= notification["contest_title"] %>"</a>. <span class="timeago"><%= notification["created_at"] %></span></div>
 			<% end %>
 		<% end %>
+		</div>
 	</div>
 	<div class="page-right"></div>
 </div>
