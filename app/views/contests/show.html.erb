@@ -9,7 +9,11 @@
 			<div class='detail-info-zone'>
 				<span class="detail-title" id="detail-title-text"><%= @contest.title %></span>
 				<div class='contest-extend-info'>
+				  <% if $redis.sismember("contests:#{ @contest.id }.follower_users", current_user.id)%>
+					<a id="follow-contest-link" class="unfollow-contest" href="#">Unfollow Contest</a>
+					<% else %>
 					<a id='follow-contest-link' class='follow-contest' href='#'>Follow Contest</a>
+					<% end %>
 					<div class='left-time-area'>
 						<span class='left-time-title'> &sdot; Time Left :</span>
 						<span class='left-time-details '>
@@ -35,46 +39,30 @@
 				</ul>
 			</div>
 		</div>
+		<% if @contest.user_id != current_user.id %>
 		<div class="contest-detail-buttons">
 			<button class="blue margin-center" id='enter-submission-button'>
 				<b>Enter</b> Contest
 			</button>
 		</div>
+		<% end %>
 		<div id="contest-comment">
-			<div class="comments" >
-				<div class="comments-category">
-					<span class="ui-icons ui-icons-position comments-icon"></span>
-					<a class="view-all-comments">View all  <span class="comments-cnt">6</span> comments</a>
-					<a class="collapse-comments" style="display: none;">Hide</a>
-					&sdot;
-					<a class="view-creator-comments ">View creator's comments only</a>
-				</div>
-				<div class="comment " uid="uEpIfiYK6onaSCo6GL7E5Q" id_tkn="Mb_D40bsAsQLPhF5MRirbA">
-					<div class="commenter-info">
-						<img src="http://deco-00.prizes.org/r/3/0002/dl/YBsF9vNhsj_ThOjbr1dbGmqr60iSUNJs/ce6_profile_img" />
-						<span class=""></span>
-						<a class="commenter" href="http://prizes.org/Jacob-8">
-							jacob
-						</a>
-					</div>
-					<div class="content">
-						i just want money
-					</div>
-					<div class="comment-bottom">
-						<span>2 hours ago</span>
-					</div>
-				</div>
-				<div class="comment-form">
-					<div class="comment-textarea-holder">
-						<textarea placeholder="Write a comment ..."></textarea>
-					</div>
-					<div class="comment-buttons" style="display: none;">
-						<button class="btn-comment-confirm blue">Comment</button>
-						<button  class="btn-comment-cancel lightgray">Cancel</button>
-					</div>
-				</div>
-			</div>
-		</div>
+    				<div class="show-add-comment"><span class="ui-icons ui-icons-position comments-icon"></span><a> Comment </a></div>
+    			<div class="comments" style="display: none;">
+    				<div class="comments-category" style="display: none;">
+    				</div>
+    				<div class="comment-form">
+    					<div class="reply" style="display: none;">Reply to: <span class="reply-name">user</span><a class="remove-replier">&nbsp;&nbsp;delete</a></div>
+    					<div class="comment-textarea-holder">
+    						<textarea placeholder="Write a comment ..." class="placeholder"></textarea>
+    					</div>
+    					<div class="comment-buttons" style="display: none;">
+    						<button class="btn-comment-confirm blue">Comment</button>
+    						<button class="btn-comment-cancel lightgray">Cancel</button>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
 	</div>
 	<div class='contest-bottom-shadow'></div>
 
@@ -101,7 +89,80 @@
 	<div class="horizontal-divider"></div>
 	<div id="contest-pagination-top" style="display: none;"></div>
 	<div class="left-preloader-bar" style="display: none;"><span class="preloader-icon">Loading...</span></div>
-	<div id="entries-container"></div>
+	<div id="entries-container">
+   <% @contest.entries.each do |entry|%>
+	  <div class="submission  " id="entry_<%= entry.id %>" token="<%= entry.id %>" tweet-url="http://prizes.org/p/0WV4W0W0W0e1">
+    		<div class="entry-votes  " style="position: fixed; top: 50px; ">
+    		<div class="entry-votes-count green" id="entry-votes-count-<%= entry.id %>"><%= entry.votes_count%></div>
+    				<button class="vote vote-up" token="<%= entry.id %>"><div class="vote-nike"></div>Vote</button>
+    			<span class="fav-symbol">Favorite<span class="ui-icons ui-icons-position" id="question-mark-icon"></span></span>
+    			<span class="eli-symbol">Eliminated<span class="ui-icons ui-icons-position" id="question-mark-icon"></span></span>
+    		</div>
+    		<div class="entry-detail">
+    			<div class="entry-user">
+    				<span class="time-ago"><%= entry.created_at %></span>
+    				<a href="/users/<%= entry.user_id %>" class="entry-user-simage">
+    					<img src="<%= entry.user.picture.url %>">
+    				</a>
+    				<a href="/users/<%= entry.user_id %>" class="entry-user-name"><%= entry.user.username %></a>
+    				<span class=""></span>
+    					⋅&nbsp;<span class="user-desc"><%= entry.user.profile.description%></span>
+    					⋅&nbsp;<a href="http://prizes.org/leaderboard/alltime?sid=PKqAEnTrCWyeBC1XjbbafA" class="talent-score-badge">
+    						<span class="top-user-badge">&nbsp;</span>
+    						<span class="user-score "><%= entry.user.reputation %></span>
+    					</a>
+
+    			</div>
+    			<div class="entry-content" id="entry-submitted-row-<%= entry.id %>">
+    					<div class="preview-text">
+    						<div id="entry-text-<%= entry.id %>" class="unselectable">
+    							<%= entry.content %>
+    						</div>
+    						<div class="video-preview">
+
+    						</div>
+    					</div>
+    			</div>
+    			<div class="entry-function">
+    				<a class="entry-share">Share</a> ⋅
+    				<a class="show-add-comment">
+    					Comment
+    				</a>
+
+    				⋅<a class="entry-flag" token="<%= entry.id %>">Flag</a>
+    			</div>
+    			<div class="entry-flag-dlg" style="display: none;">
+    				<div class="entry-flag-txt">Need improvement</div>
+    				<div class="flag-comment-container">
+    				</div>
+    				<div class="entry-flag-buttons">
+    					<button class="btn-entry-flag-confirm blue">Flag Entry</button>
+    					<button class="btn-entry-flag-cancel lightgray">Cancel</button>
+    				</div>
+    			</div>
+    			<div class="comments" style="display: none;">
+    				<div class="comments-category" style="display: none;">
+    					<span class="ui-icons ui-icons-position comments-icon"></span>
+    					<a class="view-all-comments">View all <span class="comments-cnt">0</span> comments</a>
+    					<a class="collapse-comments" style="display: none;">Hide</a>
+    					⋅
+    					<a class="view-creator-comments">View creator's comments only</a>
+    				</div>
+    				<div class="comment-form">
+    					<div class="reply" style="display: none;">Reply to: <span class="reply-name">user</span><a class="remove-replier">&nbsp;&nbsp;delete</a></div>
+    					<div class="comment-textarea-holder">
+    						<textarea placeholder="Write a comment ..." class="placeholder"></textarea>
+    					</div>
+    					<div class="comment-buttons" style="display: none;">
+    						<button class="btn-comment-confirm blue">Comment</button>
+    						<button class="btn-comment-cancel lightgray">Cancel</button>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+	 <% end %>
+	</div>
 
 	<div id="contest-pagination" style="display: none;"></div>
 	<div class="contest-bottom-shadow" id="contest-entries-bottom" style="display: none;"></div>
@@ -122,9 +183,10 @@
 			<div class="profile-box">
 				<a href="http://prizes.org/Zillomom" class="entry-user-name"><%= @contest.user.username %></a>
 				<span class=""></span>
-
+        <% if current_user.id != @contest.user.id %>
 				<br/><a href='#' class="follow" followed="0" uid="<%= @contest.user.id %>">Follow</a>
 				&sdot; <a href='#' class="send-msg" uid="<%= @contest.user.id %>">Send message</a>
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -151,12 +213,11 @@
 </div>
 <script type="text/javascript" charset="utf-8">
 var surface = "contest.detail";
-		ce6.show.init();
 var viewer_logged_in = true;
 var IS_SUSPENDED = 0;
 var SUSPENDED_MSG = 'Your account is suspended. Please contact help@prizes.org for more info.';
-var ce6.show.contestToken = '<%= @contest.id %>';
-alert(ce6.show.contestToken)
+var ce6 = ce6 || {};
+ce6.show.contestToken = "<%= @contest.id %>"
 </script>
 <div id="dlg-new-entry" style="display:none;overflow:hidden">
 	<form action="" id="add-entry-form">
