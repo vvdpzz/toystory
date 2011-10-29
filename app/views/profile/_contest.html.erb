@@ -21,7 +21,7 @@
     <div class="profile-feed-body">
       <div class="contest-preview">
         <div class="contest-description ellipsis multiline truncate" href='/contests/<%= contest.id %>'>
-          <%= contest.content %>
+          <%= contest.content.html_safe %>
         </div>
       </div>
     </div>
