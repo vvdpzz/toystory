@@ -20,7 +20,7 @@ set :user, "root"
 set :password, "pw1234567!"
 
 #Unicorn
-set :unicorn_binary, "/usr/local/rvm/gems/ruby-1.9.2-p290/bin/unicorn"
+set :unicorn_binary, "/usr/local/rvm/gems/ruby-1.9.2-p290/bin/unicorn_rails"
 set :unicorn_config, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/current/tmp/pids/unicorn.pid"
 

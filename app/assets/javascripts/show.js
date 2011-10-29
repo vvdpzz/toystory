@@ -66,7 +66,6 @@ ce6.show = {
 	},
 	init: function() {
 		ce6.ajaxLink.start(ce6.show.onUrlChange);
-
 		this.countdown();	
 		/*
 		 *Initialize UI
@@ -671,7 +670,6 @@ ce6.show = {
 	},
 
 	toggleFollowContest: function() {
-		alert("start");
 		var elem = $(this);
 		if (elem.data('disabled')) return;
 		elem.data('disabled', true);
@@ -681,7 +679,6 @@ ce6.show = {
 				elem.data('disabled', false);
 			});
 		} else {
-			alert(ce6.show.contestToken);
 				elem.text('Unfollow Contest').addClass('unfollow-contest').removeClass('follow-contest');
 			ce6.user.followContest(ce6.show.contestToken, 
 				function(data){
