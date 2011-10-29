@@ -15,7 +15,7 @@
 							<span class="contest-entries gray">·</span>
 							<span class="contest-entries gray"><%= contest.entries_count %> entries</span>
 							<div class="contest-preview">
-								<div class="contest-description ellipsis multiline truncate" url="/contests/<%= contest.id %>"><%= contest.content %></div>
+								<div class="contest-description ellipsis multiline truncate" url="/contests/<%= contest.id %>"><%= contest.content.html_safe %></div>
 							</div>
 							<div class="actor-area">
 								<span class="actor-block">
