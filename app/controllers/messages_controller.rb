@@ -77,6 +77,7 @@ class MessagesController < ApplicationController
     hash[:sender_id]      = sender.id.to_s
     hash[:sender_name]    = sender.username
     
+    # add to user's unread message list
     $redis.rpush("messages:#{receiver.id}:unread_messages", MultiJson.encode(hash))
     Pusher["presence-messages_#{receiver.id}"].trigger('message_created', MultiJson.encode(hash))
     
@@ -85,12 +86,16 @@ class MessagesController < ApplicationController
     
     sender_conver_timecount    = $redis.incr("messages:#{sender.id}:count")
     receiver_conver_timecount  = $redis.incr("messages:#{receiver.id}:count")
+    # add to user's conversation set
     $redis.zadd("messages:#{sender.id}", sender_conver_timecount, "#{receiver.id}")
     $redis.zadd("messages:#{receiver.id}", receiver_conver_timecount, "#{sender.id}")
+    # add to user's message list
     $redis.rpush("messages:#{sender.id}:#{receiver.id}", MultiJson.encode(hash))
     $redis.rpush("messages:#{receiver.id}:#{sender.id}", MultiJson.encode(hash))
     
+    # incr user's current conversation's unread message count
     $redis.incr("messages:#{receiver.id}:#{sender.id}:unreadcount")
+    # incr user'a all unread message count
     $redis.incr("messages:#{receiver.id}:unreadcount")
     
     render :json => { :outgoing => "", :rc => 0 }    

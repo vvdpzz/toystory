@@ -1,7 +1,9 @@
 class ProfileController < ApplicationController
+  include ActionView::Helpers::DateHelper
   before_filter :get_current_user_profile, :only => [:update_description, :update_location, :update_introduction, :update_website]
   def follow_user
-    if user = User.select("id,username,picture").find_by_id(params[:uid])
+    user = User.select("id,username,picture").find_by_id(params[:uid])
+    if user and user.id != current_user.id
       $redis.sadd("users:#{current_user.id}.following_users", params[:uid])
       $redis.sadd("users:#{params[:uid]}.follower_users", current_user.id)
       $redis.hset("users:#{current_user.id}.following_users.info", params[:uid], MultiJson.encode(user))
@@ -13,6 +15,7 @@ class ProfileController < ApplicationController
       hash[:username] = current_user.username
       $redis.incr("notifications:#{params[:uid]}:unreadcount");
       $redis.lpush("notifications:#{params[:uid]}", MultiJson.encode(hash))
+      hash[:created_at] = time_ago_in_words(Time.now)
       Pusher["presence-notifications_#{params[:uid]}"].trigger('notification_created', MultiJson.encode(hash))
       
       render json: {msg: "", rc: 0}
@@ -25,7 +28,7 @@ class ProfileController < ApplicationController
     if User.select("id").find_by_id(params[:uid]) && $redis.sismember("users:#{current_user.id}.following_users", params[:uid])
       $redis.srem("users:#{current_user.id}.following_users", params[:uid])
       $redis.srem("users:#{params[:uid]}.follower_users", current_user.id)
-      $redis.hdel("users:#{current_user.id}.following_users.info", params[:udi])
+      $redis.hdel("users:#{current_user.id}.following_users.info", params[:uid])
       render json: {result: [1, 1], rc: 0}
     else
       render json: {msg: "unfollow faild", rc: 1}
