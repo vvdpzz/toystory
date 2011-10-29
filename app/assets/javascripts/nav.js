@@ -154,13 +154,13 @@ ce6.nav = (function() {
 	self.contructNotificationItem = function(notification) {
 		if(notification.type == 'follow') {
 			var item = $('#'+notification.type).clone().show().removeAttr('id');
-			item.attr('href', 'users/'+notification.user_id);
+			item.attr('href', '/users/'+notification.user_id);
 			item.find('.user-name').html(notification.username);
 			item.find('.notification-timeago').html(notification.created_at);
 			return item;
 		}else if(notification.type == 'entry') {
 			var item = $('#'+notification.type).clone().show().removeAttr('id');
-			item.attr('href', 'contests/'+notification.contest_id);
+			item.attr('href', '/contests/'+notification.contest_id);
 			item.find('.user-name').html(notification.username);
 			item.find('#contest_title').html(notification.contest_name);
 			item.find('.notification-timeago').html(notification.created_at);
@@ -229,7 +229,7 @@ ce6.nav = (function() {
 		item.find('.message-preview').html(message.text);
 		item.find('.timeago').html(message.time_created);
 		item.click(function() {
-			ce6.site.redirect('messages/messages', {friend_token: message.sender_id});
+			window.location.href = '/messages/messages?friend_token=' + message.sender_id;
 		})
 		return item;
 	}

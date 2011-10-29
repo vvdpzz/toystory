@@ -19,7 +19,7 @@ class ContestsController < ApplicationController
       :is_community    => params[:is_community]
     )
     
-    # add to Active Contests
+    # add to Active Contests HASH
     $redis.rpush("active_contests:#{current_user.id}", MultiJson.encode(contest.attributes.slice("id","title")))
     $redis.incr("active_contests:#{current_user.id}:count")
     
