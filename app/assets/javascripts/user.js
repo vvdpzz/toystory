@@ -55,6 +55,10 @@ ce6.user = {
 		$('#unblock-user-btn').click(ce6.user.unblockUser);
 		$('#suspend-user-btn').click(ce6.user.suspendUser);
 		$('#unsuspend-user-btn').click(ce6.user.unsuspendUser);
+		
+		
+		$('#top-nav li').removeClass();
+		$('#nav-profile').parent().addClass('active');
 	},
 	redirect: function(){
 		redirect_to = $(this).attr('href');
