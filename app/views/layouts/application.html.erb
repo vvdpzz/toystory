@@ -273,7 +273,7 @@
 		
 		message_channel.bind('message_created', function(message) {
 			var elem = ce6.nav.constructMessageItem(message);
-			elem.appendTo('#nav-msg-content');
+			elem.prependTo('#nav-msg-content');
 			
 			count = 1;
 			if($('#nav-msg-new-num').text().trim() != '')
@@ -288,7 +288,7 @@
 		var notification_channel = pusher.subscribe("presence-notifications_<%= current_user.id %>");
 		notification_channel.bind('notification_created', function(notification) {
 			var elem = ce6.nav.contructNotificationItem(notification);
-			elem.appendTo('#notification-items');
+			elem.prependTo('#notification-items');
 			
 			count = 1;
 			if($('#notification-new-num').text().trim() != '')

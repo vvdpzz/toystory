@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
     @notification_list = $redis.lrange("notifications:#{current_user.id}", 0, -1)
     @notification_list.collect! do |notification_json|
       notification = MultiJson.decode(notification_json)
-      created_at = Time.parse notification["created_at"]
+      created_at = Time.parse(notification["created_at"])
       notification["date"] = created_at.strftime("%Y-%m-%d")
       notification["time"] = created_at.strftime("%H:%M:%S")
       notification
@@ -17,7 +17,7 @@ class NotificationsController < ApplicationController
     notification_list = $redis.lrange("notifications:#{current_user.id}", 0, -1)
     notification_list.collect! do |notification_json|
       notification = MultiJson.decode(notification_json)
-      created_at = Time.parse notification["created_at"]
+      created_at = Time.parse(notification["created_at"])
       notification["created_at"] = time_ago_in_words(created_at) + " ago"
       notification
     end
