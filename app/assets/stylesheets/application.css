@@ -10,6 +10,12 @@
 */
 .select-photo{
   display:inline;
+  margin-right: -5px;
+}
+.fluploader_select {
+  display:inline;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 .fluploader_wrapper{
 	display: inline;
@@ -17,7 +23,6 @@
 	margin:0;
 	padding:0;
 	line-height:1;
-	float:left;
 }
 .fluploader_swfdiv{
 	top: 0px;

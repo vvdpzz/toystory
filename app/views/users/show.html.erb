@@ -12,11 +12,8 @@
           <div class="fluploader_swfdiv">
             <input id="uploadify" name="uploadify" type="file" />
           </div>
-        </div>
-      <!-- <a href="#" id='user-photo-edit' class="edit-tab">edit</a> -->
-      &sdot;
-      <a href="#" id='user-photo-del' class="delete-tab">delete</a>
-    </div>
+        </div>&sdot;<a href="#" id='user-photo-del' class="delete-tab">delete</a>
+      </div>
       <div class="profile-relation-button clearfix"> </div>
     <% else %>
       <div class="profile-relation-button clearfix">
@@ -175,7 +172,7 @@
         <div class="profile-entry-line">
           <div class="profile-entry-title gray">Website</div>
           <div class="profile-entry-value">
-             <%= @profile.website %>
+             <a class="profile-website"> <%= @profile.website %> </a>
           </div>
         </div>
       <% end %>    

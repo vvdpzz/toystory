@@ -34,7 +34,7 @@
 						<div class="header-right logged-in">
 							<div id="user-info" class="drop-info-menu inactive-menu">
 								<div id="user-drop-links" class="hand-cursor user-drop-icon">
-									<img id="user-image" src="/assets/default-profile-photo.png">
+									<img id="user-image" src="<%= current_user.picture.url %>">
 									<span id="user-name"><%= current_user.username %></span>
 								</div>
 								<div id="dropdown-links" class="dropdown-menu">
@@ -300,8 +300,8 @@
     		scriptData		: uploadify_script_data,
     		wmode			: "transparent",
     		hideButton		: true,
-    		height			: 13,
-    		width			: 34,
+    		height			: 23,
+    		width			: 54,
     		queueID			: 'photoUploadQueue',
     		onComplete		: function(event, ID, fileObj, response, data) {
     			response = eval('(' + response + ')');
