@@ -23,7 +23,7 @@
 					<div class='left-time-area'>
 						<span class='left-time-title'> &sdot; Time Left :</span>
 						<span class='left-time-details '>
-							<span><%= @contest.created_at %></span>
+							<span><%= time_ago_in_words @contest.created_at %></span>
 						</span>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
     		</div>
     		<div class="entry-detail">
     			<div class="entry-user">
-    				<span class="time-ago"><%= entry.created_at %></span>
+    				<span class="time-ago"><%= time_ago_in_words entry.created_at %></span>
     				<a href="/users/<%= entry.user_id %>" class="entry-user-simage">
     					<img src="<%= entry.user.picture.url %>">
     				</a>
