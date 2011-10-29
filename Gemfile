@@ -23,6 +23,7 @@ gem 'activemerchant'
 gem 'activemerchant_patch_for_china'
 
 gem 'carrierwave'
+gem 'rmagick'
 
 gem 'settingslogic'
 

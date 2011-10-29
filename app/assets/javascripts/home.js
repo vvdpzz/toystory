@@ -47,6 +47,8 @@ ce6.home = (function() {
 				if (badge.data('tip')) badge.data('tip').tip.find('.prize-number').html(prize);
 			}
 		});
+		$('#top-nav li').removeClass();
+		$('#nav-home').parent().addClass('active');
 	},
 	onUrlChange : function(state) {
 		var data = state.data;

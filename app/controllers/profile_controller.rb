@@ -157,6 +157,7 @@ class ProfileController < ApplicationController
   end
   
   def photo_upload_response
+    current_user.salt = nil
     current_user.picture = params[:Filedata]
     if current_user.save
       render :json => {:picture => current_user.picture.url}
