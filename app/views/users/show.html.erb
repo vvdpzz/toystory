@@ -1,7 +1,7 @@
 <div class="profile-3column-left">
   <div class="profile-leftbar-box">
     <div class='user-display-pic-outer'>
-      <img target-width='156' id='user-mugshot' class="user-display-pic" src="<%= @user.picture.url %>" onload="javascript:centralizeLargePic(this);" />
+      <img target-width='156' id='user-mugshot' class="user-display-pic" src="<%= @user.picture.url() %>" onload="javascript:centralizeLargePic(this);" />
     </div>
     <% if @is_myself %>
       <div class="profile-image-tab">
@@ -186,34 +186,7 @@
     </div>
   <% if @is_myself %>
   <div id="profile-widget-container" uid="<%= @user.id %>" style="display:block;">
-    <div id="profile-feed-block-215" widget_type="332" widget_key="215" class="profile-widget-visible">
-
-    </div>
-
-    <div id="profile-feed-block-portfolio" widget_type="333" widget_key="portfolio" class="profile-widget-visible">
-      <div class="profile-widget-title clearfix">
-        <div class="profile-widget-title-icon">
-          <span class="ui-icons ui-icons-position" id="portfolio-icon"></span>
-          <span class="ui-icons-title"><%= @user.username%>'s Work</span>
-        </div>
-
-      </div>
-
-      <div class="profile-userinfo-box">
-        <div id="profile-portfolio-preview" placeholder="1">
-          <p class="profile-fallback-title">Create your <b>Portfolio</b></p>
-          <p class="profile-fallback-desc">Show off your skills in this space. Let the world know what you're good at.</p>
-          <hr/><br/>
-          <p><img src="/assets/sample-portfolio.jpg" alt="portfolio image" /></p>
-        </div>
-        <div class="profile-center-button">
-          <button id="profile-enter-portfolio" class="blue-small">Edit</button>
-        </div>
-      </div>
-
-
-    </div>
-
+ 
     <div id="profile-feed-block-202" widget_type="332" widget_key="202" class="profile-widget-visible">
       <div class="profile-widget-title clearfix">
         <div class="profile-widget-title-icon">
@@ -238,49 +211,6 @@
 
     </div>
 
-    <div id="profile-feed-block-201" widget_type="332" widget_key="201" class="profile-widget-visible">
-      <div class="profile-widget-title clearfix">
-        <div class="profile-widget-title-icon">
-          <span class="ui-icons ui-icons-position" id="create-contest-icon"></span>
-          <span class="ui-icons-title">Contests Created</span>
-        </div>
-
-      </div>
-
-      <div class="profile-userinfo-box">
-        <div id="profile-portfolio-preview">
-          <p class="profile-fallback-title">Create contests for <b>anything</b>!</p>
-          <p class="profile-fallback-desc">You have not created any contests. Create one now for anything you want - Design, Names or Others!</p>
-          <hr/><br/>
-          <div id="profile-category-icons">
-            <div class="profile-contest-category">
-              <a href="/contests/new" logdata="button_type=-1119941483697217498&event_type=button_clicked">
-                <p><span class="category-icons category-icons-position category-design-icon"></span></p>
-                <p>Art, Media &amp; Design</p>
-              </a>
-            </div>
-            <div class="profile-contest-category">
-              <a href="/contests/new" logdata="button_type=-1119941483697217498&event_type=button_clicked">
-                <p><span class="category-icons category-icons-position category-naming-icon"></span></p>
-                <p>Names &amp; Slogan</p>
-              </a>
-            </div>
-            <div class="profile-contest-category">
-              <a href="/contests/new" logdata="button_type=-1119941483697217498&event_type=button_clicked">
-                <p><span class="category-icons category-icons-position category-other-icon"></span></p>
-                <p>Others</p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
-    <div id="profile-feed-block-214" widget_type="332" widget_key="214" class="profile-widget-visible">
-
-    </div>
   </div>
   <% end %>
   <div id="profile-connect-container" uid="<%= @user.id %>" style="display:none;">

@@ -162,7 +162,7 @@ ce6.nav = (function() {
 			var item = $('#'+notification.type).clone().show().removeAttr('id');
 			item.attr('href', 'contests/'+notification.contest_id);
 			item.find('.user-name').html(notification.username);
-			item.find('#contest-title').html(notification.contest_name);
+			item.find('#contest_title').html(notification.contest_name);
 			item.find('.notification-timeago').html(notification.created_at);
 			return item;
 		}

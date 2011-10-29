@@ -19,9 +19,6 @@ $(function() {
 		$('#get-invitation-btn').click(ce6.create.getInvitation);
 	} else if (surface == 'user.profile') {
 	  ce6.user.init();
-	  if(profileOwner.is_myself){
-			ce6.userPhoto.init();
-		}
     ce6.profile.init();
 	} else if (surface == 'message_box.conversation_view') {
 		ce6.message.initConversationView();
