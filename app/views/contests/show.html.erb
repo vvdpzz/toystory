@@ -178,7 +178,7 @@
 	<div class="side-feed">
 		<div class="side-feed-row">
 			<a href="/users/<%= @contest.user.id %>" class="profile-feed-user-image">
-				<%= image_tag @contest.user.picture %>
+				<%= image_tag @contest.user.picture.url %>
 			</a>
 			<div class="profile-box">
 				<a href="http://prizes.org/Zillomom" class="entry-user-name"><%= @contest.user.username %></a>
