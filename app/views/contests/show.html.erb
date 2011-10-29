@@ -2,10 +2,16 @@
 
 	<div class="contest-detail contest ">
 		<div class="contest-detail-header radius-border-top clearfix">
+		  <% if @contest.is_community %>
+		  <div class="detail-prize-jff-zone morethan24 radius-border-bottom"></div>
+		  	<% else %>
 			<div class="detail-prize-zone morethan24 radius-border-bottom">
+			  
 				<div class='detail-prize-title'> PRIZE</div>
 				<div class='detail-prize-num'> $<%= @contest.credits %></div>
+			
 			</div>
+				<% end %>
 			<div class='detail-info-zone'>
 				<span class="detail-title" id="detail-title-text"><%= @contest.title %></span>
 				<div class='contest-extend-info'>
@@ -178,7 +184,7 @@
 	<div class="side-feed">
 		<div class="side-feed-row">
 			<a href="/users/<%= @contest.user.id %>" class="profile-feed-user-image">
-				<%= image_tag @contest.user.picture %>
+				<%= image_tag @contest.user.picture.url %>
 			</a>
 			<div class="profile-box">
 				<a href="http://prizes.org/Zillomom" class="entry-user-name"><%= @contest.user.username %></a>
