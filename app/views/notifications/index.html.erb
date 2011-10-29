@@ -14,7 +14,9 @@
 			<div ntf-log-attr-page="12" class="notification-detail"> <a user="1" href="http://prizes.org/Windstills" logdata="event_type=notification_click&amp;notification_template_name=12" class="clickable-user">WindStills</a> is now following you. <span class="timeago">08:13:12 PM</span></div> 
 			<div ntf-log-attr-page="12" class="notification-detail"> <a user="1" href="http://prizes.org/Yangkit" logdata="event_type=notification_click&amp;notification_template_name=12" class="clickable-user">yangkit</a> is now following you. <span class="timeago">07:06:55 PM</span></div> 
 		</div>
-		
+		<% if @first["date"] == Time.now.strftime("%Y-%m-%d") %>
+			<div class="notification-date">Today</div>
+		<% end %>
 		<% @notification_list.each do |notification| %>
 			<% if notification["type"] == 'follow' %> 
 				<div class="notification-detail"> 
