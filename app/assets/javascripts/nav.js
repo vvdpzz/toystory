@@ -214,7 +214,7 @@ ce6.nav = (function() {
 
 				$.each(data.messages, function(idx, message) {
 					var elem = self.constructMessageItem(message);
-					elem.appendTo('#nav-msg-content');
+					elem.prependTo('#nav-msg-content');
 				});
 				$('#nav-msg-new-num').text(data.count).show();
 				$('.nav-msg-icon').addClass('nav-msg-icon-active');
