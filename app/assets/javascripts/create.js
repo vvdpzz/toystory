@@ -47,7 +47,6 @@ ce6.create = {
 	},
 	init: function() {
 		$('#create-confirm').dialog(this.confirmDialog).restyleButtons();
-
 		$('#enddate-picker').datepicker(this.datepickerOptions)
 		var today = new Date();
 		var endDate = new Date(today.getTime() + this.defaultEndDate * 86400 * 1000);
@@ -56,6 +55,9 @@ ce6.create = {
 		$('#btn-preview-publish').data('disabled', true).click(this.previewAndConfirmContest);
 
 		this.enableTips();
+		
+		$('#top-nav li').removeClass();
+		$('#nav-create-contest').parent().addClass('active');
 		
 		
     ce6.editor.newEditorInstance('contest-content', {maxHeight: 223});
