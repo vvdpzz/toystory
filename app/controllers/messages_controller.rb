@@ -78,7 +78,7 @@ class MessagesController < ApplicationController
     hash[:sender_name]    = sender.username
     
     $redis.rpush("messages:#{receiver.id}:unread_messages", MultiJson.encode(hash))
-    Pusher["presence-channel_#{receiver.id}"].trigger('message_created', MultiJson.encode(hash))
+    Pusher["presence-messages_#{receiver.id}"].trigger('message_created', MultiJson.encode(hash))
     
     hash[:receiver_id]    = receiver.id.to_s
     hash[:receiver_name]  = receiver.username

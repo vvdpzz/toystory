@@ -2,7 +2,7 @@ ce6.site = {
 	url : function(method, params) {
 		params = params || {};
 		url_args = $.param(params);
-		return '/' + method + (url_args?'?'+url_args:'');
+		return 'http://' + BASE_DOMAIN + '/' + method + (url_args?'?'+url_args:'');
     },
 	redirect : function(method, params) {
 		if (method.indexOf('http://')==0)
@@ -36,9 +36,9 @@ ce6.site = {
 	updateUrlParam : function(url, params) {
 		var oldParams = ce6.site.urlParams(url);
 		var urlBase = url;
-		if (url.indexOf('?') > -1) {
-			urlBase = url.split(/\?/)[0];
-		}
+		// if (url.indexOf('?') > -1) {
+		// 		urlBase = url.split(/\?/)[0];
+		// 	}
 		return urlBase + '?' + $.param($.extend(oldParams, params));
 	},
 	reloadWithoutParams : function(excludeParams){

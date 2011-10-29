@@ -1,3 +1,169 @@
-<script type="text/javascript" charset="utf-8">
-  var surface = 'home';
+<div class="page-left-home">
+     <div class="nav-menu-left">
+             <a href='/home?tab=activities' id='activities-tab' class='feed-tab' ajax=true>
+                 <span class="ui-icons ui-icons-position" id="all-activities-icon"></span>
+                 All Activities
+                 <div class='feed-tab-arrow'></div>
+             </a>
+         <a href='/home' id='contests-tab' class='feed-tab' category='all' ajax=true>
+             <span class="ui-icons ui-icons-position" id="all-contests-icon"></span>
+             All Contests
+             <div class='feed-tab-arrow'></div>
+         </a>
+             <a href=" category/Art-Media-Design" class='category-tab' category="Art, Media & Design" ajax=true>
+                     <b>Art, Media & Design</b>
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Names-Slogans" class='category-tab' category="Names & Slogans" ajax=true>
+                     <b>Names & Slogans</b>
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Writing-Editing" class='category-tab' category="Writing & Editing" ajax=true>
+                     <b>Writing & Editing</b>
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Parenting" class='category-tab' category="Parenting" ajax=true>
+                     Parenting
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Health-Fitness" class='category-tab' category="Health & Fitness" ajax=true>
+                     Health & Fitness
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Business-Ideas" class='category-tab' category="Business Ideas" ajax=true>
+                     Business Ideas
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Travel" class='category-tab' category="Travel" ajax=true>
+                     Travel
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/General-Knowledge" class='category-tab' category="General Knowledge" ajax=true>
+                     General Knowledge
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Promotions-Offers" class='category-tab' category="Promotions & Offers" ajax=true>
+                     Promotions & Offers
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Programming" class='category-tab' category="Programming" ajax=true>
+                     Programming
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Religion-Philosophy" class='category-tab' category="Religion & Philosophy" ajax=true>
+                     Religion & Philosophy
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Sports" class='category-tab' category="Sports" ajax=true>
+                     Sports
+                 <div class='category-tab-arrow'></div>
+             </a>
+             <a href=" category/Others" class='category-tab' category="Others" ajax=true>
+                     Others
+                 <div class='category-tab-arrow'></div>
+             </a>
+         <a href='/category/Just-For-Fun' id='jff-contests-tab' class='feed-tab' category='just_for_fun' ajax=true>
+             <span class="ui-icons homepage-tab-icon-position" id="jff-contest-icon"></span>
+             Just For Fun
+                 <div class='new-feeds-count'>9</div>
+             <div class='feed-tab-arrow'></div>
+         </a>
+     </div>
+
+
+ </div>
+ <div class="page-middle-home">
+     <div id="profile-user-feed">
+         <div id="activities-tab-container" class="feed-tab-container feed-tab-top-border" style='display:none'>
+             <div class="left-preloader-bar"><span class="preloader-icon">Loading...</span></div>
+             <div id="activities-content-container"></div>
+         </div>
+         <div id="jff-contests-tab-container" class="feed-tab-container" style='display:none'>
+                 <div class="jff-bg-container">
+                     <div class="jff-bg-cancel-container">
+                         <button class="jff-bg-cancel-btn"></button>
+                     </div>
+                     <div class="jff-bg-btn-container">
+                         <button class="jff-bg-btn"></button>
+                     </div>
+                 </div>
+         </div>
+         <div id="contests-tab-container" class="feed-tab-container feed-tab-top-border" style='display:none'>
+             <div class='contests-sort-by'>
+                 <span class='sort-header'>SORT BY:</span>
+                 <a sortby='contest_created' default_desc=1 ajax=true>
+                     TIME CREATED
+                     <div class='contests-sort-indicator'></div>
+                 </a>
+                 <a sortby='end_date' ajax=true>
+                     TIME LEFT
+                     <div class='contests-sort-indicator'></div>
+                 </a>
+                 <a id='contests-sort-by-prize' sortby='prize' default_desc=1 ajax=true>
+                     PRIZE
+                     <div class='contests-sort-indicator'></div>
+                 </a>
+                 <a sortby='entries' default_desc=1 ajax=true>
+                     ENTRIES
+                     <div class='contests-sort-indicator'></div>
+                 </a>
+             </div>
+             <div class="left-preloader-bar"><span class="preloader-icon">Loading...</span></div>
+             <div id="contests-content-container">
+             </div>
+         </div>
+     </div>
+     <div class='feed-bottom-shadow-sm'></div>
+ </div>
+ <div class="page-right-home">
+     <div id="order-action-needed"></div>
+     <div id="contest-top-prizes"></div>
+     <div id="contest-trending"></div>
+     <div id="latest-winners-box"></div>
+     <div id="top-users-box"></div>
+ </div>
+	<script type="text/javascript" charset="utf-8">
+    var surface = "home";
+	var viewer_logged_in = true;
+	var VER_ID = "20111025025859";
+	var VER_DOMAIN = "static.prizes.org";
+	var VEP_PAYOUT_FEE_RATE = 0.055*100 + 0.1*100;
+	var FEED_ITEM_TYPE = {"FOLLOW_TAG": 213, "ENTRY_SUBMITTED": 202, "FOLLOW_CONTEST": 211, "FOLLOW_USER": 210, "TAGGED_AS": 212, "VOTE": 203, "CONTEST_CREATED": 201, "CONTEST_WON": 215, "PICK_WINNER": 204, "CONTEST_WON_JFF": 216, "HONORABLE_MENTION": 214};
+		prefetchedFeeds = {
+			"show_ended": false,
+			"next_page": 1,
+			"has_more_feeds": true,
+			"empty_message": "Oops. No active contests at this moment.",
+			"rc": 0,
+			"feeds": [[{
+				"owner": {
+					"picture": "",
+					"verified": true,
+					"name": "Kang Long",
+					"large_pic": "",
+					"url": "http://prizes.org/Kang-Long-1",
+					"token": "OR6Sv4prF95_Uees31Oi5w",
+					"following": false,
+					"desc": ""
+				},
+				"type": 201,
+				"time_ago": 6924.7486848831177,
+				"contest": {
+					"blind": false,
+					"votes": 0,
+					"is_promoted": false,
+					"description": "",
+					"url": "",
+					"time_created": "2011-10-30T16:00:00",
+					"is_jff": false,
+					"token": "R58-dyR0hiNQ9agLKklMdw",
+					"thumbnail_url": null,
+					"time_ending_left": 384465.22248196602,
+					"entry_count": 2,
+					"following": false,
+					"is_verified_only": false,
+					"prize": "20"
+				}
+			}]]
+		}
 </script>

@@ -16,6 +16,7 @@ ce6.nav = (function() {
 		self.initActiveContest();
 		self.initBonusBalance();
 		
+		self.loadNotifications();
 		self.loadActiveContests();
 
 		$('#nav-messages').toggleMenu($('#nav-msg-menu'), {
@@ -105,9 +106,9 @@ ce6.nav = (function() {
 	self.clickNotifications = function() {
 		// ce6.logButtonClicked(logging_objs.btn_nav_notification);
 		if($('#notification-new-num').length) {
-			ce6.ajaxJson('/notification/set_all_seen');
+			ce6.ajaxJson('/notifications/set_all_seen');
 			$('.notifications-icon').removeClass('notifications-icon-active');
-			$('#notification-new-num').remove();
+			$('#notification-new-num').text('').hide();
 		}
 	};
 
@@ -129,26 +130,62 @@ ce6.nav = (function() {
 		}
 	};
 	
+	//Custom function to load notifications
+	self.loadNotifications = function() {
+		ce6.ajaxJsonGet('/notifications/load_notifications', {},
+			function(data) {
+				if(data.notifications.length == 0) {
+					$('#notification-empty').show();
+					return;
+				}
+				$.each(data.notifications, function(idx, notification) {
+					var elem = self.contructNotificationItem(notification);
+					$('#notification-items').append(elem);
+				});
+				if(data.count != null){
+					$('#notification-new-num').text(data.count).show();				
+					$('#notification-icon').addClass('notifications-icon-active');
+				}
+				$('#notification-menu .notification-item:last').addClass('non-bottom-line');
+			}
+		);
+	}
+	
+	self.contructNotificationItem = function(notification) {
+		if(notification.type == 'follow') {
+			var item = $('#'+notification.type).clone().show().removeAttr('id');
+			item.attr('href', 'users/'+notification.user_id);
+			item.find('.user-name').html(notification.username);
+			item.find('.notification-timeago').html(notification.created_at);
+			return item;
+		}else if(notification.type == 'entry') {
+			var item = $('#'+notification.type).clone().show().removeAttr('id');
+			item.attr('href', 'contests/'+notification.contest_id);
+			item.find('.user-name').html(notification.username);
+			item.find('#contest-title').html(notification.contest_name);
+			item.find('.notification-timeago').html(notification.created_at);
+			return item;
+		}
+	}
+	
 	//Custom function to load active_contests
 	self.loadActiveContests = function() {
 		ce6.ajaxJsonGet('/contests/load_active_contests', {},
 			function(data) {
 				if(data.active_contests.length == 0) {
-					$('#nav-ntf-empty').show();
+					$('#nav-cnt-empty').show();
 					return;
 				}
 				$.each(data.active_contests, function(idx, active_contest) {
 					var elem = self.constructActiveContestItem(active_contest);
 					elem.appendTo('#nav-contest-content');
 				});
-				$('#nav-ntf-empty').hide();
 				$('#notification-title').text('Active Contests('+ data.count +')');
 			}
 		);
 	}
 	
 	self.constructActiveContestItem = function(active_contest) {
-		// alert(JSON.stringify(active_contest));
 		var item = $('#nav-ntf-item-proto').clone().show().removeAttr('id');
 		item.attr('href', '/contests/' + active_contest.id);
 		item.html(active_contest.title);

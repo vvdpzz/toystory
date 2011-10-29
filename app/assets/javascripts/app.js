@@ -505,18 +505,18 @@ ce6.switchDiv = function(showID, hideID) {
 	$('#'+showID).show();
 }
 
-ce6.refreshCallouts = function(){
-	//load callouts
-	setTimeout( 
-		function(){
-			for (var i=0; i<callouts.length; i++){
-				if (callouts[i] != 'homepage_jff_bg') { 
-					ce6.callouts.displayCallout(callouts[i]);
-				}
-			}},
-		1000);
-}
-
+// ce6.refreshCallouts = function(){
+// 	//load callouts
+// 	setTimeout( 
+// 		function(){
+// 			for (var i=0; i<callouts.length; i++){
+// 				if (callouts[i] != 'homepage_jff_bg') { 
+// 					ce6.callouts.displayCallout(callouts[i]);
+// 				}
+// 			}},
+// 		1000);
+// }
+// 
 /*
  * CE6 notification
  */
