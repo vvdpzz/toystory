@@ -1,6 +1,6 @@
 class ContestsController < ApplicationController
   def index
-    
+    @contests = Contest.all
   end
   
   def new
@@ -45,7 +45,7 @@ class ContestsController < ApplicationController
   end
   
   def show
-    
+    @contest = Contest.find params[:id]
   end
   
   def check_credits
@@ -59,6 +59,15 @@ class ContestsController < ApplicationController
   
   def add_entry
     # TODO: add contests to Active_contests
+    contest = Contest.find params[:contestToken]
+    if contest
+      entry = current_user.entries.build(:contest_id => contest.id, :content => params[:content])
+      if entry.save
+        render :json => {:rc => 0}
+      else
+        render :json => {:rc => 2, :msg => "ai you!"}
+      end
+    end
   end
   
   def active_contests

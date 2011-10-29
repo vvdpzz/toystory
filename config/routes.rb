@@ -11,6 +11,7 @@ Toystory::Application.routes.draw do
       post "check_credits"
       get "active_contests"
       get "load_active_contests"
+      post "add_entry"
     end
   end
   

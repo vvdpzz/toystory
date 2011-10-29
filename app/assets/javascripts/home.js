@@ -47,6 +47,8 @@ ce6.home = (function() {
 				if (badge.data('tip')) badge.data('tip').tip.find('.prize-number').html(prize);
 			}
 		});
+		$('#top-nav li').removeClass();
+		$('#nav-home').parent().addClass('active');
 	},
 	onUrlChange : function(state) {
 		var data = state.data;
@@ -73,8 +75,8 @@ ce6.home = (function() {
 //		ce6.contest_widget.loadTopPrizes(self.category);
 	},
 	reset: function(container, load_func){
-		$('.left-preloader-bar').show();
-		$('#' + self.contentContainer).empty();
+		// $('.left-preloader-bar').show();
+		// $('#' + self.contentContainer).empty();
 		self.nextPage = 0;
 		self.cachedMoreFeeds = 0;
 		self.hasMoreFeeds = 0;

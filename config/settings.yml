@@ -1,0 +1,23 @@
+defaults: &defaults
+  answer_price: 5
+  vote_up_limit: 15
+  vote_down_limit: 125
+  answer_vote_up: 10
+  vote_down: 2
+  answer_voter_down: 1
+  question_vote_up: 5
+  answers_per_page: 10
+  questions_per_page: 15
+  r0: "In the case of duplicated entries, the first entry submitted will win"
+  r1: "Entries should include reference images"
+  r2: "Entries should be no less than 200 words"
+  r3: "Only allow verified users to participate."
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
