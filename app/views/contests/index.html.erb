@@ -13,9 +13,7 @@
 						<a class="feed-badge badge-overoneday" href="/contests/<%= contest.id %>">
 							<div class="prize">$ <%= contest.credits %></div>
 							<div class="time-left-cap">TIME LEFT</div>
-							<div class="time-left "><%= time_ago_in_words contest.
-							
-							 %></div>
+							<div class="time-left "><%= time_ago_in_words contest.created_at %></div>
 						</a>
 						
 						<% end %>
