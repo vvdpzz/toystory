@@ -124,7 +124,7 @@ ce6.message = (function() {
 		$('#message-recipient .recipient-name').remove();
 		$('#message-recipient .remove-button').remove();
 		
-		var userSpan = "<span class='recipient-name'>" + stringutil.cut(user.username, 35) + "</span><span class='remove-button'></span>";
+		var userSpan = "<span class='recipient-name'>" + stringutil.cut(user.name, 35) + "</span><span class='remove-button'></span>";
 		$('#message-recipient').append(userSpan);
 		$('#message-recipient .remove-button').click(removeRecipient);
 

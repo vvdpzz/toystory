@@ -229,7 +229,7 @@ ce6.nav = (function() {
 		item.find('.message-preview').html(message.text);
 		item.find('.timeago').html(message.time_created);
 		item.click(function() {
-			window.location.href = '/messages/messages?friend_token=' + message.sender_id;
+			ce6.site.redirect('messages/messages', {friend_token : message.sender_id});
 		})
 		return item;
 	}

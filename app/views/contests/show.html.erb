@@ -2,10 +2,16 @@
 
 	<div class="contest-detail contest ">
 		<div class="contest-detail-header radius-border-top clearfix">
+		  <% if @contest.is_community %>
+		  <div class="detail-prize-jff-zone morethan24 radius-border-bottom"></div>
+		  	<% else %>
 			<div class="detail-prize-zone morethan24 radius-border-bottom">
+			  
 				<div class='detail-prize-title'> PRIZE</div>
 				<div class='detail-prize-num'> $<%= @contest.credits %></div>
+			
 			</div>
+				<% end %>
 			<div class='detail-info-zone'>
 				<span class="detail-title" id="detail-title-text"><%= @contest.title %></span>
 				<div class='contest-extend-info'>
@@ -17,7 +23,7 @@
 					<div class='left-time-area'>
 						<span class='left-time-title'> &sdot; Time Left :</span>
 						<span class='left-time-details '>
-							<span><%= @contest.created_at %></span>
+							<span><%= time_ago_in_words @contest.created_at %></span>
 						</span>
 					</div>
 				</div>
@@ -100,7 +106,7 @@
     		</div>
     		<div class="entry-detail">
     			<div class="entry-user">
-    				<span class="time-ago"><%= entry.created_at %></span>
+    				<span class="time-ago"><%= time_ago_in_words entry.created_at %></span>
     				<a href="/users/<%= entry.user_id %>" class="entry-user-simage">
     					<img src="<%= entry.user.picture.url %>">
     				</a>
@@ -239,17 +245,10 @@ ce6.show.contestToken = "<%= @contest.id %>"
 		<div id="pickwinner-confirm">Are you sure you want to pick&nbsp;<a><span class='picked-winner-name'></span></a>&nbsp;as the winner?</div>
 	</div>
 </div>
-<div id="dlg-tutorial" style="display:none;">
-	<span id="arrow-tutorial" class="pointy-arrow pointy-arrow-left">&nbsp;</span>
-	<span class="subject" id="ctt-tutorial">Tutorial</span>
-</div>
 <div id="dlg-more-voter" class="dlg-plain-content" style="display:none;">
 	<a class='close' href='#'></a>
 	<div id="all-voters">
 	</div>
-</div>
-<div id="dlg-tutorial-finished" style="display:none;">
-	<span class="subject" id="ctt-tutorial-finished">Tutorial Finished</span>
 </div>
 <div id="dlg-report" class="dlg-plain-content" style="display:none;">
 	<div id='report-options'>

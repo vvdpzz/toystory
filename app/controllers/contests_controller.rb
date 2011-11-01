@@ -19,10 +19,6 @@ class ContestsController < ApplicationController
       :is_community    => params[:is_community]
     )
     
-    # add to Active Contests HASH
-    $redis.hset("active_contests:#{current_user.id}", contest.id, MultiJson.encode(contest.attributes.slice("id","title")))
-    $redis.incr("active_contests:#{current_user.id}:count")
-    
     # not a just for fun contest
     if contest.is_community == 0
       diff = contest.credits - current_user.credits
@@ -37,6 +33,10 @@ class ContestsController < ApplicationController
     
     if contest.save
       # save successed
+
+      # add to Active Contests HASH
+      $redis.hset("active_contests:#{current_user.id}", contest.id, MultiJson.encode(contest.attributes.slice("id","title")))
+      $redis.incr("active_contests:#{current_user.id}:count")
       render :json => {:rc => 0, :next => "/contests/#{contest.id}"}
     else
       # failed, return error messages
@@ -88,7 +88,7 @@ class ContestsController < ApplicationController
   end
   
   def load_active_contests
-    active_contest_list = $redis.lrange("active_contests:#{current_user.id}", 0, -1)
+    active_contest_list = $redis.hvals("active_contests:#{current_user.id}")
     active_contest_list.collect! { |active_contest| MultiJson.decode(active_contest) }
     active_count = $redis.get("active_contests:#{current_user.id}:count")
     render :json => { :count => active_count, :active_contests => active_contest_list, :rc => 0 }

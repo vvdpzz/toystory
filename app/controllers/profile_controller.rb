@@ -2,7 +2,8 @@ class ProfileController < ApplicationController
   include ActionView::Helpers::DateHelper
   before_filter :get_current_user_profile, :only => [:update_description, :update_location, :update_introduction, :update_website]
   def follow_user
-    if user = User.select("id,username,picture").find_by_id(params[:uid])
+    user = User.select("id,username,picture").find_by_id(params[:uid])
+    if user and user.id != current_user.id
       $redis.sadd("users:#{current_user.id}.following_users", params[:uid])
       $redis.sadd("users:#{params[:uid]}.follower_users", current_user.id)
       $redis.hset("users:#{current_user.id}.following_users.info", params[:uid], MultiJson.encode(user))
