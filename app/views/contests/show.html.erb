@@ -116,7 +116,7 @@
     			<div class="entry-content" id="entry-submitted-row-<%= entry.id %>">
     					<div class="preview-text">
     						<div id="entry-text-<%= entry.id %>" class="unselectable">
-    							<%= entry.content %>
+    							<%= entry.content.html_safe %>
     						</div>
     						<div class="video-preview">
 
