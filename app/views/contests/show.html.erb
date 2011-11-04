@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="page-left">
 
 	<div class="contest-detail contest ">
@@ -46,11 +47,51 @@
 			</div>
 		</div>
 		<% if @contest.user_id != current_user.id %>
+=======
+	<div class="page-left">
+		
+			<div class="contest-detail contest ">
+	<div class="contest-detail-header radius-border-top clearfix">
+			<div class="detail-prize-zone morethan24 radius-border-bottom">
+				<div class='detail-prize-title'> PRIZE</div>
+				<div class='detail-prize-num'> $50</div>
+			</div>
+		<div class='detail-info-zone'>
+			<span class="detail-title" id="detail-title-text">Website improvement for a startup educational company</span>
+			<div class='contest-extend-info'>
+						<a id='follow-contest-link' class='follow-contest' href='#'>Follow Contest</a>
+				<div class='left-time-area'>
+					<span class='left-time-title'> &sdot; Time Left :</span>
+					<span class='left-time-details '>
+						<span>4 days</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="detail-body">
+		<div class='contest-detail-content word-wrap clearfix'>
+			<div class='detail-bottom-border contest-detail-padding' ></div>
+			<div class='contest-detail-padding' ></div>
+			<div class='contest-detail-text'>
+				<BR>We are a startup educational company. We need to standardize our look between the tradename, website, design our logo and redesign the website. We also need to enhance the blog appearance!
+			</div>
+		</div>
+			<div class='submission-rules'>
+				<div>CONTEST RULES  </div> 
+				<ul>
+					<li>Entries should include reference images</li>
+				</ul>
+			</div>
+	</div>
+>>>>>>> fix some bug
 		<div class="contest-detail-buttons">
 			<button class="blue margin-center" id='enter-submission-button'>
 				<b>Enter</b> Contest
 			</button>
 		</div>
+<<<<<<< HEAD
 		<% end %>
 		<div id="contest-comment">
     				<div class="show-add-comment"><span class="ui-icons ui-icons-position comments-icon"></span><a> Comment </a></div>
@@ -206,10 +247,189 @@
 			<span><%= $redis.scard("contests:#{@contest.id}.follower_users") %> people are following this contest</span>
 		</div>
 		<div class="contest-visitors">
+=======
+	<div id="contest-comment">
+		<div class="comments" >
+			<div class="comments-category">
+				<span class="ui-icons ui-icons-position comments-icon"></span>
+				<a class="view-all-comments">View all  <span class="comments-cnt">6</span> comments</a>
+				<a class="collapse-comments" style="display: none;">Hide</a>
+				&sdot;
+				<a class="view-creator-comments ">View creator's comments only</a>
+			</div>
+					<div class="comment " uid="uEpIfiYK6onaSCo6GL7E5Q" id_tkn="Mb_D40bsAsQLPhF5MRirbA">
+	<div class="commenter-info">
+		<img src="http://deco-00.prizes.org/r/3/0002/dl/YBsF9vNhsj_ThOjbr1dbGmqr60iSUNJs/ce6_profile_img" />
+		<span class=""></span>
+		<a class="commenter" href="http://prizes.org/Jacob-8">
+			jacob
+		</a>
+	</div>
+	<div class="content">
+		i just want money
+	</div>
+	<div class="comment-bottom">
+		<span>2 hours ago</span>
+	</div>
+</div>
+			<div class="comment-form">
+				<div class="comment-textarea-holder">
+					<textarea placeholder="Write a comment ..."></textarea>
+				</div>
+				<div class="comment-buttons" style="display: none;">
+					<button class="btn-comment-confirm blue">Comment</button>
+					<button  class="btn-comment-cancel lightgray">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class='contest-bottom-shadow'></div>
+
+
+			<div class='win-cand display-none' >
+	<div class='win-cand-title'>
+		<button class='confirm title-button float-right'>Confirm</button><button class='reset title-button float-right'>Skip this step</button><span>Pick two Honorable Mentions!</span>
+	</div>
+	<div class='win-winner-bar'>
+		<div class="badge honorable float-left">HONORABLE MENTION</div>
+		<div id='hm-cand-1' class='win-user-block empty'>
+			<span class='default'>HONORABLE</span>
+			<img/><span class='cand-name ellipsis singleline'></span><a class="close" href="#"></a>
+		</div>
+		<div id='hm-cand-2' class='win-user-block empty'>
+			<span class='default'>HONORABLE</span>
+			<img/><span class='cand-name ellipsis singleline'></span><a class="close" href="#"></a>
+		</div>
+	</div>
+	<div class='hm-glow-effect'></div>
+</div>
+
+
+			<div class="horizontal-divider">
+				<span>ENTRIES</span>
+			</div>
+		<div id="entries-sort">
+			<span class="sort-by">SORT BY:</span>
+			<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-favor" id="sort-by-favor" class="active sort-item" default-order='desc' keep-order='true' ajax=true>Creator's Preference</a>
+			<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-time" id="sort-by-time" class=" sort-item" default-order='desc' ajax=true>Time Submitted<div class="sort-arrow"></div></a>
+				<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-vote" id="sort-by-vote" class=" sort-item" default-order='desc' ajax=true>Votes<div class="sort-arrow"></div></a>
+				<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-score" id="sort-by-score" class=" sort-item" default-order='desc' keep-order='true'  ajax=true>Talent Score</a>
+				<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha" id="sort-by-alpha" class=" sort-item" default-order='asce' keep-order='true' ajax=true>A-Z</a>
+		</div>
+		<div id="entries-alpha-sort">
+					<span class="alpha-sort-item gray">a</span>
+					<span class="alpha-sort-item gray">b</span>
+					<span class="alpha-sort-item gray">c</span>
+					<span class="alpha-sort-item gray">d</span>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=e" initial="e" class="alpha-sort-item" ajax=true>e</a>
+					<span class="alpha-sort-item gray">f</span>
+					<span class="alpha-sort-item gray">g</span>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=h" initial="h" class="alpha-sort-item" ajax=true>h</a>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=i" initial="i" class="alpha-sort-item" ajax=true>i</a>
+					<span class="alpha-sort-item gray">j</span>
+					<span class="alpha-sort-item gray">k</span>
+					<span class="alpha-sort-item gray">l</span>
+					<span class="alpha-sort-item gray">m</span>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=n" initial="n" class="alpha-sort-item" ajax=true>n</a>
+					<span class="alpha-sort-item gray">o</span>
+					<span class="alpha-sort-item gray">p</span>
+					<span class="alpha-sort-item gray">q</span>
+					<span class="alpha-sort-item gray">r</span>
+					<span class="alpha-sort-item gray">s</span>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=t" initial="t" class="alpha-sort-item" ajax=true>t</a>
+					<span class="alpha-sort-item gray">u</span>
+					<span class="alpha-sort-item gray">v</span>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=w" initial="w" class="alpha-sort-item" ajax=true>w</a>
+					<span class="alpha-sort-item gray">x</span>
+					<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=y" initial="y" class="alpha-sort-item" ajax=true>y</a>
+					<span class="alpha-sort-item gray">z</span>
+				<a href="http://prizes.org/Website-improvement-for-a-startup-educational-company?tab=sort-by-alpha&initial=%23" initial="z" class="alpha-sort-item" ajax=true>#</a>
+		</div>
+		<div id="contest-pagination-top" style="display: none;"></div>
+		<div class="left-preloader-bar" style="display: none;"><span class="preloader-icon">Loading...</span></div>
+		<div id="entries-container"></div>
+
+		<div id="contest-pagination" style="display: none;"></div>
+		<div class="contest-bottom-shadow" id="contest-entries-bottom" style="display: none;"></div>
+		<div class="contest-rules">
+			<p>You may only submit 1 entry per contest. Everyday, you are limited to voting for 1 entry in each contest. If the contest creator does not pick a winner when the contest ends, the winner will be determined by popular vote.</p>
+		</div>
+	</div>
+	<div class="page-right">
+		
+	<div class='refer-now-container'>
+		<div class='refer-now-box'>
+			<button class='referral-btn'></button>
+		</div>
+	</div>
+	<div class='referral-buttons' style='display:none'>
+	</div>
+<span class="page-right-header">
+	<span class="ui-icons ui-icons-position" id="contest-holder-icon"></span>
+	<span class="ui-icons-title">Contest Creator</span>
+</span>
+<div class="side-feed">
+	<div class="side-feed-row">
+		<a href="http://prizes.org/Zillomom" class="profile-feed-user-image">
+			<img src="http://03.static.prizes.org/version/20111026045751/ce6/images/default-profile-photo.png"/>
+		</a>
+		<div class="profile-box">
+			<a href="http://prizes.org/Zillomom" class="entry-user-name">ZilloMom</a>
+			<span class=""></span>
+
+					<br/><a href='#' class="follow" followed="0" uid="81yfSbxdvQr62qvIEj7mlA">Follow</a>
+				 &sdot; <a href='#' class="send-msg" uid="81yfSbxdvQr62qvIEj7mlA">Send message</a>
+		</div>
+	</div>
+</div>
+
+<span class="page-right-header">
+		<span class="ui-icons ui-icons-position" id="contest-status-icon"></span>
+		<span class="ui-icons-title">Contest Status</span>
+</span>
+<div class="side-feed">
+	<div class="side-feed-row">
+			Category: <a href='http://prizes.org/category/Business-Ideas'>Business Ideas</a><br/>
+		Latest activity: <strong>13 minutes ago</strong><br/>
+		<strong>16 entries</strong> and <strong>7 votes</strong><br/>
+	</div>
+	<div class="side-feed-row side-feed-row-border-top">
+		<span>22 people are following this contest</span>
+	</div>
+	<div class="contest-visitors">
+</div>
+
+	<span class="page-right-header">
+		<span class="ui-icons ui-icons-position" id="tags-icon"></span>
+		<span class="ui-icons-title">Tags</span>
+	</span>
+	<div class="side-feed float-right tag-box">
+		<div class='float-left tag-container tag-container-normal'>
+			<span class="inplace-btn-area  
+			"
+				style='display:none;'
+			>
+				<a id="tag-editor" class="edit-tab" href="#">edit</a>
+				<span class="split-point gray display-none">&middot;</span>
+				<a id="seeall" class="inplace-btn display-none" href="#">see all tags</a>
+			</span>
+			<span class='no-tag-hint'
+			>
+			<a class='add-tags-link'>Tag</a> 
+				this contest so everyone can find it!
+			</span>
+		</div>
+		<div class='tag-editor-area float-left' style='display:none;'>
+			<input id='new-tag-input' type='text' class='tag-input float-left' ></input>
+			<button id='tag-add' class='blue tag-btn float-left'>Add</button>
+			<button id='tag-done' class='lightgray tag-btn float-left'>Done</button>
+>>>>>>> fix some bug
 		</div>
 	</div>
 	<div class="clear"></div>
 
+<<<<<<< HEAD
 	<div id="contest-tag-related"></div>
 	<div id="contest-top-prizes"></div>
 	<div id="contest-trending"></div>
@@ -229,6 +449,25 @@ ce6.show.contestToken = "<%= @contest.id %>"
 	<form action="" id="add-entry-form">
 		<textarea name="content" class='new-entry-textarea' id='entry-content'></textarea>
 		<input type="hidden" name="contestToken" value="<%= @contest.id %>" id="contest-token">
+=======
+<div id="contest-tag-related"></div>
+<div id="contest-top-prizes"></div>
+<div id="contest-trending"></div>
+
+
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+	var surface = "contest.detail";
+	var viewer_logged_in = true;
+	var IS_SUSPENDED = 0;
+	var SUSPENDED_MSG = 'Your account is suspended. Please contact help@prizes.org for more info.';
+</script>
+<div id="dlg-new-entry" style="display:none;overflow:hidden">
+	<form action="" id="add-entry-form">
+	<textarea name="content" class='new-entry-textarea' id='entry-content'></textarea>
+	<input type="hidden" name="contestToken" value="J8Q_SnaqkHnCndoIkyPu_Q" id="contest-token">
+>>>>>>> fix some bug
 	</form>
 	<span class='dnd-tip'>Tip: To upload images, simply drag &amp; drop them onto the text area.</span>
 	<span id="dlg-new-entry-error" class="dlg-new-entry-error"></span>
@@ -245,11 +484,24 @@ ce6.show.contestToken = "<%= @contest.id %>"
 		<div id="pickwinner-confirm">Are you sure you want to pick&nbsp;<a><span class='picked-winner-name'></span></a>&nbsp;as the winner?</div>
 	</div>
 </div>
+<<<<<<< HEAD
+=======
+<div id="dlg-tutorial" style="display:none;">
+	<span id="arrow-tutorial" class="pointy-arrow pointy-arrow-left">&nbsp;</span>
+	<span class="subject" id="ctt-tutorial">Tutorial</span>
+</div>
+>>>>>>> fix some bug
 <div id="dlg-more-voter" class="dlg-plain-content" style="display:none;">
 	<a class='close' href='#'></a>
 	<div id="all-voters">
 	</div>
 </div>
+<<<<<<< HEAD
+=======
+<div id="dlg-tutorial-finished" style="display:none;">
+	<span class="subject" id="ctt-tutorial-finished">Tutorial Finished</span>
+</div>
+>>>>>>> fix some bug
 <div id="dlg-report" class="dlg-plain-content" style="display:none;">
 	<div id='report-options'>
 		<div class='option-items'>
@@ -266,7 +518,11 @@ ce6.show.contestToken = "<%= @contest.id %>"
 	<textarea id="report-msg" class='report-comment radius-border' placeholder="Tell us in more detail..."></textarea>
 </div>
 <!-- share all in one dialog-->
+<<<<<<< HEAD
 <div id="dlg-all-share" style="display:none;">
+=======
+	<div id="dlg-all-share" style="display:none;">
+>>>>>>> fix some bug
 	<div class="share-top-tips"> </div>
 	<div class="dlg-share-content">
 		<div class="share-avatar">
@@ -297,7 +553,11 @@ ce6.show.contestToken = "<%= @contest.id %>"
 	</div>
 </div>
 
+<<<<<<< HEAD
 <div id="dlg-email-share" style="display:none;">
+=======
+	<div id="dlg-email-share" style="display:none;">
+>>>>>>> fix some bug
 	<div class="share-top-tips"> </div>
 	<div id="dlg-email-providers"> 
 		<div id='gmail-import' class='email-auth-icon'> Gmail </div>
@@ -310,7 +570,11 @@ ce6.show.contestToken = "<%= @contest.id %>"
 		<div class='input-area'>
 			<input id='aolName' type='text'> </input>
 		</div>
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> fix some bug
 		<div class='text-desc'> Password : </div>
 		<div class='input-area'>
 			<input id='aolPassword' type='password'></input>
@@ -346,7 +610,11 @@ ce6.show.contestToken = "<%= @contest.id %>"
 </div>
 
 
+<<<<<<< HEAD
 <iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" src="http://prizes.org/contest/img_upload_response" name="serverResponseIFrame"></iframe>
+=======
+	<iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" src="http://prizes.org/contest/img_upload_response" name="serverResponseIFrame"></iframe>
+>>>>>>> fix some bug
 <div id="upload-attach" style="display:none;">
 	<div id="insert-img-tabs">
 		<ul>
@@ -394,6 +662,7 @@ ce6.show.contestToken = "<%= @contest.id %>"
 </div>
 
 
+<<<<<<< HEAD
 <div id="dlg-category" class="category-dlg" style="display:none;">
 	<span>Which category does this contest belong to?</span>
 	<ul>
@@ -409,6 +678,23 @@ ce6.show.contestToken = "<%= @contest.id %>"
 		<li class='category-option'><input name="category" type="radio" value="Programming" id="cat-9"/><label for="cat-9">Programming</label></li>
 		<li class='category-option'><input name="category" type="radio" value="Religion &amp; Philosophy" id="cat-10"/><label for="cat-10">Religion &amp; Philosophy</label></li>
 		<li class='category-option'><input name="category" type="radio" value="Sports" id="cat-11"/><label for="cat-11">Sports</label></li>
+=======
+	<div id="dlg-category" class="category-dlg" style="display:none;">
+	<span>Which category does this contest belong to?</span>
+	<ul>
+			<li class='category-option'><input name="category" type="radio" value="Art, Media &amp; Design" id="cat-0"/><label for="cat-0">Art, Media &amp; Design</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Names &amp; Slogans" id="cat-1"/><label for="cat-1">Names &amp; Slogans</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Writing &amp; Editing" id="cat-2"/><label for="cat-2">Writing &amp; Editing</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Parenting" id="cat-3"/><label for="cat-3">Parenting</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Health &amp; Fitness" id="cat-4"/><label for="cat-4">Health &amp; Fitness</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Business Ideas" id="cat-5"/><label for="cat-5">Business Ideas</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Travel" id="cat-6"/><label for="cat-6">Travel</label></li>
+			<li class='category-option'><input name="category" type="radio" value="General Knowledge" id="cat-7"/><label for="cat-7">General Knowledge</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Promotions &amp; Offers" id="cat-8"/><label for="cat-8">Promotions &amp; Offers</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Programming" id="cat-9"/><label for="cat-9">Programming</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Religion &amp; Philosophy" id="cat-10"/><label for="cat-10">Religion &amp; Philosophy</label></li>
+			<li class='category-option'><input name="category" type="radio" value="Sports" id="cat-11"/><label for="cat-11">Sports</label></li>
+>>>>>>> fix some bug
 		<li id='other-category'> 
 			<input name="category" type="radio" value="" id="cat-others"/>
 			<label for="cat-others">Others</label>
@@ -420,16 +706,25 @@ ce6.show.contestToken = "<%= @contest.id %>"
 	<input style='display:none' placeholder="New category name" id="suggest-category-input" type="text"/>
 </div>
 
+<<<<<<< HEAD
 <div id="dlg-eliminate" class="eliminate-dlg dlg-plain-content" style="display:none;">
 	<span>Are you sure you want to <strong>eliminate</strong> this entry?</span>
 </div>
 
 <div id="dnd-dialog" url="http://upload.prizes.org/r/3/x/xhr_save_files">
+=======
+	<div id="dlg-eliminate" class="eliminate-dlg dlg-plain-content" style="display:none;">
+	<span>Are you sure you want to <strong>eliminate</strong> this entry?</span>
+</div>
+
+	<div id="dnd-dialog" url="http://upload.prizes.org/r/3/x/xhr_save_files">
+>>>>>>> fix some bug
 	<ul id='dnd-filelist'></ul>
 	<div id='dnd-progressbar'></div>
 </div>
 
 
+<<<<<<< HEAD
 <div id="verify-box" class="side-verify-items" style="display: none;">
 	<div class="verified-divider"></div>
 	<div class="verify-item email v">
@@ -452,6 +747,30 @@ ce6.show.contestToken = "<%= @contest.id %>"
 </div>
 
 <div id="verify-phone-dlg"  class="dlg-plain-content" style="display:none;">
+=======
+			<div id="verify-box" class="side-verify-items" style="display: none;">
+		<div class="verified-divider"></div>
+		<div class="verify-item email v">
+			<span class="verify-item-icon email v"></span>
+			<span class="verify-item-name">email</span>
+				<div class="verified-right">verified</div> 
+		</div>
+		<div class="verified-divider"></div>
+		<div class="verify-item photo v">
+			<span class="verify-item-icon photo v"></span>
+			<span class="verify-item-name">photo</span>
+				<div class="verified-right">verified</div> 
+		</div>
+		<div class="verified-divider"></div>
+		<div class="verify-item phone ">
+			<span class="verify-item-icon phone "></span>
+			<span class="verify-item-name">phone</span>
+				<button id="phone-verify-btn">Verify Phone</button>
+		</div>
+</div>
+
+		<div id="verify-phone-dlg"  class="dlg-plain-content" style="display:none;">
+>>>>>>> fix some bug
 	<div class="verify-dlg-desc">
 		Please enter your mobile number including country code. For example, <br/>+1 555-555-5555 where +1 is the country code for the United States.
 	</div>
@@ -499,7 +818,11 @@ ce6.show.contestToken = "<%= @contest.id %>"
 	</tbody></table>
 </div>
 
+<<<<<<< HEAD
 <div id="upload-avatar" class="dlg-plain-content" style="display:none;">
+=======
+		<div id="upload-avatar" class="dlg-plain-content" style="display:none;">
+>>>>>>> fix some bug
 	<div id='user-photo-loader' class='hidden'>
 		<span class="preloader-icon">Uploading...</span>
 	</div>
@@ -522,8 +845,13 @@ ce6.show.contestToken = "<%= @contest.id %>"
 	</div>
 </div>
 
+<<<<<<< HEAD
 <iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" name="serverResponseIFrame"></iframe>
 <div id="verify-email-dlg" style="display:none;">
+=======
+	<iframe id="serverResponseIFrame" style="width:0px;height:0px;border:0;display:none;" name="serverResponseIFrame"></iframe>
+		<div id="verify-email-dlg" style="display:none;">
+>>>>>>> fix some bug
 	Enter email verification code: <input type="text" id="verify-email-code"></input>
 </div>
 
