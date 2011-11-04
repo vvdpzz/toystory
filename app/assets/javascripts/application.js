@@ -13,5 +13,4 @@
 //= require effect
 //= require niceditor
 //= require app
-//= require editor
 //= require_tree .
