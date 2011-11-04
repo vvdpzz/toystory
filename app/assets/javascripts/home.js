@@ -23,8 +23,32 @@ ce6.home = (function() {
 		$.timeago.settings.allowFuture = true;
 		$('span.timeago').timeago();
 		ce6.ajaxLink.start(ce6.home.onUrlChange, ce6.home.urlDataMap);
+<<<<<<< HEAD
 		ce6.backToTop.init();
 
+=======
+//		ce6.home.checkCookieTask();	
+
+		if (!ce6.home.homeTutored)
+			ce6.headerTip("Get started",
+					$('#page-container'),
+					true,
+					"<div class='bar-divider'></div><div class='bar-message'>Welcome to Prizes.org! Participate in contests to win real cash today!</div>",
+					'ce6.tutorial.closeHomeTutorial');
+		ce6.refreshCallouts();
+		ce6.backToTop.init();
+
+		// invite friend button
+		if($('.side-invite-friends').length){
+			$('.side-invite-friends').click(ce6.home.onClickInviteFriend);
+			ce6.ajaxLog(event_types.invite_friend_module_impression);
+		}
+		// verify button
+		if($('.side-verify-account').length){
+				$('.side-verify-account').click(ce6.home.onClickVerifyAccount);
+//			ce6.ajaxLog(event_types.invite_friend_module_impression);
+		}
+>>>>>>> fix some bug
 		// go to leaderboard 
 		if($('.side-leaderboard').length){
 			$('.side-leaderboard').click(function(){window.location = '/leaderboard/alltime';});
