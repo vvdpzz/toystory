@@ -70,7 +70,6 @@ ce6.show = {
 		/*
 		 *Initialize UI
 		 */
-<<<<<<< HEAD
 		// if (ce6.show.tinymce_type == "submitter") {
 			ce6.editor.newEditorInstance('entry-content', {maxHeight: 273});
 		// } else if (ce6.show.tinymce_type == "creator") {
@@ -80,17 +79,6 @@ ce6.show = {
 		// 			ce6.show.checkContestCount($.trim(tx));
 		// 		});
 		// 	}
-=======
-		//if (ce6.show.tinymce_type == "submitter") {
-			ce6.editor.newEditorInstance('entry-content', {maxHeight: 273});
-		// } else if (ce6.show.tinymce_type == "creator") {
-		// 	ce6.editor.newEditorInstance('contest-edit-content', {maxHeight: 259});
-		// 	$('.nicEdit-main').live('keyup', function(e){
-		// 		var tx = ce6.editor.currentEditorInstance().getContent();
-		// 		ce6.show.checkContestCount($.trim(tx));
-		// 	});
-		// }
->>>>>>> fix some bug
 		$('#nav-create-contest').click(this.checkBeforeCreateContest);
 
 		$('#onboarding-dlg').dialog(this.onboardingDialog).restyleButtons();
@@ -108,7 +96,6 @@ ce6.show = {
 		 */
 
 		/* widget code dialog */
-<<<<<<< HEAD
 		// $('#widget-width').change(ce6.widget.onSettingsChanged);
 		// 	$('#widget-max-entries').change(ce6.widget.onSettingsChanged);
 		// 	$('#widget-title').change(ce6.widget.onSettingsChanged);
@@ -122,21 +109,6 @@ ce6.show = {
 		// 		}
 		// 	});
 		// 	ce6.widget.onSettingsChanged(null, false);
-=======
-//		// $('#widget-width').change(ce6.widget.onSettingsChanged);
-		// $('#widget-max-entries').change(ce6.widget.onSettingsChanged);
-		// $('#widget-title').change(ce6.widget.onSettingsChanged);
-		// $('#widget-hide-title').change(function(e) {
-		// 	$('#widget-title').prop('disabled', $(e.target).prop('checked'));
-		// 	ce6.widget.onSettingsChanged(e);
-		// });
-		// $('.widget-colors').miniColors({
-		// 	change: function(hex, rgb) {
-		// 		ce6.widget.onThemeChanged();
-		// 	}
-		// });
-		// ce6.widget.onSettingsChanged(null, false);
->>>>>>> fix some bug
 		/* end widget code dialog */
 
 		// click event for static element
@@ -222,7 +194,6 @@ ce6.show = {
 		$('#btn-flag-improve').live('click', ce6.show.flag.flagShowInput);
 		$('#btn-flag-inappropriate').live('click', ce6.show.flag.flagShowInput);
 		$('#btn-flag-duplicate').live('click', ce6.show.flag.flagShowInput);
-		$('#btn-flag-copyright').live('click', ce6.show.flag.flagShowInput);
 		$('#btn-flag-spam').live('click', ce6.show.flag.flagShowInput);
 		$('button.btn-entry-flag-confirm').live('click', ce6.show.flag.setFlagged);
 		$('button.btn-entry-flag-cancel').live('click', ce6.show.flag.hideDlg);
@@ -242,22 +213,6 @@ ce6.show = {
 				return false;
 			}
 		);
-		$('#admin-extend-contest').live('click',
-			function(){
-				var extendsDays = $('#admin-extend_days').val();
-				if (extendsDays && !isNaN(extendsDays)){
-					ce6.ajaxJson('/show/admin_extends_contest',
-						{
-							cid:ce6.show.contestToken,
-							extend_days: extendsDays
-						},
-						function(result){ce6.showNotify(result);setTimeout(window.location.reload(), 2000);});
-				}else{
-					ce6.notifyBar('Pls input valid extended days!', 'error');
-				}
-				return false;
-			}
-		);
 
 		// bind pick winner 
 		ce6.show.pickWinnerPanel.bindClickEvent();
@@ -267,12 +222,7 @@ ce6.show = {
 
 		$('body').click(ce6.show.flag.hide);
 
-<<<<<<< HEAD
 		// ce6.show.checkNotifyCookieTask(ce6.show.checkPopupCookieTask());
-=======
-//		ce6.show.checkNotifyCookieTask(ce6.show.checkPopupCookieTask());
-		ce6.show.loadTutorial();
->>>>>>> fix some bug
 		ce6.show.comment.expandComment();
 		// edit entry
 		$('#entry-edit-container').hide();
@@ -326,13 +276,10 @@ ce6.show = {
 		if (ce6.show.promote_share) {
 			ce6.show.jffPromoteShareDlg();
 		}
-<<<<<<< HEAD
 
 		// if(SHARE_CLICKED) {
 		// 	ce6.ajaxLog(SHARE_CLICKED, {'contest_id':ce6.show.contestToken});
 		// }
-=======
->>>>>>> fix some bug
 		// init auto save
 		ce6.show.autoSave.init();
 		
@@ -386,7 +333,6 @@ ce6.show = {
 
 	onUrlChange: function(state) {
 		// data = state.data;
-<<<<<<< HEAD
 		// 		var tab = data.tab || 'sort-by-favor';
 		// 		ce6.show.sort.changeMethod(tab);
 		// 		ce6.show.sort.setOrder(data.order || ce6.show.sort.defaultOrder(tab));
@@ -403,24 +349,6 @@ ce6.show = {
 		// 		} else {
 		// 			ce6.show.pagination.loadEntries();
 		// 		}
-=======
-		// 	var tab = data.tab || 'sort-by-favor';
-		// 	ce6.show.sort.changeMethod(tab);
-		// 	ce6.show.sort.setOrder(data.order || ce6.show.sort.defaultOrder(tab));
-		// 	if (tab == 'sort-by-alpha') {
-		// 		ce6.show.sort.changeInitial(data.initial);
-		// 	}
-		// 	if (data.page) {
-		// 		var page = parseInt(data.page);
-		// 		ce6.show.pagination.setPageNo(page - 1);
-		// 	}
-		// 	if (prefetchedEntries) {
-		// 		ce6.show.pagination.loadEntries(prefetchedEntries);
-		// 		prefetchedEntries = null;
-		// 	} else {
-		// 		ce6.show.pagination.loadEntries();
-		// 	}
->>>>>>> fix some bug
 	},
 
 	checkBeforeCreateContest: function() {
@@ -532,11 +460,11 @@ ce6.show = {
 				}, 1000);
 	},
 	logContestViewed : function() {
-		// ce6.ajaxLog(event_types.contest_viewed, {
-		// 	contest_id : this.contestToken,
-		// 	creator_sid : this.contestDetail.creatorToken,
-		// 	source_link : logging_objs.link_all_contests
-		// });
+		ce6.ajaxLog(event_types.contest_viewed, {
+			contest_id : this.contestToken,
+			creator_sid : this.contestDetail.creatorToken,
+			source_link : logging_objs.link_all_contests
+		});
     },
 	entryBindEvents: function() {
 		$('#entry-edit-link').click(ce6.show.updateEntry.onEdit);
@@ -667,7 +595,6 @@ ce6.show = {
 	enterSubmission : function() {
 		if (IS_SUSPENDED == 1) {
 			ce6.notifyBar(SUSPENDED_MSG, 'error');
-<<<<<<< HEAD
 		} // else if (ce6.show.contestDetail.requireVerified && !viewer.verified && viewer.token) {
 		 // 			var noCb = function() {
 		 // 				//nothing
@@ -682,22 +609,6 @@ ce6.show = {
 		 // 		}
 		 else {
 			//open submission dialog whatever user login or not
-=======
-		} else // if (ce6.show.contestDetail.requireVerified && !viewer.verified && viewer.token) {
-		// 			var noCb = function() {
-		// 				//nothing
-		// 			};
-		// 			var yesCb = function() {
-		// 					//go to profile
-		// 					ce6.site.redirect('profile');
-		// 				};
-		// 			ce6.confirmDialog('Sorry, the contest creator only allows verified users to participate in this contest.<br>Click <b>YES</b> to get verified.', 
-		// 				'Get verified to participate', yesCb, noCb);
-		// 		} else 
-		{
-			// open submission dialog whatever user login or not
-		
->>>>>>> fix some bug
 			$('#dlg-new-entry').dialog('open');
 			$('#dlg-new-entry-error').html("");
 			$('#dlg-new-entry-error').hide();
@@ -755,310 +666,7 @@ ce6.show = {
 				}
 			);
 		};
-<<<<<<< HEAD
 		submitAction();
-=======
-
-		if (viewer_logged_in) {
-			submitAction();
-		}else{
-			ce6.authDialog.open(
-				submitAction, 
-				function(){
-					$('#dlg-new-entry').enableDlgButtons();
-				}, 
-				'auto', ce6.authDialog.onDemandTitle);
-		}
-	},
-
-	referContest: function() {
-		ce6.ajaxLog(event_types.refer_button_clicked, {contest_id:ce6.show.contestToken});
-		if(viewer_logged_in){
-			$('.referral-buttons').show('fast');
-		}else{
-			ce6.authDialog.open(
-				function(){
-					$.cookie(ce6.cookieControl.name.SHOWREFERSHARE, '1', ce6.cookieControl.shortOption); 
-					window.location.reload();
-				},null, 
-				'auto', 'Sign in to start referring friends!');
-		}
-	},
-
-	shareFBRefer: function() {
-		fbFeed.method = 'feed';
-		fbFeed.link = referral_fb_link;
-		FB.ui(fbFeed, function(response) {})
-	},
-
-	openWidgetDialog: function() {
-		$('#dlg-get-widget').dialog('open');
-	},
-
-	shareContest: function() {
-		var shareDialogOpts = {
-			type: 'userContest',
-			title:ce6.show.contestDetail.title,
-			prize:ce6.show.contestDetail.prize,
-			url:ce6.show.contestDetail.shortUrl,
-			tweetUrl:ce6.show.contestDetail.tweetUrl,
-			contestToken:ce6.show.contestToken
-		};
-		ce6.shareDialog.open(shareDialogOpts);
-	},
-
-	onLinkedinShareSuccess: function() {
-		if(console){
-			console.log('Linkedin Share SUCCESS');
-		}
-	},
-
-	shareContestByTwitter: function() {
-		var selected = $(this).attr('tabindex');
-		if (viewer_logged_in){
-			ce6.shareFb(selected);
-		}else if(!ce6.show.muteFeed){
-			var redirect_to = 'http://twitter.com/share?url='+$(this).attr('url')+'&text='+$(this).attr('tweet');
-			$.oauthpopup({
-				path: redirect_to
-				});
-		}
-	},
-
-	jffPromoteShareDlg: function() {
-		var shareDialogOpts = {
-			type: 'jff_promote',
-			title:ce6.show.contestDetail.title,
-			prize:ce6.show.contestDetail.prize,
-			url:ce6.show.contestDetail.shortUrl,
-			tweetUrl:ce6.show.contestDetail.tweetUrl,
-			contestToken:ce6.show.contestToken
-		};
-		ce6.shareDialog.open(shareDialogOpts);
-	},
-
-	checkNotifyCookieTask:function(ignore) {
-		var cookieCtrl = ce6.cookieControl;
-		if($.cookie(cookieCtrl.name.SHOWFLAGGED)){
-			var eid = $.cookie(cookieCtrl.name.SHOWFLAGGED);
-			$('.entry-flag[token=' + eid + ']').text('Flagged').addClass('entry-flagged').removeClass('entry-flag');
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWFLAGGED);
-			ce6.notifyBar('Entry flagged.', 'success');
-		}
-		if($.cookie(cookieCtrl.name.SHOWCONGRATULATION)){
-			//delete control cookie
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWCONGRATULATION);
-			if(!ignore){ 
-				ce6.notifyBar('Congratulations, You\'re now a member of Prizes.org! Start voting, submitting or creating your own contests!', 'success');
-			}
-		}else if($.cookie(cookieCtrl.name.SHOWEDITCONTESTERROR)) {
-			var errorMsg = $.cookie(cookieCtrl.name.SHOWEDITCONTESTERROR)
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWEDITCONTESTERROR);
-			ce6.notifyBar(errorMsg, 'error');
-		}else if($.cookie(cookieCtrl.name.SHOWCONTESTEXTEND)) {
-			var successMsg = "Contest extended for 7 days!";
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWCONTESTEXTEND);
-			ce6.notifyBar(successMsg, 'success');
-		}else if($.cookie(cookieCtrl.name.SHOWVOTESUCCESS)) {
-			var msg = $.cookie(cookieCtrl.name.SHOWVOTESUCCESS);
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWVOTESUCCESS);
-			ce6.notifyBar(msg, 'success');
-		}else if($.cookie(cookieCtrl.name.SHOWVOTEFAILURE)) {
-			var msg = $.cookie(cookieCtrl.name.SHOWVOTEFAILURE);
-			cookieCtrl.delCookie(cookieCtrl.name.SHOWVOTEFAILURE);
-			ce6.notifyBar(msg, 'error');
-		}else if($.cookie(cookieCtrl.name.SHOWPICKWINNER)) {
-		}
-	},
-
-	checkPopupCookieTask:function() {
-		// var selected = $('#sns-connect-status [require="0"]').index();
-		// var shareDialogOpts = {
-		// 	contestToken: this.contestToken,
-		// 	title:this.contestDetail.title,
-		// 	prize:this.contestDetail.prize,
-		// 	url:this.contestDetail.shortUrl,
-		// 	tweetUrl:this.contestDetail.tweetUrl
-		// };
-		// var ignoreOthers = false;
-		// var cookieCtrl = ce6.cookieControl;
-		// if($.cookie(cookieCtrl.name.SHOWFBSHARE)){
-		// 	//delete control cookie
-		// 	cookieCtrl.delCookie(cookieCtrl.name.SHOWFBSHARE);
-		// 	shareDialogOpts.close = function (event, ui) {
-		// 		ce6.notifyBar("You can show off your contest on your own blog or website. Grab the contest widget code now!", 'success');
-		// 		ce6.callouts.displayCallout('get_contest_widget');
-		// 	};
-		// 	//open share dialog for entry
-		// 	if (ce6.show.is_jff) {
-		// 		shareDialogOpts.type = 'jff_contest';
-		// 		ce6.notifyBar("Your contest has been created! Now select a category to help others find your contest once it's upgraded!", 'success');
-		// 	} else {
-		// 		shareDialogOpts.type = 'contest';
-		// 		ce6.notifyBar("Your contest has been created! Now select a category to help others find your contest!", 'success');
-		// 	}
-		// 	ce6.show.category.initCategoryDlg(shareDialogOpts);
-		// 	
-		// 	ignoreOthers = true;
-		// }else if($.cookie(cookieCtrl.name.SHOWREFERSHARE)){
-		// 	//delete control cookie
-		// 	cookieCtrl.delCookie(cookieCtrl.name.SHOWREFERSHARE);
-		// 	$('.refer-now-box').click();
-		// 	ignoreOthers = true;
-		// }else if($.cookie(cookieCtrl.name.SHOWSUBMISSIONSHARE)){
-		// 	var entryToken = $.cookie(ce6.cookieControl.name.SHOWSUBMISSIONSHARE);
-		// 	//delete control cookie
-		// 	cookieCtrl.delCookie(cookieCtrl.name.SHOWSUBMISSIONSHARE);
-		// 
-		// 	//open share dialog for entry
-		// 	if (ce6.show.is_jff) {
-		// 		shareDialogOpts.type = 'jff_new_entry';
-		// 	} else {
-		// 		shareDialogOpts.type = 'new_entry';
-		// 	}
-		// 	shareDialogOpts.entryToken = entryToken;
-		// 	ce6.shareDialog.open(shareDialogOpts);
-		// 	if (is_farseer)
-		// 		ce6.notifyBar("Entry submitted! Your talent score has increased by <font style='color:white;font-weight:bold;text-shadow:0 1px 2px #333333;'>+5 </font>! Get votes on Facebook and Twitter now!", 'success');
-		// 	else
-		// 		ce6.notifyBar("Thanks for submitting! Get votes on Facebook or Twitter now!", 'success'); 
-		// 	ignoreOthers = true;
-		// }else if(!viewer_logged_in && $.cookie(cookieCtrl.name.SHOWTUTORIAL) != '1'){
-		// 	// disable onboarding for a while
-		// 	if ($('#enter-submission-button').length){
-		// 		ce6.show.tutorialTopBar();
-		// 	}
-		// 	return;
-		// 
-		// 	//no submit btn will skip the tutorial
-		// 	if ($('#enter-submission-button').length){
-		// 		$('#onboarding-dlg').dialog('open');
-		// 		ce6.ajaxLog(event_types.onboarding_dialog_impression, {has_start : 1});
-		// 	}else{
-		// 		$('#onboarding-dlg').dialog("option", 'buttons', 
-		// 			{Close:function(){ 
-		// 				ce6.logButtonClicked(logging_objs.btn_onboarding_close); 
-		// 				$(this).dialog('close');
-		// 			}}
-		// 		).dialog('open');
-		// 		ce6.ajaxLog(event_types.onboarding_dialog_impression, {has_start : 0});
-		// 	}
-		// 	//add control cookie
-		// 	$.cookie(cookieCtrl.name.SHOWTUTORIAL, '1', ce6.cookieControl.oneYearOption); 
-		// 
-		// }
-		// return ignoreOthers;
-	 },
-
-	tutorialLayout: {margin: 20, arrowOffset: 50},
-	showTutorialDlg: function(x, y, nextStep, dir, textContent){
-		var left, top, scroll = 0;
-		switch (dir){
-			case 'L':
-				left = x + ce6.show.tutorialLayout.margin;
-				top = y - ce6.show.tutorialLayout.arrowOffset;
-				$('#arrow-tutorial').attr('class', 'pointy-arrow pointy-arrow-left');
-				break;
-			case 'R':
-				left = x - 320 - ce6.show.tutorialLayout.margin;
-				top = y - ce6.show.tutorialLayout.arrowOffset;
-				$('#arrow-tutorial').attr('class', 'pointy-arrow pointy-arrow-right');
-				break;
-			case 'U':
-				left = x - ce6.show.tutorialLayout.arrowOffset;
-				top = y + ce6.show.tutorialLayout.margin;
-				$('#arrow-tutorial').attr('class', 'pointy-arrow pointy-arrow-top');
-				break;
-			default:
-				left = x + ce6.show.tutorialLayout.margin;
-				top = y - ce6.show.tutorialLayout.arrowOffset;
-				break;
-		}
-		if (top + 200 > $(window).height() + $(window).scrollTop()){
-			var scroll = (y - $(window).height() + 300) < ($(document).height()-$(window).height()) ?  (y - ($(window).height() - 300)) : ($(document).height()-$(window).height());
-			$(window).scrollTop(scroll);
-			top = top - scroll;
-		}
-		else if(top < 0) {
-			var prominent_offset = $(window).height() / 3 < ($(window).scrollTop()+y) ? $(window).height() / 3 : ($(window).scrollTop()+y); 
-			var scroll = y - prominent_offset;
-			$(window).scrollTop(scroll);
-			top = top - scroll;
-		}
-		$('#ctt-tutorial').html("<strong>"+textContent.title+"</strong>"+ 
-					"<p>" + 
-						textContent.content.replace('$X', '$'+ce6.show.contestDetail.prize) + 
-					"</p>");
-		$('#dlg-tutorial').dialog({position: [left, top]});
-		var dialog_buttons = {};
-		dialog_buttons[textContent.button] = function(){
-				$(window).scrollTop(0);
-				$(this).dialog("close");
-				ce6.show.tutorialStep(nextStep);	
-		};
-		$('#dlg-tutorial').dialog(
-				{buttons: dialog_buttons}
-			).restyleButtons();
-		$('#dlg-tutorial').dialog('open');
-	},
-	startTutorial : function(){
-		/* init some contest and user data in js */
-		ce6.show.promptSignUp = !viewer_logged_in;
-		
-		var stepsHtml = ce6.tutorial.generateStepsHtml(['Learn', 'Enter', 'Vote', 'Referral', 'Follow', 'More']);
-		ce6.headerTip('How to win $$$', $('#page-container'), false, stepsHtml);
-		if (!viewer_logged_in){
-			$(".onboarding-info-panel").hide();
-		}
-		ce6.tutorial.setTutorialConfig(ce6.tutorial.detailTutorial);
-		ce6.ajaxLog(event_types.tour_started);
-		ce6.show.tutorialStep(0);
-		$('#sample-entry-container').show();
-		$('.callout-bg').hide();
-	},
-	tutorialStep : function(step){
-		ce6.resetOpacity();
-		$('#dlg-tutorial').dialog('close');
-		
-		var tutorialConfig = ce6.tutorial.getDisplayConfig(step);
-		if (!tutorialConfig){
-			$('#sample-entry-container').hide();
-			ce6.closeHeaderTip();
-			ce6.ajaxLog(event_types.tour_finished,
-				{step_id_on_finish : ce6.show.tutorialStepId});
-			return;
-		}
-		if (tutorialConfig.finishedCb){
-			$('#sample-entry-container').hide();
-			ce6.closeHeaderTip();
-			tutorialConfig.finishedCb(null);
-			var index = (ce6.show.contestDetail.numEntries ? 0 : 2) + (ce6.show.promptSignUp ? 0 : 1);
-			var detailTutorialFinishedConfig = ce6.tutorial.detailTutorialFinished[index];
-			$('#ctt-tutorial-finished').html(
-				detailTutorialFinishedConfig.content.replace('$X', '$'+ce6.show.contestDetail.prize)
-			);
-			$('#dlg-tutorial-finished').dialog({title: detailTutorialFinishedConfig.title, buttons: detailTutorialFinishedConfig.buttons}).restyleButtons();
-			$('#dlg-tutorial-finished').dialog('open');
-			ce6.ajaxLog(event_types.tour_finished,
-				{step_id_on_finish : ce6.show.tutorialStepId});
-			return;
-		}
-		ce6.tutorial.goNextStep(step);
-		fakeDiv = {offset: function(){return {left:0, top:tutorialConfig.rootDiv.offset().top - 10}}};
-		ce6.setOpacityOutsideDiv(tutorialConfig.lightDivSet, fakeDiv, $(document).height(), $(document).width());
-		ce6.show.showTutorialDlg(tutorialConfig.pointX, tutorialConfig.pointY, step+1, tutorialConfig.dir, tutorialConfig.textContent);
-		ce6.show.tutorialStepId = step;
-		ce6.ajaxLog(event_types.tour_step_completed,
-			{step_id : step});
-		return;
-	},
-
-	logShareDialogClick : function(isShare) {
-		ce6.ajaxLog(event_types.fb_dialog_button_clicked, {
-			confirm_share : (isShare ? 1 : 2),
-			page_id : pageId
-		});
->>>>>>> fix some bug
 	},
 
 	toggleFollowContest: function() {
@@ -1634,7 +1242,6 @@ ce6.show.flag = {
 					<li><a id="btn-flag-improve">Need improvement</a></li> \
 					<li><a id="btn-flag-duplicate">Duplicate entry</a></li> \
 					<li><a id="btn-flag-spam">Spam</a></li> \
-					<li><a id="btn-flag-copyright">Copyright violation</a></li> \
 				</ul> \
 				');
 		}
@@ -1654,22 +1261,10 @@ ce6.show.flag = {
 		dlg.css({left: $(this).offset().left, top: $(this).offset().top + $(this).height()});
 	},
 	showDlg: function(txt) {
+		$('.entry-flag.active').parents('.entry-detail').children('.entry-flag-dlg').show();
 		$('.entry-flag.active').parents('.entry-detail').find('.entry-flag-txt').text(txt);
 		ce6.show.flag.getFlagDialog().hide();
 		ce6.show.flag.entry_token = '';
-		var commentContainer = $('.entry-flag.active').parent().siblings('.entry-flag-dlg').children('.flag-comment-container');
-		if ('copyright violation' == $.trim(txt.toLowerCase())){
-			var flagComment = $('<textarea class="entry-flag-value" placeholder="Please provide evidence (Required)"></textarea>');
-			ce6.show.flag.nonEmptyCheck = true;
-		}
-		else {
-			var flagComment = $('<textarea class="entry-flag-value" placeholder="Tell us more about what you found ...(Optional)"></textarea>');
-			ce6.show.flag.nonEmptyCheck = false;
-		}
-		commentContainer.html('');
-		flagComment.appendTo(commentContainer);
-		flagComment.placeholder();
-		$('.entry-flag.active').parent().siblings('.entry-flag-dlg').show();
 		$('.entry-flag.active').removeClass('active');
 	},
 	hideDlg: function() {
@@ -1684,24 +1279,12 @@ ce6.show.flag = {
 	flagDupl: function() {
 		ce6.show.flag.showDlg($(this).text());
 	},
-	checkNonEmptyCheck : function(targetField){
-		if (!ce6.show.flag.nonEmptyCheck)
-			return true
-		var inputStr = $.trim(targetField.val());
-		if (inputStr == targetField.prop('placeholder') || '' == inputStr){
-			ce6.notifyBar('Please provide evidence to show the violation of copyrigh.', 'error');
-			return false
-		}
-		return true
-	},
 	setFlagged: function() {
 		if (!viewer_logged_in){
 			ce6.show.flag.current = $(this);
 			ce6.authDialog.open(ce6.show.flag.asyncSetFlagged, null);
 			return
 		}
-		if (!ce6.show.flag.checkNonEmptyCheck($(this).parent().siblings('.flag-comment-container').children('textarea')))
-			return
 		var dlg = $(this).parents('.entry-flag-dlg');
 		ce6.ajaxJson(
 			'/report/report', 
@@ -1724,8 +1307,6 @@ ce6.show.flag = {
 	},
 	asyncSetFlagged: function(){
 		if (!ce6.show.flag.current)
-			return
-		if (!ce6.show.flag.checkNonEmptyCheck($(this).parent().siblings('.flag-comment-container').children('textarea')))
 			return
 		var current = ce6.show.flag.current;
 		var dlg = current.parents('.entry-flag-dlg');
@@ -2331,19 +1912,11 @@ ce6.show.comment = (function(ce6) {
 
 	my.expandComment = function() {
 		var container = [];
-<<<<<<< HEAD
 		// if(ce6.show.contestDetail.targetEntryIdtkn){
 		// 	if ($('#entry_'+ce6.show.contestDetail.targetEntryIdtkn).length > 0) {
 		// 		container = $('#entry_'+ce6.show.contestDetail.targetEntryIdtkn);
 		// 	}
 		// }
-=======
-//		if(ce6.show.contestDetail.targetEntryIdtkn){
-//			if ($('#entry_'+ce6.show.contestDetail.targetEntryIdtkn).length > 0) {
-//				container = $('#entry_'+ce6.show.contestDetail.targetEntryIdtkn);
-//			}
-//		}
->>>>>>> fix some bug
 
 		if (container.length) {
 			var category = container.find('.comments-category');
